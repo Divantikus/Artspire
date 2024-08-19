@@ -3,20 +3,24 @@ import { ModalWindow } from "../shared/ui/modalWindow/index";
 import { useState } from "react";
 
 export function MainPage() {
-  const [onOrOff, setOnOrOff] = useState(false);
+  const [modalWindowIsVisible, setModalWindowIsVisible] = useState(false);
 
   return (
     <div className="some">
-      <button onClick={() => setOnOrOff((e) => !e)} style={{ color: "#fff" }}>
+      <button
+        onClick={() => setModalWindowIsVisible((e) => !e)}
+        style={{ color: "#fff" }}
+      >
         toggle modal Window
       </button>
 
       <p>
-        {onOrOff && (
-          <ModalWindow>
-            <SignUpOrSignIn />
-          </ModalWindow>
-        )}
+        <ModalWindow
+          closeWindow={setModalWindowIsVisible}
+          isVis={modalWindowIsVisible}
+        >
+          <SignUpOrSignIn />
+        </ModalWindow>
       </p>
     </div>
   );
