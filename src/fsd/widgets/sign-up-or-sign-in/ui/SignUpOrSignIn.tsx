@@ -1,6 +1,5 @@
-import { useInputSettings } from "../model/hooks/useInputSettings";
-import { IFormData } from "../model/types";
-import { Input } from "@/fsd/shared/ui/input";
+import { LoginOrRegistrationForm } from "@/fsd/features/login-or-registration-form/ui/LoginOrRegistrationForm";
+import { useState } from "react";
 import facebookIcon from "@/fsd/shared/assets/facebook-apple-google/facebook.png";
 import googleIcon from "@/fsd/shared/assets/facebook-apple-google/google.png";
 import appleIcon from "@/fsd/shared/assets/facebook-apple-google/apple.png";
@@ -8,32 +7,14 @@ import styles from "./SignUpOrSignIn.module.scss";
 import Image from "next/image";
 
 export const SignUpOrSignIn = () => {
-  const {
-    isSignIn,
-    setIsSignIn,
-    handleSubmit,
-    emailInputProps,
-    passwordInputProps,
-    passwordVerifProps,
-  } = useInputSettings();
-
-  const submitForm = (e: IFormData) => {
-    console.log(e);
-  };
+  const [isSignIn, setIsSignIn] = useState(true);
 
   return (
     <>
       <h2 className={styles.title}>
         {isSignIn ? "Авторизация" : "Регистрация"}
       </h2>
-      <form onSubmit={handleSubmit(submitForm)}>
-        <Input inputProps={emailInputProps} />
-        <Input inputProps={passwordInputProps} />
-        {!isSignIn && <Input inputProps={passwordVerifProps} />}
-        <button className={styles.submitButton}>
-          {isSignIn ? "Войти" : "Зарегистрироваться"}
-        </button>
-      </form>
+      <LoginOrRegistrationForm isSignIn={isSignIn} />
       <div className={styles.or}>или</div>
       {/* Доделать ссылки */}
       <div className={styles.links}>

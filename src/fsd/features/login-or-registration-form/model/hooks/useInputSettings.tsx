@@ -1,14 +1,12 @@
 import { IDefaultInput } from "@/fsd/shared/ui/input";
 import { IFormData } from "../types";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import styles from "@/fsd/widgets/sign-up-or-sign-in/ui/SignUpOrSignIn.module.scss";
 import closeEye from "@/fsd/shared/assets/eye/close-eye.svg";
 import openEye from "@/fsd/shared/assets/eye/open-eye.svg";
+import styles from "@/fsd/features/login-or-registration-form/ui/LoginOrRegistrationForm.module.scss";
 import Image from "next/image";
 
 export const useInputSettings = () => {
-  const [isSignIn, setIsSignIn] = useState(true);
   const { register, handleSubmit } = useForm<IFormData>();
 
   const emailInputProps: IDefaultInput = {
@@ -30,8 +28,6 @@ export const useInputSettings = () => {
   };
 
   return {
-    isSignIn,
-    setIsSignIn,
     handleSubmit,
     emailInputProps,
     passwordInputProps,

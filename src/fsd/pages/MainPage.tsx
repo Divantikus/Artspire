@@ -17,7 +17,7 @@ export function MainPage() {
       <p>
         <ModalWindow
           closeWindow={setModalWindowIsVisible}
-          isVis={modalWindowIsVisible}
+          windowIsVisible={modalWindowIsVisible}
         >
           <SignUpOrSignIn />
         </ModalWindow>

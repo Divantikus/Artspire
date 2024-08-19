@@ -4,7 +4,7 @@ import { PortalInBody } from "../Portal-in-body/PortalInBody";
 import styles from "./ModalWindow.module.scss";
 
 interface ModalWindowProps {
-  isVis: boolean;
+  windowIsVisible: boolean;
   children?: ReactNode;
   closeWindow: Dispatch<SetStateAction<boolean>>;
 }
@@ -12,13 +12,13 @@ interface ModalWindowProps {
 export const ModalWindow: FC<ModalWindowProps> = ({
   children,
   closeWindow,
-  isVis,
+  windowIsVisible,
 }) => {
   return (
     <>
       <PortalInBody>
         <AnimatePresence>
-          {isVis && (
+          {windowIsVisible && (
             <motion.div
               exit={{ opacity: 0 }}
               animate={{ opacity: 1 }}
