@@ -1,5 +1,6 @@
-import { DefaultInputProps, OptionalFunctionT } from "./types";
-import { FC, useState } from "react";
+import { DefaultInputProps } from "./types";
+import { useDefaltInput } from "../../model/hooks/useDefaltInput";
+import { FC } from "react";
 import styles from "./Input.module.scss";
 
 export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
@@ -15,22 +16,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
     secondaryClassName,
   } = inputProps;
 
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isFirstImg, setIsFirstImg] = useState(true);
-
-  const runFunction = (functionOrObj: OptionalFunctionT | undefined) => {
-    if (type === "password") {
-      setIsPasswordVisible((type) => !type);
-      setIsFirstImg((img) => !img);
-      return;
-    }
-
-    if (!functionOrObj) return;
-
-    if (typeof functionOrObj === "function") return functionOrObj();
-
-    functionOrObj.func(functionOrObj.params);
-  };
+  const { isFirstImg, isPasswordVisible, runFunction } = useDefaltInput(type);
 
   const inputClassname = secondImg ? styles.inputSecondImg : styles.input;
   const isHaveButnManagement = type === "password" || optionalFunction;
