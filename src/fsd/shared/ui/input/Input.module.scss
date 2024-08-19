@@ -1,8 +1,12 @@
+.inputContainer {
+  position: relative;
+}
 .input {
+  width: 100%;
   font-size: 14px;
   transition: 0.3s;
-  padding: 12px 8px;
   border-radius: 16px;
+  padding: 12px 8px 12px 8px;
   border: 1px solid rgb(136, 136, 136);
   font-family: "Nunito Sans", sans-serif;
   &:focus {
@@ -11,4 +15,16 @@
   &::placeholder {
     color: rgb(136, 136, 136);
   }
+}
+
+.inputBtn {
+  top: 12px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+}
+//32px
+.fieldWithButton {
+  padding: 12px 32px 12px 8px;
 }

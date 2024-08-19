@@ -1,25 +1,31 @@
-import { DefaultInputProps, OptionalFunctionT } from "../../model/types";
+import { DefaultInputProps, OptionalFunctionT } from "./types";
 import { FC, useState } from "react";
 import styles from "./Input.module.scss";
-import Image from "next/image";
 
 export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
   const {
     id,
     type,
-    state,
     register,
     secondImg,
     buttonImg,
     placeholder,
+    secondButtonImg,
     optionalFunction,
     secondaryClassName,
   } = inputProps;
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isFirstImg, setIsFirstImg] = useState(true);
 
-  const runFunction = (functionOrObj: OptionalFunctionT) => {
-    if (type === "password") return setIsPasswordVisible((type) => !type);
+  const runFunction = (functionOrObj: OptionalFunctionT | undefined) => {
+    if (type === "password") {
+      setIsPasswordVisible((type) => !type);
+      setIsFirstImg((img) => !img);
+      return;
+    }
+
+    if (!functionOrObj) return;
 
     if (typeof functionOrObj === "function") return functionOrObj();
 
@@ -27,22 +33,31 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
   };
 
   const inputClassname = secondImg ? styles.inputSecondImg : styles.input;
+  const isHaveButnManagement = type === "password" || optionalFunction;
+  const inputSecondClassName = isHaveButnManagement
+    ? styles.fieldWithButton
+    : "";
 
   return (
     <div className={styles.inputContainer}>
       {secondImg && (
-        <Image src={secondImg} alt={"icon"} className={styles.secondIcon} />
+        <div className={styles.secondImgContainer}>{secondImg}</div>
       )}
       <input
         id={id}
         {...register}
         placeholder={placeholder}
         type={(isPasswordVisible && "text") || type}
-        className={`${inputClassname} ${secondaryClassName}`}
+        className={`${inputClassname} ${secondaryClassName} ${inputSecondClassName}`}
       />
-      {optionalFunction && (
-        <button onClick={() => runFunction(optionalFunction)}>
-          1{buttonImg && <Image src={buttonImg} alt={"button icon"} />}
+      {isHaveButnManagement && (
+        <button
+          onClick={() => runFunction(optionalFunction)}
+          className={styles.inputBtn}
+        >
+          <span className={styles.buttonImg}>
+            {isFirstImg ? buttonImg : secondButtonImg}
+          </span>
         </button>
       )}
     </div>

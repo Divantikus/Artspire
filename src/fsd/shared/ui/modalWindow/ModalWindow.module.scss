@@ -1,0 +1,16 @@
+.modalWindowContainer {
+  opacity: 0;
+  padding: 0 24px;
+}
+
+.modalWindow {
+  display: block;
+  font-size: 14px;
+  background: #fff;
+  padding: 24px 16px;
+  border-radius: 24px;
+  font-family: "Nunito Sans" sans-serif;
+  @media (min-width: 600px) {
+    max-width: 450px;
+  }
+}
