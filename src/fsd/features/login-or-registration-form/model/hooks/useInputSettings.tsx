@@ -10,21 +10,27 @@ export const useInputSettings = () => {
   const { register, handleSubmit } = useForm<IFormData>();
 
   const emailInputProps: IDefaultInput = {
-    placeholder: "Введите email",
     register: register("email"),
+    placeholder: "Введите email",
     secondaryClassName: styles.formInput,
   };
   const passwordInputProps: IDefaultInput = {
+    type: "password",
     placeholder: "Введите пароль",
     register: register("password"),
-    type: "password",
+    secondaryClassName: styles.formInput,
     buttonImg: <Image src={openEye} alt={"open eye"} />,
     secondButtonImg: <Image src={closeEye} alt={"close eye"} />,
-    secondaryClassName: styles.formInput,
   };
   const passwordVerifProps: IDefaultInput = {
     ...passwordInputProps,
     register: register("checkPassword"),
+  };
+
+  const usernameInputProps: IDefaultInput = {
+    register: register("username"),
+    placeholder: "Введите имя пользователя",
+    secondaryClassName: styles.formInput,
   };
 
   return {
@@ -32,5 +38,6 @@ export const useInputSettings = () => {
     emailInputProps,
     passwordInputProps,
     passwordVerifProps,
+    usernameInputProps,
   };
 };

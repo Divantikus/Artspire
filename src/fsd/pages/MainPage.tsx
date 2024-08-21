@@ -1,9 +1,10 @@
+import { ModalWindowState } from "../app/providers/ModalWindowContext";
 import { SignUpOrSignIn } from "../widgets/sign-up-or-sign-in";
 import { ModalWindow } from "../shared/ui/modalWindow/index";
-import { useState } from "react";
+import { useContext } from "react";
 
 export function MainPage() {
-  const [modalWindowIsVisible, setModalWindowIsVisible] = useState(false);
+  const { setModalWindowIsVisible } = useContext(ModalWindowState);
 
   return (
     <div className="some">
@@ -15,10 +16,7 @@ export function MainPage() {
       </button>
 
       <p>
-        <ModalWindow
-          closeWindow={setModalWindowIsVisible}
-          windowIsVisible={modalWindowIsVisible}
-        >
+        <ModalWindow>
           <SignUpOrSignIn />
         </ModalWindow>
       </p>

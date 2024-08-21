@@ -40,6 +40,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
         <button
           onClick={() => runFunction(optionalFunction)}
           className={styles.inputBtn}
+          type="button"
         >
           <span className={styles.buttonImg}>
             {isFirstImg ? buttonImg : secondButtonImg}

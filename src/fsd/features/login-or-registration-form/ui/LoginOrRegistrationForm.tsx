@@ -1,3 +1,5 @@
+import { useUserRegisterMutation } from "../model/hooks/useUserRegisterMutation";
+import { useUserLoginMutation } from "../model/hooks/useUserLoginMutation";
 import { useInputSettings } from "../model/hooks/useInputSettings";
 import { IFormData } from "../model/types";
 import { Input } from "@/fsd/shared/ui/input";
@@ -9,18 +11,23 @@ export const LoginOrRegistrationForm = ({
   isSignIn: boolean;
 }) => {
   const {
-    emailInputProps,
     handleSubmit,
+    emailInputProps,
     passwordInputProps,
     passwordVerifProps,
+    usernameInputProps,
   } = useInputSettings();
+  const { mutate: loginMutate } = useUserLoginMutation();
+  const { mutate: RegisterMutate } = useUserRegisterMutation();
 
-  const submitForm = (e: IFormData) => {
-    console.log(e);
+  const submitForm = (formData: IFormData) => {
+    if (isSignIn) return loginMutate(formData);
+    RegisterMutate(formData);
   };
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
+      <Input inputProps={usernameInputProps} />
       <Input inputProps={emailInputProps} />
       <Input inputProps={passwordInputProps} />
       {!isSignIn && <Input inputProps={passwordVerifProps} />}
