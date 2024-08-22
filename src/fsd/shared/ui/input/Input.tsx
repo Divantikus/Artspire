@@ -13,7 +13,8 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
     placeholder,
     secondButtonImg,
     optionalFunction,
-    secondaryClassName,
+    inputArbitraryClassName,
+    inputContainerClassName,
   } = inputProps;
 
   const { isFirstImg, isPasswordVisible, runFunction } = useDefaltInput(type);
@@ -25,7 +26,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
     : "";
 
   return (
-    <div className={styles.inputContainer}>
+    <div className={`${styles.inputContainer} ${inputContainerClassName}`}>
       {secondImg && (
         <div className={styles.secondImgContainer}>{secondImg}</div>
       )}
@@ -34,7 +35,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
         {...register}
         placeholder={placeholder}
         type={(isPasswordVisible && "text") || type}
-        className={`${inputClassname} ${secondaryClassName} ${inputSecondClassName}`}
+        className={`${inputClassname} ${inputSecondClassName} ${inputArbitraryClassName}`}
       />
       {isHaveButnManagement && (
         <button

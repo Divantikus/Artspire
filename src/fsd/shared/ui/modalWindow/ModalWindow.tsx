@@ -1,4 +1,4 @@
-import { Dispatch, FC, ReactNode, SetStateAction, useContext } from "react";
+import { FC, ReactNode, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 import { PortalInBody } from "../Portal-in-body/PortalInBody";
@@ -20,12 +20,12 @@ export const ModalWindow: FC<ModalWindowProps> = ({ children }) => {
             <motion.div
               exit={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              onClick={() => setModalWindowIsVisible(false)}
+              onMouseDown={() => setModalWindowIsVisible(false)}
               className={styles.modalWindowContainer}
             >
               <div
                 className={styles.modalWindow}
-                onClick={(e) => e.stopPropagation()}
+                onMouseDown={(e) => e.stopPropagation()}
               >
                 {children}
               </div>

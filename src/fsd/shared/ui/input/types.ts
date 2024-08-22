@@ -18,8 +18,9 @@ export interface IDefaultInput {
   buttonImg?: ReactNode;
   placeholder?: string;
   secondButtonImg?: ReactNode;
-  secondaryClassName?: string;
   type?: HTMLInputTypeAttribute;
+  inputContainerClassName?: string;
+  inputArbitraryClassName?: string;
   optionalFunction?: OptionalFunctionT;
   register?: UseFormRegisterReturn<string>;
 }

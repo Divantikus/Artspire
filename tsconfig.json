@@ -19,6 +19,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@features/*": ["./src/fsd/features/*"],
       "public/*": ["./public/*"]
     }
   },
