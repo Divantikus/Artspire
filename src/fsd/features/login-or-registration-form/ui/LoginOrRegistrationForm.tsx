@@ -13,14 +13,15 @@ export const LoginOrRegistrationForm = ({
 }) => {
   const {
     errors,
+    setError,
     handleSubmit,
     emailInputProps,
     passwordInputProps,
     passwordVerifProps,
     usernameInputProps,
   } = useInputSettings(isSignIn);
-  const { mutate: loginMutate } = useUserLoginMutation();
-  const { mutate: RegisterMutate } = useUserRegisterMutation();
+  const { mutate: loginMutate } = useUserLoginMutation(setError);
+  const { mutate: RegisterMutate } = useUserRegisterMutation(setError);
 
   const submitForm = (formData: IFormData) => {
     const { email, password, username } = formData;

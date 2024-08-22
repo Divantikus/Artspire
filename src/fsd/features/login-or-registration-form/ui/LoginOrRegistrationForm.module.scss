@@ -17,3 +17,10 @@
     rgb(21, 126, 202) 164.161%
   );
 }
+
+.inputError {
+  border-color: red !important;
+  &:focus {
+    border-color: red;
+  }
+}
