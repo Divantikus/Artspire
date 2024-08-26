@@ -1,4 +1,4 @@
-import { LoginOrRegistrationForm } from "@/fsd/features/login-or-registration-form/ui/LoginOrRegistrationForm";
+import { LoginOrRegistrationForm } from "@/fsd/features/login-or-registration-form/index";
 import { useState } from "react";
 import facebookIcon from "@/fsd/shared/assets/facebook-apple-google/facebook.png";
 import googleIcon from "@/fsd/shared/assets/facebook-apple-google/google.png";

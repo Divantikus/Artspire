@@ -2,7 +2,7 @@ import {
   useLikeButton,
   changeColorOnRed,
   changeColorOnTransparent,
-} from "@shared/utils/index";
+} from "@features/like-button/index";
 import { LikebuttonProps } from "./types";
 import { FC, useRef } from "react";
 import styles from "./Likebutton.module.scss";

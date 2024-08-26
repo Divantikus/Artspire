@@ -1,7 +1,7 @@
 import {
   emailInputError,
   usernameInputError,
-} from "@features/login-or-registration-form/config/InputConfig";
+} from "@features/login-or-registration-form/index";
 import { authService, RegisterData } from "@/fsd/shared/api";
 import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 import { UseFormSetError } from "react-hook-form";
