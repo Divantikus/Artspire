@@ -21,18 +21,18 @@ export const useInputSettings = (isSignIn: boolean) => {
   });
 
   const emailInputProps: IDefaultInput = {
-    register: register("email", emailInputConfig),
     placeholder: "Введите email",
     inputContainerClassName: styles.formInput,
+    register: register("email", emailInputConfig),
     inputArbitraryClassName: errors.email ? styles.inputError : "",
   };
   const passwordInputProps: IDefaultInput = {
     type: "password",
     placeholder: "Введите пароль",
-    register: register("password", passwordAndUsernameInputConfig),
     inputContainerClassName: styles.formInput,
     buttonImg: <Image src={openEye} alt={"open eye"} />,
     secondButtonImg: <Image src={closeEye} alt={"close eye"} />,
+    register: register("password", passwordAndUsernameInputConfig),
     inputArbitraryClassName: errors.password ? styles.inputError : "",
   };
   const passwordVerifProps: IDefaultInput = {

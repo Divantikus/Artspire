@@ -7,8 +7,8 @@ import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 import { UseFormSetError } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useContext } from "react";
-import { IFormData } from "../types";
 import { AxiosError } from "axios";
+import { IFormData } from "../types";
 
 export const useUserRegisterMutation = (
   setError: UseFormSetError<IFormData>

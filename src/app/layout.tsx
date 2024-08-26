@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BaseLayout } from "@/fsd/app/layouts/BaseLayout";
 import { ReactNode } from "react";
+import { Header } from "@/fsd/widgets/header/Header";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <BaseLayout>
+          <Header />
           <section className="main__section">{children}</section>
         </BaseLayout>
       </body>

@@ -1,0 +1,39 @@
+.nav {
+  display: flex;
+  padding: 9px 16px;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(
+    135.18deg,
+    rgb(134, 199, 246) 7.886%,
+    rgb(21, 126, 202) 166.381%
+  );
+}
+.logo {
+  font-size: 36px;
+  padding: 16px;
+  border-radius: 50%;
+  line-height: 0.65em;
+  font-family: "Roboto";
+  border: 1px solid rgb(0, 0, 0);
+}
+.link {
+  color: black;
+}
+
+.createPost {
+  gap: 4px 0;
+  color: black;
+  display: flex;
+  padding: 4px 8px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.otherButtons {
+  gap: 0 16px;
+  display: flex;
+}
+.icon {
+  // padding: 0 4px;
+}

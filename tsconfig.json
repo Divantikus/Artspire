@@ -20,7 +20,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@features/*": ["./src/fsd/features/*"],
-      "public/*": ["./public/*"]
+      "public/*": ["./public/*"],
+      "@assets/*": ["./src/fsd/shared/assets/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
