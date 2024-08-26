@@ -43,9 +43,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
           className={styles.inputBtn}
           type="button"
         >
-          <span className={styles.buttonImg}>
-            {isFirstImg ? buttonImg : secondButtonImg}
-          </span>
+          {isFirstImg ? buttonImg : secondButtonImg}
         </button>
       )}
     </div>

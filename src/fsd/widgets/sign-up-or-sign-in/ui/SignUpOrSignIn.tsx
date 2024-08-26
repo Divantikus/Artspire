@@ -1,10 +1,7 @@
 import { LoginOrRegistrationForm } from "@/fsd/features/login-or-registration-form/index";
+import { FormLinks } from "./links/FormLinks";
 import { useState } from "react";
-import facebookIcon from "@/fsd/shared/assets/facebook-apple-google/facebook.png";
-import googleIcon from "@/fsd/shared/assets/facebook-apple-google/google.png";
-import appleIcon from "@/fsd/shared/assets/facebook-apple-google/apple.png";
 import styles from "./SignUpOrSignIn.module.scss";
-import Image from "next/image";
 
 export const SignUpOrSignIn = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -15,13 +12,12 @@ export const SignUpOrSignIn = () => {
         {isSignIn ? "Авторизация" : "Регистрация"}
       </h2>
       <LoginOrRegistrationForm isSignIn={isSignIn} />
-      <div className={styles.or}>или</div>
-      {/* Доделать ссылки */}
-      <div className={styles.links}>
-        <Image src={googleIcon} alt={"google icon"} />
-        <Image src={facebookIcon} alt={"facebook icon"} />
-        <Image src={appleIcon} alt={"apple icon"} />
+      <div className={styles.or}>
+        <span className={styles.line}></span>
+        <span>или</span>
+        <span className={styles.line}></span>
       </div>
+      <FormLinks />
       <p className={styles.switchingFormContainer}>
         {isSignIn ? "Ещё нет аккаунта? " : "Уже есть аккаунт? "}
         <button
