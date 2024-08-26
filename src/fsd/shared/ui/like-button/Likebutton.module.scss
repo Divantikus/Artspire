@@ -1,0 +1,8 @@
+.likeBtn {
+  transition: 0.3s;
+  @media (hover: hover) {
+    &:hover {
+      scale: 1.2;
+    }
+  }
+}

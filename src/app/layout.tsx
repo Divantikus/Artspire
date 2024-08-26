@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { BaseLayout } from "@/fsd/app/layouts/BaseLayout";
 import { ReactNode } from "react";
-import { Header } from "@/fsd/widgets/header/Header";
+import { Header } from "@/fsd/widgets/header/index";
 import { Inter } from "next/font/google";
 import "./globals.css";
 

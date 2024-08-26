@@ -1,5 +1,5 @@
 import { DefaultInputProps } from "./types";
-import { useDefaltInput } from "../../model/hooks/useDefaltInput";
+import { useDefaltInput } from "@shared/utils/index";
 import { FC } from "react";
 import styles from "./Input.module.scss";
 

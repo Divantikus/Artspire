@@ -3,7 +3,7 @@ import { useUserLoginMutation } from "../model/hooks/useUserLoginMutation";
 import { InputErrorMessage } from "@/fsd/shared/ui";
 import { useInputSettings } from "../model/hooks/useInputSettings";
 import { IFormData } from "../model/types";
-import { Input } from "@/fsd/shared/ui/input";
+import { Input } from "@/fsd/shared/ui/index";
 import styles from "./LoginOrRegistrationForm.module.scss";
 
 export const LoginOrRegistrationForm = ({

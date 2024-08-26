@@ -19,8 +19,10 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@features/*": ["./src/fsd/features/*"],
       "public/*": ["./public/*"],
+      "@shared/*": ["./src/fsd/shared/*"],
+      "@widgets/*": ["./src/fsd/widgets/*"],
+      "@features/*": ["./src/fsd/features/*"],
       "@assets/*": ["./src/fsd/shared/assets/*"]
     }
   },

@@ -1,4 +1,4 @@
-import { OptionalFunctionT } from "../../ui/input/types";
+import { OptionalFunctionT } from "../ui/input/types";
 import { useState } from "react";
 
 export const useDefaltInput = (type: string | undefined) => {
