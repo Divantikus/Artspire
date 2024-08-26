@@ -1,8 +1,8 @@
 import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 import { SignUpOrSignIn } from "@widgets/sign-up-or-sign-in/index";
 import { ModalWindow } from "@shared/ui/modalWindow/index";
-import { Likebutton } from "@shared/ui";
 import { useContext } from "react";
+import { ImgCard } from "@widgets/img-card/index";
 
 export function MainPage() {
   const { setModalWindowIsVisible } = useContext(ModalWindowState);
@@ -20,7 +20,7 @@ export function MainPage() {
           <SignUpOrSignIn />
         </ModalWindow>
       </p>
-      <Likebutton isFavorite={true} id={1} />
+      <ImgCard id={1} slug={"go"} img={""} />
     </div>
   );
 }

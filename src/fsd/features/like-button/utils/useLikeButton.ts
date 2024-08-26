@@ -1,7 +1,7 @@
 import { userActionsService } from "@shared/api/user-action-service/user-action-service";
 import { useState } from "react";
 
-export const useLikeButton = (isFavorite: boolean, id: number) => {
+export const useLikeButton = (isFavorite: boolean | undefined, id: number) => {
   const [isFavoriteNow, setIsFavoriteNow] = useState(isFavorite);
 
   const addOrRemoveFavorites = (svg: SVGSVGElement | null) => {

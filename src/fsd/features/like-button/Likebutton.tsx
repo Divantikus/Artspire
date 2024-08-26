@@ -7,15 +7,19 @@ import { LikebuttonProps } from "./types";
 import { FC, useRef } from "react";
 import styles from "./Likebutton.module.scss";
 
-export const Likebutton: FC<LikebuttonProps> = ({ id, isFavorite }) => {
+export const Likebutton: FC<LikebuttonProps> = ({
+  id,
+  isFavorite,
+  customClassName,
+}) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const addOrRemoveFavorites = useLikeButton(isFavorite, id);
 
   return (
     <>
       <button
-        className={styles.likeBtn}
-        onClick={() => addOrRemoveFavorites(svgRef.current)}
+        className={`${styles.likeBtn} ${customClassName}`}
+        onClick={(e) => addOrRemoveFavorites(svgRef.current)}
         onMouseEnter={() => changeColorOnRed(svgRef.current)}
         onMouseLeave={() => changeColorOnTransparent(svgRef.current)}
       >

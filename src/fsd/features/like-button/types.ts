@@ -1,4 +1,5 @@
 export interface LikebuttonProps {
   id: number;
-  isFavorite: boolean;
+  isFavorite?: boolean;
+  customClassName?: string;
 }
