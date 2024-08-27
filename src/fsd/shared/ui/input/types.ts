@@ -1,9 +1,4 @@
-import {
-  Dispatch,
-  HTMLInputTypeAttribute,
-  ReactNode,
-  SetStateAction,
-} from "react";
+import { HTMLInputTypeAttribute, ReactNode } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 type FunctionParams = { [key: string]: any };

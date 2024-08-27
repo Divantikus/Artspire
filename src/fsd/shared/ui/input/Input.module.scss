@@ -1,6 +1,7 @@
 .inputContainer {
   position: relative;
 }
+
 .input {
   width: 100%;
   color: #cbced5;
@@ -11,11 +12,16 @@
   border: 1px solid #cbced5;
   font-family: "Nunito Sans", sans-serif;
   &:focus {
-    border-color: black;
+    color: #000;
+    border-color: #000;
   }
   &::placeholder {
     color: rgb(136, 136, 136);
   }
+}
+.activeInput {
+  color: #000;
+  border: 1px solid #000;
 }
 
 .inputBtn {

@@ -1,4 +1,5 @@
 import { DefaultInputProps } from "./types";
+import { useCheckForText } from "@shared/model/index";
 import { useDefaltInput } from "@shared/utils/index";
 import { FC } from "react";
 import styles from "./Input.module.scss";
@@ -17,10 +18,12 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
     inputContainerClassName,
   } = inputProps;
 
-  const { isFirstImg, isPasswordVisible, runFunction } = useDefaltInput(type);
+  const { isFirstImg, runFunction, isPasswordVisible } = useDefaltInput(type);
+  const { isHaveText, checkForText } = useCheckForText();
 
   const inputClassname = secondImg ? styles.inputSecondImg : styles.input;
   const isHaveButnManagement = type === "password" || optionalFunction;
+  const activeInput = isHaveText ? styles.activeInput : "";
   const inputSecondClassName = isHaveButnManagement
     ? styles.fieldWithButton
     : "";
@@ -33,9 +36,10 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
       <input
         id={id}
         {...register}
+        onChange={checkForText}
         placeholder={placeholder}
         type={(isPasswordVisible && "text") || type}
-        className={`${inputClassname} ${inputSecondClassName} ${inputArbitraryClassName}`}
+        className={`${inputClassname} ${activeInput} ${inputSecondClassName} ${inputArbitraryClassName}`}
       />
       {isHaveButnManagement && (
         <button
