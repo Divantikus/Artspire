@@ -7,10 +7,12 @@ import styles from "./CreateImg.module.scss";
 
 export const CreateImg = () => {
   const methods = useForm<CreateImgData>();
+
   const sub = (e: CreateImgData) => {
-    if (!e.img.length) return;
+    if (!e.img?.length) return;
     console.log(e);
   };
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(sub)}>
@@ -18,7 +20,7 @@ export const CreateImg = () => {
           <ReturnButton />
           <UploadingImage />
         </div>
-        <button>11</button>
+        <button>111111111111</button>
       </form>
     </FormProvider>
   );
