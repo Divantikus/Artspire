@@ -1,3 +1,4 @@
+import { checkIsValidImgType } from "@/fsd/shared/utils";
 import { useFormContext } from "react-hook-form";
 import { CreateImgData } from "@/fsd/pages/create-img/index";
 import { useState } from "react";
@@ -10,36 +11,34 @@ export const UploadingImage = () => {
     setValue,
     setError,
     register,
+    resetField,
     formState: { errors },
   } = useFormContext<CreateImgData>();
   const [img, setImg] = useState("");
   const [isMousOver, setIsMousOver] = useState(false);
 
-  const change = (e: any) => {
-    const img = e.target.files[0];
-
-    if (!img) return setImg("");
-
-    switch (img.type) {
-      case "image/jpeg":
-        break;
-      case "image/webp":
-        break;
-      case "image/png":
-        break;
-      default:
-        setImg("");
-        setError("img", {
-          type: "inappropriateImageFormat",
-          message: "Неподходящий формат картинки",
-        });
-        return;
-    }
-
+  const displayPicture = (img: File) => {
     const imgUrl = URL.createObjectURL(img);
-    console.log(img.type);
-
     setImg(imgUrl);
+  };
+
+  const resetImg = () => {
+    setImg("");
+    setError("img", {
+      type: "inappropriateImageFormat",
+      message: "Неподходящий формат картинки",
+    });
+    resetField("img");
+  };
+
+  const change = (e: any) => {
+    const input = e.target as HTMLInputElement;
+    const img = input.files?.[0];
+    console.log(input.files?.[0]);
+
+    if (checkIsValidImgType(img)) return displayPicture(img);
+
+    resetImg();
   };
 
   const dragStart = (e: React.DragEvent<HTMLLabelElement>) => {
@@ -59,10 +58,18 @@ export const UploadingImage = () => {
   const dragKonec = (e: React.DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
     const label = e.target as HTMLLabelElement;
+    const file = e.dataTransfer.files[0];
     label.style.borderColor = "#cbced5";
     setIsMousOver(false);
+
+    if (!checkIsValidImgType(file)) return resetImg();
+
+    const dataTr = new DataTransfer();
+    dataTr.items.add(file);
+
+    displayPicture(file);
+    setValue("img", dataTr.files);
   };
-  console.log(isMousOver);
 
   return (
     <>
@@ -70,7 +77,7 @@ export const UploadingImage = () => {
         id={"id"}
         type={"file"}
         className={styles.input}
-        {...register("img", { onChange: change, required: true })}
+        {...register("img", { onChange: change })}
       />
       <label
         htmlFor={"id"}
@@ -81,7 +88,8 @@ export const UploadingImage = () => {
         onDragOver={(e) => e.preventDefault()}
       >
         <div>
-          {img && <img src={img} className={styles.img} />}
+          {isMousOver && <p>Отпустите</p>}
+          {img && !isMousOver && <img src={img} className={styles.img} />}
           {!img && !isMousOver && (
             <div className={styles.defaultImgContainer}>
               <Image src={folderIcon} alt={"Иконка папки"} />

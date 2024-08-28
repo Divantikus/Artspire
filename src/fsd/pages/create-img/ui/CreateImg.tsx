@@ -1,14 +1,14 @@
 "use client";
 import { FormProvider, useForm } from "react-hook-form";
 import { UploadingImage } from "@/fsd/features/uploading-image/index";
+import { CreateImgData } from "@pages/create-img/index";
 import { ReturnButton } from "@/fsd/shared/ui";
 import styles from "./CreateImg.module.scss";
-
-interface CreateImgData {}
 
 export const CreateImg = () => {
   const methods = useForm<CreateImgData>();
   const sub = (e: CreateImgData) => {
+    if (!e.img.length) return;
     console.log(e);
   };
   return (
