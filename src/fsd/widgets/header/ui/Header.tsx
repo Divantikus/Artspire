@@ -9,17 +9,21 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const Header = () => {
-  const isSettingsBtn = usePathname().startsWith("/profile");
+  const path = usePathname();
+  const isSettingsBtn = path.startsWith("/profile");
+  const isCreatePage = path.startsWith("/create");
 
   return (
     <nav className={styles.nav}>
       <Link href={"/"} className={styles.link}>
         <div className={styles.logo}>A</div>
       </Link>
-      <Link href={"/create"} className={styles.createPost}>
-        <Image src={createIcon} alt={"Иконка создания приложения"} />
-        <span className={styles.text}>Создать</span>
-      </Link>
+      {!isCreatePage && (
+        <Link href={"/create"} className={styles.createPost}>
+          <Image src={createIcon} alt={"Иконка создания приложения"} />
+          <span className={styles.text}>Создать</span>
+        </Link>
+      )}
       <div className={styles.otherButtons}>
         <button>
           <Image src={notificationIcon} alt={"Иконка колокольчика"} />

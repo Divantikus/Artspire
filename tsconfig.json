@@ -20,6 +20,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "public/*": ["./public/*"],
+      "@pages/*": ["./src/fsd/pages/*"],
       "@shared/*": ["./src/fsd/shared/*"],
       "@widgets/*": ["./src/fsd/widgets/*"],
       "@features/*": ["./src/fsd/features/*"],

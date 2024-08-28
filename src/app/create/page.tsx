@@ -1,5 +1,5 @@
-import { CreatePage } from "@/fsd/pages/CreatePage";
+import { CreateImg } from "@/fsd/pages/create-img/index";
 
-export default function page() {
-  return <CreatePage />;
+export default function pageCreate() {
+  return <CreateImg />;
 }
