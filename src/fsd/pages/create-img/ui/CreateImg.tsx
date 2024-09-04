@@ -1,5 +1,6 @@
 "use client";
 import { FormProvider, useForm } from "react-hook-form";
+import { CreateImgInputs } from "./create-img-inputs/CreateImgInputs";
 import { UploadingImage } from "@/fsd/features/uploading-image/index";
 import { CreateImgData } from "@pages/create-img/index";
 import { ReturnButton } from "@/fsd/shared/ui";
@@ -19,6 +20,7 @@ export const CreateImg = () => {
         <div className={styles.wrapper}>
           <ReturnButton />
           <UploadingImage />
+          <CreateImgInputs />
         </div>
         <button>111111111111</button>
       </form>
