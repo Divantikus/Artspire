@@ -1,0 +1,26 @@
+.button {
+  width: 100%;
+  display: flex;
+  font-size: 14px;
+  transition: 0.3s;
+  font-weight: 600;
+  line-height: 140%;
+  padding: 12px 16px;
+  margin: 16px 0 24px;
+  align-items: center;
+  border-radius: 16px;
+  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    #157eca 0%,
+    #86c7f6 38.8%,
+    #86c7f6 61.3%,
+    #157eca 100%
+  );
+
+  @media (hover: hover) {
+    &:hover {
+      scale: 1.025;
+    }
+  }
+}

@@ -1,10 +1,9 @@
 import { useUserRegisterMutation } from "../model/hooks/useUserRegisterMutation";
+import { GradientButton, InputErrorMessage } from "@/fsd/shared/ui";
 import { useUserLoginMutation } from "../model/hooks/useUserLoginMutation";
-import { InputErrorMessage } from "@/fsd/shared/ui";
 import { useInputSettings } from "../model/hooks/useInputSettings";
 import { IFormData } from "../model/types";
 import { Input } from "@/fsd/shared/ui/index";
-import styles from "./LoginOrRegistrationForm.module.scss";
 
 export const LoginOrRegistrationForm = ({
   isSignIn,
@@ -52,9 +51,9 @@ export const LoginOrRegistrationForm = ({
         </>
       )}
 
-      <button className={styles.submitButton}>
+      <GradientButton>
         {isSignIn ? "Войти" : "Зарегистрироваться"}
-      </button>
+      </GradientButton>
     </form>
   );
 };
