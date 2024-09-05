@@ -1,0 +1,9 @@
+.termsLink {
+  color: rgb(0, 18, 181);
+  @media (hover: hover) {
+    &:hover {
+      color: rgb(0, 26, 255);
+      text-decoration: underline;
+    }
+  }
+}

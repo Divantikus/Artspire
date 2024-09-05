@@ -4,6 +4,7 @@ import { useUserLoginMutation } from "../model/hooks/useUserLoginMutation";
 import { useInputSettings } from "../model/hooks/useInputSettings";
 import { IFormData } from "../model/types";
 import { Input } from "@/fsd/shared/ui/index";
+import styles from "./LoginOrRegistrationForm.module.scss";
 
 export const LoginOrRegistrationForm = ({
   isSignIn,
@@ -12,6 +13,7 @@ export const LoginOrRegistrationForm = ({
 }) => {
   const {
     errors,
+    isValid,
     setError,
     handleSubmit,
     emailInputProps,
@@ -51,7 +53,9 @@ export const LoginOrRegistrationForm = ({
         </>
       )}
 
-      <GradientButton>
+      <GradientButton
+        options={{ customStyle: styles.button, isDisabled: !isValid }}
+      >
         {isSignIn ? "Войти" : "Зарегистрироваться"}
       </GradientButton>
     </form>

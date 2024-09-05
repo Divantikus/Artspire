@@ -5,8 +5,10 @@ import { SelectOptions } from "@/fsd/shared/ui/index";
 import { StylesConfig } from "react-select";
 
 export const useSelectAccessRightsOptions = () => {
-  const { watch } = useFormContext<CreateImgData>();
-  const isDisabled = !watch("img");
+  const {
+    formState: { isValid },
+  } = useFormContext<CreateImgData>();
+  const isDisabled = !isValid;
 
   const createImgSelectOptions: SelectOptions[] = [
     { label: "Все пользователи", value: "all" },
@@ -37,7 +39,6 @@ export const useSelectAccessRightsOptions = () => {
   const createImgSelectProps: customSelectProps = {
     isDisabled,
     name: "select",
-    isRequired: true,
     styles: selectStyles,
     placeholder: "Сделайте выбор",
     options: createImgSelectOptions,

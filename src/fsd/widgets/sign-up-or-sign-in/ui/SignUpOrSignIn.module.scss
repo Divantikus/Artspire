@@ -26,19 +26,10 @@
   line-height: 19px;
   margin-bottom: 24px;
   color: rgb(0, 18, 181);
-}
-
-.termsLink {
-  color: rgb(0, 18, 181);
-}
-
-@media (hover: hover) {
-  .submitButton:hover {
-    transform: scale(1.05);
-  }
-  .switchingForm:hover,
-  .termsLink:hover {
-    color: rgb(0, 26, 255);
-    text-decoration: underline;
+  @media (hover: hover) {
+    &:hover {
+      color: rgb(0, 26, 255);
+      text-decoration: underline;
+    }
   }
 }

@@ -1,24 +1,13 @@
-import { ButtonHTMLAttributes, FC, LegacyRef, ReactNode } from "react";
-import { OptionalFunctionT } from "../input/types";
+import { GradientButtonProps } from "@shared/ui/index";
+import { FC } from "react";
 import styles from "./GradientButton.module.scss";
-
-interface GradientButtonOptions {
-  id?: string;
-  customStyle?: string;
-  onClickFn?: OptionalFunctionT;
-  buttonRef?: LegacyRef<HTMLButtonElement> | undefined;
-  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
-}
-interface GradientButtonProps {
-  children?: ReactNode;
-  gradientButtonOptions?: GradientButtonOptions;
-}
 
 export const GradientButton: FC<GradientButtonProps> = ({
   children,
-  gradientButtonOptions = {},
+  options = {},
 }) => {
-  const { id, type, buttonRef, customStyle } = gradientButtonOptions;
+  const { id, type, buttonRef, customStyle, inlineStyles, isDisabled } =
+    options;
 
   return (
     <button
@@ -26,6 +15,8 @@ export const GradientButton: FC<GradientButtonProps> = ({
       type={type}
       ref={buttonRef}
       onClick={() => {}}
+      style={inlineStyles}
+      disabled={isDisabled}
       className={`${styles.button} ${customStyle}`}
     >
       {children}

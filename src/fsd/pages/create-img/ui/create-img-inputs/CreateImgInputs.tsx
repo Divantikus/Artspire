@@ -2,13 +2,13 @@ import {
   useInputImgSettings,
   useSelectAccessRightsOptions,
 } from "@pages/create-img/index";
-import { Input, SelectFroNext } from "@/fsd/shared/ui/index";
+import { GradientButton, Input, SelectFroNext } from "@/fsd/shared/ui/index";
 import { Checkbox } from "@/fsd/shared/ui/index";
 import styles from "./CreateImgInputs.module.scss";
 
 export const CreateImgInputs = () => {
   const createImgSelectProps = useSelectAccessRightsOptions();
-  const { InputImgNameConf, InputImgDescrConf, InputImgToolsConf } =
+  const { InputImgNameConf, InputImgDescrConf, InputImgToolsConf, isValid } =
     useInputImgSettings();
 
   return (
@@ -31,6 +31,9 @@ export const CreateImgInputs = () => {
         <span className={styles.text}>Отключить комментарии</span>
         <Checkbox checkboxProps={{ id: "btn" }} />
       </label>
+      <GradientButton options={{ isDisabled: !isValid }}>
+        Опубликовать
+      </GradientButton>
     </>
   );
 };

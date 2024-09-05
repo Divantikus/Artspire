@@ -8,6 +8,10 @@ export type {
   OptionalFunctionT,
   DefaultInputProps,
 } from "./input/types";
+export {
+  type GradientButtonProps,
+  type GradientButtonOptions,
+} from "./gradient-button/types";
 export { InputErrorMessage } from "./inputErrorMessage/InputErrorMessage";
 export { GradientButton } from "./gradient-button/GradientButton";
 export { SelectFroNext } from "./custom-select/CustomSelect";

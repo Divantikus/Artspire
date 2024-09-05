@@ -6,12 +6,17 @@ import Image from "next/image";
 import xImg from "@assets/for-all/x.svg";
 
 export const useInputImgSettings = () => {
-  const { reset, register, watch } = useFormContext<CreateImgData>();
-  const isDisabled = !watch("img");
+  const {
+    reset,
+    watch,
+    register,
+    formState: { isValid },
+  } = useFormContext<CreateImgData>();
+  const isDisabled = !isValid;
 
   const InputImgNameConf: IDefaultInput = {
-    isDisabled,
     id: "imgName",
+    isDisabled: !watch("img"),
     placeholder: "Введите название работы",
     register: register("imgName", { required: true }),
     buttonImg: <Image src={xImg} alt="Иконка крестика" />,
@@ -34,5 +39,5 @@ export const useInputImgSettings = () => {
     optionalFunction: { func: reset, params: { imgTools: "" } },
   };
 
-  return { InputImgNameConf, InputImgDescrConf, InputImgToolsConf };
+  return { InputImgNameConf, InputImgDescrConf, InputImgToolsConf, isValid };
 };

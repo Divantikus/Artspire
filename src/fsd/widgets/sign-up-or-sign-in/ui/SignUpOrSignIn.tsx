@@ -1,4 +1,5 @@
 import { LoginOrRegistrationForm } from "@/fsd/features/login-or-registration-form/index";
+import { Agreement } from "@widgets/sign-up-or-sign-in/index";
 import { FormLinks } from "./links/FormLinks";
 import { useState } from "react";
 import styles from "./SignUpOrSignIn.module.scss";
@@ -27,16 +28,7 @@ export const SignUpOrSignIn = () => {
           {isSignIn ? "Зарегистрироваться" : "Войти"}
         </button>
       </p>
-      <p className={styles.termsOfUse}>
-        Регистрируясь, Вы соглашаетесь с{" "}
-        <a href="#" className={styles.termsLink}>
-          Условиями использования{" "}
-        </a>
-        и{" "}
-        <a href="#" className={styles.termsLink}>
-          Политикой обработки персональных данных
-        </a>
-      </p>
+      {!isSignIn && <Agreement />}
     </>
   );
 };

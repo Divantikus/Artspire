@@ -17,7 +17,7 @@ export const useInputSettings = (isSignIn: boolean) => {
     register,
     setError,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<IFormData>({
     mode: "onBlur",
   });
@@ -62,6 +62,7 @@ export const useInputSettings = (isSignIn: boolean) => {
 
   return {
     errors,
+    isValid,
     setError,
     handleSubmit,
     emailInputProps,

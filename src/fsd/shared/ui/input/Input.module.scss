@@ -18,6 +18,10 @@
   &::placeholder {
     color: rgb(136, 136, 136);
   }
+  &:disabled {
+    color: #888888;
+    background: #cbced5;
+  }
 }
 .activeInput {
   color: #000;
