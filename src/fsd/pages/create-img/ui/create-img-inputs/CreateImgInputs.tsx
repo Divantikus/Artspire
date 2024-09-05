@@ -8,7 +8,7 @@ import styles from "./CreateImgInputs.module.scss";
 
 export const CreateImgInputs = () => {
   const createImgSelectProps = useSelectAccessRightsOptions();
-  const { InputImgNameConf, InputImgDescrConf, InputImgToolsConf, isValid } =
+  const { InputImgNameConf, InputImgDescrConf, InputImgToolsConf, isDisabled } =
     useInputImgSettings();
 
   return (
@@ -27,11 +27,13 @@ export const CreateImgInputs = () => {
       <Input inputProps={InputImgToolsConf} />
       <label className={styles.label}>Доступность</label>
       <SelectFroNext customSelectProps={createImgSelectProps} />
-      <label htmlFor="btn" className={styles.checkLable}>
-        <span className={styles.text}>Отключить комментарии</span>
-        <Checkbox checkboxProps={{ id: "btn" }} />
-      </label>
-      <GradientButton options={{ isDisabled: !isValid }}>
+      {!isDisabled && (
+        <label htmlFor="btn" className={styles.checkLable}>
+          <span className={styles.text}>Отключить комментарии</span>
+          <Checkbox checkboxProps={{ id: "btn" }} />
+        </label>
+      )}
+      <GradientButton options={{ isDisabled, customStyle: styles.submitBtn }}>
         Опубликовать
       </GradientButton>
     </>

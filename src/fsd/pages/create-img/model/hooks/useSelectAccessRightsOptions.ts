@@ -5,10 +5,8 @@ import { SelectOptions } from "@/fsd/shared/ui/index";
 import { StylesConfig } from "react-select";
 
 export const useSelectAccessRightsOptions = () => {
-  const {
-    formState: { isValid },
-  } = useFormContext<CreateImgData>();
-  const isDisabled = !isValid;
+  const { watch } = useFormContext<CreateImgData>();
+  const isDisabled = !watch("img");
 
   const createImgSelectOptions: SelectOptions[] = [
     { label: "Все пользователи", value: "all" },
@@ -24,6 +22,7 @@ export const useSelectAccessRightsOptions = () => {
       "&:hover": { cursor: "pointer" },
       boxShadow: props.isFocused ? "none" : styles.boxShadow,
       borderColor: props.isFocused ? "#CBCED5" : styles.borderColor,
+      backgroundColor: props.isDisabled ? "#e9e9e9" : styles.backgroundColor,
     }),
     indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
     menu: (styles) => ({ ...styles, borderRadius: 16, overflow: "hidden" }),

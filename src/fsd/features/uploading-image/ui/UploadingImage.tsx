@@ -26,8 +26,8 @@ export const UploadingImage = () => {
         {...register("img", { onChange: change })}
       />
       <label
-        htmlFor={"id"}
         onDrop={drop}
+        htmlFor={"id"}
         onDragLeave={darnEnd}
         onDragEnter={dragStart}
         className={styles.lable}
