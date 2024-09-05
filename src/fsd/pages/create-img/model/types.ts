@@ -6,4 +6,5 @@ export interface CreateImgData {
   imgDesc: string;
   imgTools: string;
   select: SelectOptions;
+  commentsIsOff: boolean;
 }

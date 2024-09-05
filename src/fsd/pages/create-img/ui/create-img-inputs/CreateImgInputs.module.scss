@@ -3,3 +3,13 @@
   margin: 16px 0 4px;
   display: inline-block;
 }
+.checkLable {
+  height: 32px;
+  display: flex;
+  margin: 16px 0 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+.text {
+  font-size: 14px;
+}

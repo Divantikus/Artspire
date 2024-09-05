@@ -3,6 +3,7 @@ import {
   useSelectAccessRightsOptions,
 } from "@pages/create-img/index";
 import { Input, SelectFroNext } from "@/fsd/shared/ui/index";
+import { Checkbox } from "@/fsd/shared/ui/index";
 import styles from "./CreateImgInputs.module.scss";
 
 export const CreateImgInputs = () => {
@@ -26,6 +27,10 @@ export const CreateImgInputs = () => {
       <Input inputProps={InputImgToolsConf} />
       <label className={styles.label}>Доступность</label>
       <SelectFroNext customSelectProps={createImgSelectProps} />
+      <label htmlFor="btn" className={styles.checkLable}>
+        <span className={styles.text}>Отключить комментарии</span>
+        <Checkbox checkboxProps={{ id: "btn" }} />
+      </label>
     </>
   );
 };
