@@ -7,6 +7,7 @@ export interface SelectOptions {
 
 export interface customSelectProps {
   name: string;
+  isDisabled?: boolean;
   isRequired?: boolean;
   placeholder?: string;
   styles?: StylesConfig;

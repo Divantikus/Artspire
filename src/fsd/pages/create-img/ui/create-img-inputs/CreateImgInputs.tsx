@@ -1,11 +1,12 @@
 import {
   useInputImgSettings,
-  createImgSelectProps,
+  useSelectAccessRightsOptions,
 } from "@pages/create-img/index";
 import { Input, SelectFroNext } from "@/fsd/shared/ui/index";
 import styles from "./CreateImgInputs.module.scss";
 
 export const CreateImgInputs = () => {
+  const createImgSelectProps = useSelectAccessRightsOptions();
   const { InputImgNameConf, InputImgDescrConf, InputImgToolsConf } =
     useInputImgSettings();
 

@@ -9,7 +9,8 @@ export const SelectFroNext: FC<SelectFroNextProps> = ({
   const id = Date.now().toString();
   const { control } = useFormContext();
   const [isMounted, setIsMounted] = useState(false);
-  const { name, options, placeholder, isRequired, styles } = customSelectProps;
+  const { name, options, placeholder, isRequired, styles, isDisabled } =
+    customSelectProps;
 
   useEffect(() => {
     setIsMounted(true);
@@ -30,6 +31,7 @@ export const SelectFroNext: FC<SelectFroNextProps> = ({
             styles={styles}
             options={options}
             onChange={onChange}
+            isDisabled={isDisabled}
             placeholder={placeholder}
           />
         )}

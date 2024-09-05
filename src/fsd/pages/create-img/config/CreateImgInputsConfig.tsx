@@ -2,22 +2,12 @@
 import { useFormContext } from "react-hook-form";
 import { IDefaultInput } from "@/fsd/shared/ui/index";
 import { CreateImgData } from "../model/types";
-import { useEffect } from "react";
 import Image from "next/image";
 import xImg from "@assets/for-all/x.svg";
 
 export const useInputImgSettings = () => {
   const { reset, register, watch } = useFormContext<CreateImgData>();
   const isDisabled = !watch("img");
-
-  useEffect(() => {
-    const subscription = watch((value, { name, type }) =>
-      console.log(value, name, type)
-    );
-    return () => subscription.unsubscribe();
-  }, [watch]);
-
-  console.log(isDisabled);
 
   const InputImgNameConf: IDefaultInput = {
     isDisabled,
