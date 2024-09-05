@@ -9,9 +9,10 @@ export type OptionalFunctionT =
 
 export interface IDefaultInput {
   id?: string;
+  isDisabled?: boolean;
+  placeholder?: string;
   secondImg?: ReactNode;
   buttonImg?: ReactNode;
-  placeholder?: string;
   secondButtonImg?: ReactNode;
   type?: HTMLInputTypeAttribute;
   inputContainerClassName?: string;

@@ -11,6 +11,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
     register,
     secondImg,
     buttonImg,
+    isDisabled,
     placeholder,
     secondButtonImg,
     optionalFunction,
@@ -36,6 +37,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
       <input
         id={id}
         {...register}
+        disabled={isDisabled}
         onChange={checkForText}
         placeholder={placeholder}
         type={(isPasswordVisible && "text") || type}
