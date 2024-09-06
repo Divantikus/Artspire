@@ -13,6 +13,7 @@ export {
   type GradientButtonOptions,
 } from "./gradient-button/types";
 export { InputErrorMessage } from "./inputErrorMessage/InputErrorMessage";
+export { CustomMultiSelect } from "./custom-multiSelect/CustomMultiSelect";
 export { GradientButton } from "./gradient-button/GradientButton";
 export { SelectFroNext } from "./custom-select/CustomSelect";
 export { ReturnButton } from "@shared/ui/return-button/ReturnButton";

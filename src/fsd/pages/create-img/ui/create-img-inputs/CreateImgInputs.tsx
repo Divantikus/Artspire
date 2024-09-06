@@ -2,7 +2,12 @@ import {
   useInputImgSettings,
   useSelectAccessRightsOptions,
 } from "@pages/create-img/index";
-import { GradientButton, Input, SelectFroNext } from "@/fsd/shared/ui/index";
+import {
+  CustomMultiSelect,
+  GradientButton,
+  Input,
+  SelectFroNext,
+} from "@/fsd/shared/ui/index";
 import { Checkbox } from "@/fsd/shared/ui/index";
 import styles from "./CreateImgInputs.module.scss";
 
@@ -27,6 +32,7 @@ export const CreateImgInputs = () => {
       <Input inputProps={InputImgToolsConf} />
       <label className={styles.label}>Доступность</label>
       <SelectFroNext customSelectProps={createImgSelectProps} />
+      <CustomMultiSelect />
       {!isDisabled && (
         <label htmlFor="btn" className={styles.checkLable}>
           <span className={styles.text}>Отключить комментарии</span>
