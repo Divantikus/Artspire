@@ -4,7 +4,7 @@ import {
   CSSProperties,
   ButtonHTMLAttributes,
 } from "react";
-import { OptionalFunctionT } from "../input/types";
+import { OptionalFunctionT } from "@shared/model/index";
 
 export interface GradientButtonOptions {
   id?: string;

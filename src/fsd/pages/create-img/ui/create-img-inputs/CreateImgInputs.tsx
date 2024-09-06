@@ -32,7 +32,7 @@ export const CreateImgInputs = () => {
       <Input inputProps={InputImgToolsConf} />
       <label className={styles.label}>Доступность</label>
       <SelectFroNext customSelectProps={createImgSelectProps} />
-      <CustomMultiSelect />
+      <CustomMultiSelect props={{ name: "go" }} />
       {!isDisabled && (
         <label htmlFor="btn" className={styles.checkLable}>
           <span className={styles.text}>Отключить комментарии</span>

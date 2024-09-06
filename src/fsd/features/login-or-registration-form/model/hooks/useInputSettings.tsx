@@ -27,7 +27,7 @@ export const useInputSettings = (isSignIn: boolean) => {
     inputContainerClassName: styles.formInput,
     register: register("email", emailInputConfig),
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,
-    optionalFunction: { func: reset, params: { email: "" } },
+    optionalFunction: { customFunction: reset, params: { email: "" } },
     inputArbitraryClassName: errors.email ? styles.inputError : "",
   };
   const passwordInputProps: IDefaultInput = {
@@ -56,7 +56,7 @@ export const useInputSettings = (isSignIn: boolean) => {
     placeholder: "Введите имя пользователя",
     inputContainerClassName: styles.formInput,
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,
-    optionalFunction: { func: reset, params: { username: "" } },
+    optionalFunction: { customFunction: reset, params: { username: "" } },
     inputArbitraryClassName: errors.username ? styles.inputError : "",
   };
 

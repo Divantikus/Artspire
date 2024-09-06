@@ -1,4 +1,5 @@
-import { OptionalFunctionT } from "@shared/ui/index";
+import { useLaunchingAnyFunction } from "@shared/model/index";
+import { OptionalFunctionT } from "@shared/model/index";
 import { useState } from "react";
 
 export const useDefaltInput = (type: string | undefined) => {
@@ -11,12 +12,13 @@ export const useDefaltInput = (type: string | undefined) => {
       setIsFirstImg((img) => !img);
       return;
     }
+    // рефактор
+    useLaunchingAnyFunction(functionOrObj);
+    // if (!functionOrObj) return;
 
-    if (!functionOrObj) return;
+    // if (typeof functionOrObj === "function") return functionOrObj();
 
-    if (typeof functionOrObj === "function") return functionOrObj();
-
-    functionOrObj.func(functionOrObj.params);
+    // functionOrObj.func(functionOrObj.params);
   };
   return { isPasswordVisible, isFirstImg, runFunction };
 };

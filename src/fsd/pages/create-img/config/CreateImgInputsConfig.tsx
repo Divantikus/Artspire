@@ -15,7 +15,7 @@ export const useInputImgSettings = () => {
     placeholder: "Введите название работы",
     register: register("imgName", { required: true }),
     buttonImg: <Image src={xImg} alt="Иконка крестика" />,
-    optionalFunction: { func: reset, params: { imgName: "" } },
+    optionalFunction: { customFunction: reset, params: { imgName: "" } },
   };
   const InputImgDescrConf: IDefaultInput = {
     isDisabled,
@@ -23,7 +23,7 @@ export const useInputImgSettings = () => {
     register: register("imgDesc"),
     placeholder: "Коротко опишите свою работу",
     buttonImg: <Image src={xImg} alt="Иконка крестика" />,
-    optionalFunction: { func: reset, params: { imgDesc: "" } },
+    optionalFunction: { customFunction: reset, params: { imgDesc: "" } },
   };
   const InputImgToolsConf: IDefaultInput = {
     isDisabled,
@@ -31,7 +31,7 @@ export const useInputImgSettings = () => {
     register: register("imgTools"),
     placeholder: "Какие инструменты использовали?",
     buttonImg: <Image src={xImg} alt="Иконка крестика" />,
-    optionalFunction: { func: reset, params: { imgTools: "" } },
+    optionalFunction: { customFunction: reset, params: { imgTools: "" } },
   };
 
   return { InputImgNameConf, InputImgDescrConf, InputImgToolsConf, isDisabled };

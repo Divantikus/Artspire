@@ -3,15 +3,11 @@ export {
   type customSelectProps,
   type SelectFroNextProps,
 } from "./custom-select/types";
-export type {
-  IDefaultInput,
-  OptionalFunctionT,
-  DefaultInputProps,
-} from "./input/types";
 export {
   type GradientButtonProps,
   type GradientButtonOptions,
 } from "./gradient-button/types";
+export { type IDefaultInput, type DefaultInputProps } from "./input/types";
 export { InputErrorMessage } from "./inputErrorMessage/InputErrorMessage";
 export { CustomMultiSelect } from "./custom-multiSelect/CustomMultiSelect";
 export { GradientButton } from "./gradient-button/GradientButton";

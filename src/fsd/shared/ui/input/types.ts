@@ -1,11 +1,6 @@
 import { HTMLInputTypeAttribute, ReactNode } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
-
-type FunctionParams = { [key: string]: any };
-
-export type OptionalFunctionT =
-  | (() => unknown)
-  | { func: (args: FunctionParams) => any; params: FunctionParams };
+import { OptionalFunctionT } from "@shared/model/index";
 
 export interface IDefaultInput {
   id?: string;
