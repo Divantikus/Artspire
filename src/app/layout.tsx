@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import { BaseLayout } from "@/fsd/app/layouts/BaseLayout";
 import { ReactNode } from "react";
 import { Header } from "@/fsd/widgets/header/index";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Artspire",
@@ -19,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <BaseLayout>
           <Header />
           <section className="main__section">{children}</section>

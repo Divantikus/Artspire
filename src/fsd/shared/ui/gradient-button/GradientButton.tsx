@@ -1,4 +1,5 @@
 import { GradientButtonProps } from "@shared/ui/index";
+import { nunitoSans400 } from "@assets/index";
 import { FC } from "react";
 import styles from "./GradientButton.module.scss";
 
@@ -17,7 +18,7 @@ export const GradientButton: FC<GradientButtonProps> = ({
       onClick={() => {}}
       style={inlineStyles}
       disabled={isDisabled}
-      className={`${styles.button} ${customStyle}`}
+      className={`${styles.button} ${customStyle} ${nunitoSans400.className}`}
     >
       {children}
     </button>

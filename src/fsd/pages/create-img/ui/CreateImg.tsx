@@ -3,6 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { CreateImgInputs } from "./create-img-inputs/CreateImgInputs";
 import { UploadingImage } from "@/fsd/features/uploading-image/index";
 import { CreateImgData } from "@pages/create-img/index";
+import { nunitoSans400 } from "@assets/index";
 import { ReturnButton } from "@/fsd/shared/ui/index";
 import styles from "./CreateImg.module.scss";
 
@@ -16,7 +17,10 @@ export const CreateImg = () => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(sub)} className={styles.wrapper}>
+      <form
+        onSubmit={methods.handleSubmit(sub)}
+        className={`${styles.wrapper} ${nunitoSans400.className}`}
+      >
         <ReturnButton />
         <UploadingImage />
         <CreateImgInputs />

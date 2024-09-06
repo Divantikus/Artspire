@@ -28,10 +28,16 @@ export const useSelectAccessRightsOptions = () => {
     menu: (styles) => ({ ...styles, borderRadius: 16, overflow: "hidden" }),
     option: (styles, props) => ({
       ...styles,
+      fontSize: 14,
       cursor: "pointer",
       padding: "12px 8px",
       color: props.isSelected ? "#005491" : styles.color,
       backgroundColor: props.isSelected ? "#fff" : styles.backgroundColor,
+    }),
+    input: (styles) => ({ ...styles, fontSize: 14 }),
+    placeholder: (styles) => ({
+      ...styles,
+      fontSize: 14,
     }),
   };
 

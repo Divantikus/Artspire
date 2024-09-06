@@ -10,7 +10,6 @@
   border-radius: 16px;
   padding: 12px 8px 12px 8px;
   border: 1px solid #cbced5;
-  font-family: "Nunito Sans", sans-serif;
   &:focus {
     color: #000;
     border-color: #000;
@@ -38,7 +37,7 @@
   align-items: center;
   justify-content: center;
 }
-//32px
+
 .fieldWithButton {
   padding: 12px 32px 12px 8px;
 }

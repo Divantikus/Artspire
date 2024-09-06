@@ -1,7 +1,7 @@
 import { checkIsValidImgType } from "@/fsd/shared/utils";
-import { useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { CreateImgData } from "@/fsd/pages/create-img";
+import React from "react";
 
 export const useFileUploadLogic = () => {
   const {
@@ -13,9 +13,9 @@ export const useFileUploadLogic = () => {
     formState: { errors },
   } = useFormContext<CreateImgData>();
 
-  const [img, setImg] = useState("");
-  const [isMousOver, setIsMousOver] = useState(false);
-  const svgRef = useRef<SVGPathElement>(null);
+  const [img, setImg] = React.useState("");
+  const [isMousOver, setIsMousOver] = React.useState(false);
+  const svgRef = React.useRef<SVGPathElement>(null);
 
   const displayPicture = (img: File) => {
     const imgUrl = URL.createObjectURL(img);
