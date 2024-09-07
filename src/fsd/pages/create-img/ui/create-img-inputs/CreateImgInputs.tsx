@@ -5,13 +5,17 @@ import {
   CustomMultiSelect,
 } from "@/fsd/shared/ui/index";
 import {
+  useSelectTags,
   useInputImgSettings,
   useSelectAccessRightsOptions,
 } from "@pages/create-img/index";
 import { Checkbox } from "@/fsd/shared/ui/index";
+import magnifierIcon from "@assets/imgs/magnifier/magnifier.svg";
 import styles from "./CreateImgInputs.module.scss";
+import Image from "next/image";
 
 export const CreateImgInputs = () => {
+  const selectTagsProps = useSelectTags();
   const createImgSelectProps = useSelectAccessRightsOptions();
   const { InputImgNameConf, InputImgDescrConf, InputImgToolsConf, isDisabled } =
     useInputImgSettings();
@@ -32,7 +36,11 @@ export const CreateImgInputs = () => {
       <Input inputProps={InputImgToolsConf} />
       <label className={styles.label}>Доступность</label>
       <SelectFroNext customSelectProps={createImgSelectProps} />
-      <CustomMultiSelect props={{ name: "go" }} />
+      <label className={styles.label}>Выберите категории</label>
+      <div className={styles.selectListWrap}>
+        <Image src={magnifierIcon} alt="Лупа" className={styles.img} />
+        <CustomMultiSelect props={selectTagsProps} />
+      </div>
       {!isDisabled && (
         <label htmlFor="btn" className={styles.checkLable}>
           <span className={styles.text}>Отключить комментарии</span>

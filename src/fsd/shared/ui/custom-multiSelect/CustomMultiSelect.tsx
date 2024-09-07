@@ -1,23 +1,23 @@
 import { Controller, useFormContext } from "react-hook-form";
 import { useState, useEffect, FC } from "react";
+import { CustomMultiSelectProps } from "./types";
 import { useDebounce } from "@shared/model/index";
-import { artsService } from "@shared/api/index";
 import AsyncSelect from "react-select/async";
 
-interface CustomMultiSelectOptions {
-  name: string;
-}
-
-interface CustomMultiSelectProps {
-  props: CustomMultiSelectOptions;
-}
-
 export const CustomMultiSelect: FC<CustomMultiSelectProps> = ({ props }) => {
-  const { name } = props;
+  const debounce = useDebounce();
   const id = Date.now().toString();
   const { control } = useFormContext();
   const [isMounted, setIsMounted] = useState(false);
-  const debounce = useDebounce();
+  const {
+    name,
+    styles,
+    options,
+    isDisabled,
+    isRequired,
+    getDataFunc,
+    placeholder,
+  } = props;
 
   useEffect(() => {
     setIsMounted(true);
@@ -28,15 +28,20 @@ export const CustomMultiSelect: FC<CustomMultiSelectProps> = ({ props }) => {
       <Controller
         name={name}
         control={control}
+        rules={{ required: isRequired }}
         render={({ field }) => {
           return (
             <AsyncSelect
               id={id}
               {...field}
               isMulti={true}
+              styles={styles}
+              isDisabled={isDisabled}
+              defaultOptions={options}
+              placeholder={placeholder}
               loadOptions={(e) =>
                 debounce(
-                  { customFunction: artsService.getTags, params: { value: e } },
+                  { customFunction: getDataFunc, params: { value: e.trim() } },
                   800
                 )
               }
