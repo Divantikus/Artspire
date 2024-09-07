@@ -12,13 +12,7 @@ export const useDefaltInput = (type: string | undefined) => {
       setIsFirstImg((img) => !img);
       return;
     }
-    // рефактор
     useLaunchingAnyFunction(functionOrObj);
-    // if (!functionOrObj) return;
-
-    // if (typeof functionOrObj === "function") return functionOrObj();
-
-    // functionOrObj.func(functionOrObj.params);
   };
   return { isPasswordVisible, isFirstImg, runFunction };
 };

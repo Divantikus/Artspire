@@ -1,13 +1,13 @@
 import {
+  Input,
+  SelectFroNext,
+  GradientButton,
+  CustomMultiSelect,
+} from "@/fsd/shared/ui/index";
+import {
   useInputImgSettings,
   useSelectAccessRightsOptions,
 } from "@pages/create-img/index";
-import {
-  CustomMultiSelect,
-  GradientButton,
-  Input,
-  SelectFroNext,
-} from "@/fsd/shared/ui/index";
 import { Checkbox } from "@/fsd/shared/ui/index";
 import styles from "./CreateImgInputs.module.scss";
 

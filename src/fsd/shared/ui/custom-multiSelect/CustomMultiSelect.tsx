@@ -1,5 +1,7 @@
 import { Controller, useFormContext } from "react-hook-form";
 import { useState, useEffect, FC } from "react";
+import { useDebounce } from "@shared/model/index";
+import { artsService } from "@shared/api/index";
 import AsyncSelect from "react-select/async";
 
 interface CustomMultiSelectOptions {
@@ -15,6 +17,7 @@ export const CustomMultiSelect: FC<CustomMultiSelectProps> = ({ props }) => {
   const id = Date.now().toString();
   const { control } = useFormContext();
   const [isMounted, setIsMounted] = useState(false);
+  const debounce = useDebounce();
 
   useEffect(() => {
     setIsMounted(true);
@@ -31,7 +34,12 @@ export const CustomMultiSelect: FC<CustomMultiSelectProps> = ({ props }) => {
               id={id}
               {...field}
               isMulti={true}
-              loadOptions={undefined}
+              loadOptions={(e) =>
+                debounce(
+                  { customFunction: artsService.getTags, params: { value: e } },
+                  800
+                )
+              }
             />
           );
         }}
