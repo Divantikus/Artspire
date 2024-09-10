@@ -35,11 +35,11 @@ export const UploadingImage = () => {
         onMouseLeave={mouseLeave}
         onDragOver={(e) => e.preventDefault()}
       >
+        {img && !isMousOver && <img src={img} className={styles.img} />}
         <div>
           {isMousOver && (
             <p className={styles.textDrop}>Отпустите изображение</p>
           )}
-          {img && !isMousOver && <img src={img} className={styles.img} />}
           {!img && !isMousOver && (
             <div className={styles.defaultImgContainer}>
               <FolderIcon svgRef={svgRef} />

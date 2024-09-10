@@ -18,7 +18,13 @@ export const selectStyles: StylesConfig = {
     backgroundColor: props.isDisabled ? "#e9e9e9" : styles.backgroundColor,
   }),
   indicatorSeparator: (styles) => ({ ...styles, display: "none" }),
-  menu: (styles) => ({ ...styles, borderRadius: 16, overflow: "hidden" }),
+
+  menu: (styles) => ({
+    ...styles,
+    borderRadius: 16,
+    overflow: "hidden",
+    zIndex: 300,
+  }),
   option: (styles, props) => ({
     ...styles,
     fontSize: 14,
