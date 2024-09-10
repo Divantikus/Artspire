@@ -1,25 +1,31 @@
 .nav {
-  // display: flex;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  padding: 9px 16px;
+  padding: 8px 16px;
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(
-    135.18deg,
-    rgb(134, 199, 246) 7.886%,
-    rgb(21, 126, 202) 166.381%
+    90deg,
+    #157eca 0%,
+    #86c7f6 38.8%,
+    #86c7f6 61.3%,
+    #157eca 100%
   );
 }
+
 .logo {
-  display: inline-block;
-  padding: 16px;
-  font-size: 36px;
+  width: 40px;
+  height: 40px;
+  font-size: 32px;
+  line-height: 24px;
   border-radius: 50%;
-  line-height: 0.65em;
+  align-items: center;
+  display: inline-flex;
   font-family: "Roboto";
+  justify-content: center;
   border: 1px solid rgb(0, 0, 0);
 }
+
 .link {
   color: black;
 }

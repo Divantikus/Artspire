@@ -1,0 +1,41 @@
+.profile {
+  gap: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ava {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.nikNameWrap {
+  width: 194px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nik {
+  font-size: 24px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 0 1 auto;
+}
+
+.subscriptionsAndSubscribers {
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  max-width: 194px;
+  max-width: 328px;
+}
+
+.column {
+  display: flex;
+  flex: 0 1 50%;
+  text-align: center;
+  align-self: center;
+  flex-direction: column;
+}
