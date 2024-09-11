@@ -7,13 +7,13 @@ import pen from "@assets/imgs/profile/pen.svg";
 export const Profile = () => {
   return (
     <section className={styles.profile}>
-      <Image src={ava} alt="dsdfsdfsd" className={styles.ava} />
+      <Image src={ava} alt="Ваша аватарка" className={styles.ava} />
       <div className={styles.nikNameWrap}>
         <p className={`${styles.nik} ${nunitoSans700.className}`}>
           Иван Иванов
         </p>
         <button>
-          <Image src={pen} alt="pen" />
+          <Image src={pen} alt="Карандаш" />
         </button>
       </div>
       <div className={styles.subscriptionsAndSubscribers}>

@@ -33,7 +33,10 @@ export const Header = () => {
         </button>
       )}
       {!isSettingsBtn && (
-        <Link href={"/profile"} className={styles.profileOrSettingsBtn}>
+        <Link
+          href={"/profile/my-works"}
+          className={styles.profileOrSettingsBtn}
+        >
           <Image src={profileIcon} alt={"Иконка профиля"} />
         </Link>
       )}

@@ -1,0 +1,37 @@
+.btnsContainer {
+  padding: 4px;
+  display: flex;
+  margin: 0 auto;
+  max-width: 328px;
+  border-radius: 24px;
+  background: #f2f2f2;
+  justify-content: space-between;
+}
+
+.changeBtn {
+  flex: 50%;
+  color: #888888;
+  padding: 4px 8px;
+  transition: 0.3s;
+  align-items: center;
+  border-radius: 24px;
+  display: inline-flex;
+  justify-content: center;
+  @media (hover: hover) {
+    &:hover {
+      color: #f2f2f2;
+      background: #e8c5e1;
+    }
+  }
+}
+
+.activeChangeBtn {
+  color: #000;
+  background: #f9ddf2;
+  @media (hover: hover) {
+    &:hover {
+      color: #000;
+      background: #f9ddf2;
+    }
+  }
+}
