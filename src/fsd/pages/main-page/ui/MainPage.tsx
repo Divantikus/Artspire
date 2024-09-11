@@ -1,10 +1,15 @@
 import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 import { SignUpOrSignIn } from "@widgets/sign-up-or-sign-in/index";
-import { ModalWindow } from "@shared/ui/modalWindow/index";
 import { useContext } from "react";
+import dynamic from "next/dynamic";
 
 export function MainPage() {
-  const { setModalWindowIsVisible } = useContext(ModalWindowState);
+  const { modalWindowIsVisible, setModalWindowIsVisible } =
+    useContext(ModalWindowState);
+
+  const ModalWindow = dynamic(
+    () => import("@shared/ui/modalWindow/ModalWindow")
+  );
 
   return (
     <div className="main-page">
@@ -15,9 +20,11 @@ export function MainPage() {
         toggle modal Window
       </button>
       <p>
-        <ModalWindow>
-          <SignUpOrSignIn />
-        </ModalWindow>
+        {modalWindowIsVisible && (
+          <ModalWindow>
+            <SignUpOrSignIn />
+          </ModalWindow>
+        )}
       </p>
     </div>
   );
