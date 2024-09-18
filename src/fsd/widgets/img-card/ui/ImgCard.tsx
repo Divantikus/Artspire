@@ -6,16 +6,13 @@ import styles from "./ImgCard.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 //! Заглушка
-export const ImgCard: FC<ImgCardProps> = ({ slug, id, img }) => {
+export const ImgCard: FC<ImgCardProps> = ({ slug, id, img, alt }) => {
   return (
     <div className={styles.imgContainer}>
       <Likebutton id={id} customClassName={styles.likeBtn} />
       <Link href={`/post/${slug}`} className={styles.linkAndImg}>
-        <Image
-          alt={"img"}
-          src={img || loadingImg}
-          className={styles.linkAndImg}
-        />
+        {!img && <Image src={loadingImg} alt="loadingImg" />}
+        <img alt={alt} src={img} className={styles.linkAndImg} />
       </Link>
     </div>
   );

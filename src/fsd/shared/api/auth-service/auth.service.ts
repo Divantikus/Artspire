@@ -3,7 +3,7 @@ import { LoginData, RegisterData } from "./authTypes";
 import axios from "axios";
 
 class AuthService {
-  private baseUrl = `http://${process.env.NEXT_PUBLIC_DOMAIN_NAME}:${process.env.NEXT_PUBLIC_PORT}/users/`;
+  private baseUrl = `http://${process.env.NEXT_PUBLIC_DOMAIN_NAME}:${process.env.NEXT_PUBLIC_AUTH_PORT}/users/`;
 
   async registerUser(registerData: RegisterData) {
     const data = await axios.postForm(this.baseUrl + "register", registerData);
