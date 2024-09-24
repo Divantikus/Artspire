@@ -1,3 +1,4 @@
+"use client";
 import { useDebounce, isElementVisible } from "../model";
 import { useQueryClient } from "react-query";
 import { useRef } from "react";

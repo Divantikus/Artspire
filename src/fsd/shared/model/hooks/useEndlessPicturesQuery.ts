@@ -1,3 +1,4 @@
+"use client";
 import { PublicationData, artsService } from "@shared/api/index";
 import { useQueryClient, useQuery } from "react-query";
 import { useRef, useState } from "react";

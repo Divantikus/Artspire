@@ -1,3 +1,4 @@
+"use client";
 import { useFormContext } from "react-hook-form";
 import { CreateImgData } from "@/fsd/pages/create-img";
 import { useRef } from "react";

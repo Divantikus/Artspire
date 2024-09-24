@@ -20,6 +20,8 @@ export { GradientButton } from "./gradient-button/GradientButton";
 export { SelectFroNext } from "./custom-select/CustomSelect";
 export { ListOfImages } from "./endless-pictures/list-of-images/ListOfImages";
 export { ReturnButton } from "@shared/ui/return-button/ReturnButton";
+export { Publication } from "./publication/Publication";
 export { Likebutton } from "@features/like-button/Likebutton";
 export { Checkbox } from "./checkbox/Checkbox";
+export { Counter } from "./counter/Counter";
 export { Input } from "./input/Input";

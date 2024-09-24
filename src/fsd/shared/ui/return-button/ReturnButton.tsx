@@ -1,3 +1,4 @@
+"use client";
 import { nunitoSans600 } from "@assets/index";
 import { useRouter } from "next/navigation";
 import backIcon from "@assets/create/arrow-left.svg";

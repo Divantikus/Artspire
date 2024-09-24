@@ -1,3 +1,4 @@
+"use client";
 import { Controller, useFormContext } from "react-hook-form";
 import { useState, useEffect, FC } from "react";
 import { SelectFroNextProps } from "./types";

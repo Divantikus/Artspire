@@ -1,3 +1,4 @@
+"use client";
 import { userActionsService } from "@shared/api/user-action-service/user-action-service";
 import { useState } from "react";
 
