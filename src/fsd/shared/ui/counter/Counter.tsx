@@ -1,17 +1,16 @@
+import { nunitoSans300 } from "@assets/fonts/fonts";
 import { FC, ReactNode } from "react";
 import styles from "./Counter.module.scss";
-import Image from "next/image";
 
 interface CounterProps {
-  alt: string;
-  img: string;
+  quantity?: number;
   children: ReactNode;
 }
 
-export const Counter: FC<CounterProps> = ({ children, img, alt }) => {
+export const Counter: FC<CounterProps> = ({ children, quantity = 0 }) => {
   return (
-    <div className={styles.container}>
-      <Image src={img} alt={alt} /> {children}
+    <div className={`${styles.container} ${nunitoSans300.className}`}>
+      {children} {quantity}
     </div>
   );
 };

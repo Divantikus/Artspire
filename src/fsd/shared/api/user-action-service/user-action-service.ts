@@ -12,6 +12,14 @@ class UserActions {
   async removeFromFavorites(id: number) {
     return axios.post(this.baseURL + "remove-from-favorite", { id });
   }
+
+  async likeIt(id: number) {
+    return await axios.post(this.baseURL + "globus", { id });
+  }
+
+  async removeLike(id: number) {
+    return await axios.post(this.baseURL + "abobaus", { id });
+  }
 }
 
 export const userActionsService = new UserActions();

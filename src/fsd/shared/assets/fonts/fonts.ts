@@ -17,3 +17,9 @@ export const nunitoSans400 = Nunito_Sans({
   weight: "400",
   display: "swap",
 });
+
+export const nunitoSans300 = Nunito_Sans({
+  subsets: ["latin"],
+  weight: "300",
+  display: "swap",
+});

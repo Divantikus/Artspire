@@ -1,3 +1,4 @@
+"use client";
 import { GradientButtonProps } from "@shared/ui/index";
 import { nunitoSans400 } from "@assets/index";
 import { FC } from "react";
