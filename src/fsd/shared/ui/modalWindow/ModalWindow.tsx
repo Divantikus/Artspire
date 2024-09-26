@@ -1,4 +1,4 @@
-import { useHideModalWindow } from "@shared/model/index";
+import { useHideModalWindow } from "@shared/utils/index";
 import { PortalInBody } from "../Portal-in-body/PortalInBody";
 import { ReactNode } from "react";
 import styles from "./ModalWindow.module.scss";

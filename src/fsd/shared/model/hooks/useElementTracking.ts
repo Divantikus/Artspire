@@ -1,6 +1,7 @@
 "use client";
-import { useDebounce, isElementVisible } from "../model";
+import { isElementVisible } from "@shared/model/index";
 import { useQueryClient } from "react-query";
+import { useDebounce } from "@shared/utils/index";
 import { useRef } from "react";
 
 export const useElementTracking = () => {

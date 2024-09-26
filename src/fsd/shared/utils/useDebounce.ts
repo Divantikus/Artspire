@@ -1,4 +1,4 @@
-import { useLaunchingAnyFunction } from "@shared/model/index";
+import { useLaunchingAnyFunction } from "@shared/utils/index";
 import { OptionalFunctionT } from "@shared/model/index";
 
 export const useDebounce = () => {

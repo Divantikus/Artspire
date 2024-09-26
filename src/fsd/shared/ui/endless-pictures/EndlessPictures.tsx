@@ -1,10 +1,7 @@
 "use client";
-import {
-  EndlessPicturesProps,
-  useEndlessPicturesQuery,
-} from "@shared/model/index";
+import { EndlessPicturesProps, useElementTracking } from "@shared/model/index";
 import { ListOfImages, LoadingAnimation } from "@shared/ui/index";
-import { useElementTracking } from "@shared/utils/index";
+import { useEndlessPicturesQuery } from "@shared/utils/index";
 import { FC, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styles from "./EndlessPictures.module.scss";

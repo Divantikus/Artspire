@@ -2,7 +2,7 @@
 import { Controller, useFormContext } from "react-hook-form";
 import { useState, useEffect, FC } from "react";
 import { CustomMultiSelectProps } from "./types";
-import { useDebounce } from "@shared/model/index";
+import { useDebounce } from "@shared/utils/index";
 import AsyncSelect from "react-select/async";
 
 export const CustomMultiSelect: FC<CustomMultiSelectProps> = ({ props }) => {
@@ -40,17 +40,15 @@ export const CustomMultiSelect: FC<CustomMultiSelectProps> = ({ props }) => {
               isDisabled={isDisabled}
               defaultOptions={options}
               placeholder={placeholder}
-              loadOptions={(e) => {
-                console.log(e.trim());
-
-                return debounce(
+              loadOptions={(e) =>
+                debounce(
                   {
                     customFunction: getDataFunc,
                     params: e.trim(),
                   },
                   800
-                );
-              }}
+                )
+              }
             />
           );
         }}

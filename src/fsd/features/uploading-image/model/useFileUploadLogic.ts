@@ -1,4 +1,4 @@
-import { checkIsValidImgType } from "@/fsd/shared/utils";
+import { checkIsValidImgType } from "@/fsd/shared/model";
 import { useFormContext } from "react-hook-form";
 import { CreateImgData } from "@/fsd/pages/create-img";
 import React from "react";

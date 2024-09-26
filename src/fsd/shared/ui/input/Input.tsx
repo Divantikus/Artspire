@@ -1,6 +1,6 @@
 import { DefaultInputProps } from "./types";
-import { useCheckForText } from "@shared/model/index";
-import { useDefaltInput } from "@shared/utils/index";
+import { useCheckForText } from "@shared/utils/index";
+import { useDefaltInput } from "@shared/model/index";
 import { nunitoSans400 } from "@assets/fonts/fonts";
 import { FC } from "react";
 import styles from "./Input.module.scss";
