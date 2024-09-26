@@ -1,7 +1,6 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode, useContext } from "react";
-import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
+import { useHideModalWindow } from "@shared/model/index";
 import { PortalInBody } from "../Portal-in-body/PortalInBody";
+import { ReactNode } from "react";
 import styles from "./ModalWindow.module.scss";
 
 interface ModalWindowProps {
@@ -9,29 +8,22 @@ interface ModalWindowProps {
 }
 
 export default function ModalWindow({ children }: ModalWindowProps) {
-  const { modalWindowIsVisible, setModalWindowIsVisible } =
-    useContext(ModalWindowState);
+  const hideModalWindow = useHideModalWindow();
 
   return (
     <>
       <PortalInBody>
-        <AnimatePresence>
-          {modalWindowIsVisible && (
-            <motion.div
-              exit={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className={styles.modalWindowContainer}
-              onMouseDown={() => setModalWindowIsVisible(false)}
-            >
-              <div
-                className={styles.modalWindow}
-                onMouseDown={(e) => e.stopPropagation()}
-              >
-                {children}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div
+          className={styles.modalWindowContainer}
+          onClick={(e) => hideModalWindow(e.currentTarget)}
+        >
+          <div
+            className={styles.modalWindow}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {children}
+          </div>
+        </div>
       </PortalInBody>
     </>
   );
