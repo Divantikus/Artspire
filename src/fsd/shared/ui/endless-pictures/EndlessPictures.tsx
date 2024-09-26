@@ -11,7 +11,7 @@ import styles from "./EndlessPictures.module.scss";
 
 const Title = dynamic(() => import("./title/Title"));
 
-export const EndlessPictures: FC<EndlessPicturesProps> = ({ props }) => {
+export const EndlessPictures: FC<EndlessPicturesProps> = ({ props = {} }) => {
   const { queryKeys, title } = props;
 
   const {

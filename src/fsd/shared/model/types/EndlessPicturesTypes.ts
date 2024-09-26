@@ -1,3 +1,3 @@
 export interface EndlessPicturesProps {
-  props: { title?: string; tags?: string[]; queryKeys?: any[] };
+  props?: { title?: string; tags?: string[]; queryKeys?: any[] };
 }
