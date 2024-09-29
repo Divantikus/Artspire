@@ -7,7 +7,7 @@ class TagsService {
   async getTags(tagName: string): Promise<SelectOptions[]> {
     try {
       const data = await axios.get<SelectOptionsFromServer[]>(
-        BASEURL + "?tag_name=" + tagName
+        BASEURL + "/search" + "?tag_part=" + tagName
       );
 
       const dataForSelectList = data.data.map<SelectOptions>((item) => {
