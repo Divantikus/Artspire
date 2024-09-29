@@ -19,7 +19,10 @@ export function MainPage() {
       >
         toggle modal Window
       </button>
-      <EndlessPictures props={{ title: "Лучшее за неделю" }} />
+      <EndlessPictures
+        requestField="getArts"
+        props={{ title: "Лучшее за неделю" }}
+      />
       {modalWindowIsVisible && (
         <ModalWindow>
           <SignUpOrSignIn />

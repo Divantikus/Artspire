@@ -4,6 +4,7 @@ import { useQueryClient, useQuery } from "react-query";
 import { useRef, useState } from "react";
 
 export const useEndlessPicturesQuery = (
+  name: keyof typeof artsService,
   limit = 10,
   queryKeys: any[] = ["getPictures"]
 ) => {
@@ -13,7 +14,7 @@ export const useEndlessPicturesQuery = (
 
   const query = useQuery({
     queryKey: queryKeys,
-    queryFn: () => artsService.getArts(page.current, limit),
+    queryFn: () => artsService[name](page.current, limit),
     onSuccess: (newData) => {
       page.current += limit;
       setAllPictures((data) => data.concat(newData));

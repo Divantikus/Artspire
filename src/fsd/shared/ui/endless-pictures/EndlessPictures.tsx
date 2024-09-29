@@ -11,13 +11,16 @@ import styles from "./EndlessPictures.module.scss";
 
 const Title = dynamic(() => import("./title/Title"));
 
-export const EndlessPictures: FC<EndlessPicturesProps> = ({ props = {} }) => {
+export const EndlessPictures: FC<EndlessPicturesProps> = ({
+  props = {},
+  requestField,
+}) => {
   const { queryKeys, title } = props;
 
   const {
     allPictures,
     query: { isFetching, isError },
-  } = useEndlessPicturesQuery(20, queryKeys);
+  } = useEndlessPicturesQuery(requestField, 20, queryKeys);
 
   const { scrollWrap, trackedElement } = useElementTracking();
 

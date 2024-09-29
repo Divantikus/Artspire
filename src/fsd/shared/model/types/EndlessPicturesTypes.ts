@@ -1,3 +1,10 @@
+import { artsService } from "@shared/api/index";
+
 export interface EndlessPicturesProps {
-  props?: { title?: string; tags?: string[]; queryKeys?: any[] };
+  requestField: keyof typeof artsService;
+  props?: {
+    title?: string;
+    tags?: string[];
+    queryKeys?: any[];
+  };
 }
