@@ -2,10 +2,13 @@ export {
   type FunctionT,
   type OptionalFunctionT,
 } from "./types/launchingAnyFunctionTypes";
-export { type EndlessPicturesProps } from "./types/EndlessPicturesTypes";
+export {
+  type TArtsServiceFields,
+  type EndlessPicturesProps,
+} from "./types/EndlessPicturesTypes";
 export { useLaunchingAnyFunction } from "./hooks/useLaunchingAnyFunction";
 export { useEndlessPicturesQuery } from "./hooks/useEndlessPicturesQuery";
-export { useHideModalWindow } from "./hooks/usehideModalWindow";
+export { useHideModalWindow } from "./hooks/useHideModalWindow";
 export { isElementVisible } from "./functions/isElementVisible";
 export { useCheckForText } from "./hooks/useCheckForText";
 export { useDebounce } from "./hooks/useDebounce";

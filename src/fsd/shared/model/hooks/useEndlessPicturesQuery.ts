@@ -1,10 +1,11 @@
 "use client";
 import { PublicationData, artsService } from "@shared/api/index";
 import { useQueryClient, useQuery } from "react-query";
+import { TArtsServiceFields } from "@shared/model/index";
 import { useRef, useState } from "react";
 
 export const useEndlessPicturesQuery = (
-  name: keyof typeof artsService,
+  name: TArtsServiceFields,
   limit = 10,
   queryKeys: any[] = ["getPictures"]
 ) => {
