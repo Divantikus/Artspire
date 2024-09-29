@@ -2,6 +2,7 @@ export {
   type SelectOptions,
   type customSelectProps,
   type SelectFroNextProps,
+  type SelectOptionsFromServer,
 } from "./custom-select/types";
 export {
   type GradientButtonProps,

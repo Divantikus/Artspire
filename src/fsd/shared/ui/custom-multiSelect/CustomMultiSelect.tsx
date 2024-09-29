@@ -40,17 +40,15 @@ export const CustomMultiSelect: FC<CustomMultiSelectProps> = ({ props }) => {
               isDisabled={isDisabled}
               defaultOptions={options}
               placeholder={placeholder}
-              loadOptions={(e) => {
-                console.log(e.trim());
-
-                return debounce(
+              loadOptions={(e) =>
+                debounce(
                   {
                     customFunction: getDataFunc,
                     params: e.trim(),
                   },
                   800
-                );
-              }}
+                )
+              }
             />
           );
         }}

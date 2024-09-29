@@ -5,6 +5,11 @@ export interface SelectOptions {
   label: string;
 }
 
+export interface SelectOptionsFromServer {
+  id: number;
+  name: string;
+}
+
 export interface customSelectProps {
   name: string;
   isDisabled?: boolean;
