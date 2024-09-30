@@ -18,14 +18,20 @@ export const useUserRegisterMutation = (
   return useMutation({
     mutationKey: ["UserRegisterData"],
     mutationFn: async (data: RegisterData) => {
-      return await authService.registerUser(data);
+      const { email, password, username } = data;
+
+      return await authService.registerUser({
+        email: email.trim(),
+        username: username.trim(),
+        password: password.trim(),
+      });
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       setModalWindowIsVisible(false);
     },
     onError: (data: AxiosError) => {
-      const statusCode = data.response?.status;
-      if (statusCode === 400) {
+      const statusCode = data.response?.status || 400;
+      if (statusCode >= 400 && statusCode < 500) {
         setError("username", usernameInputError);
         setError("email", emailInputError);
       }

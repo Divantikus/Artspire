@@ -1,4 +1,4 @@
-import { LoginData, RegisterData } from "./authTypes";
+import { LoginData, RegisterData, TokenData } from "@shared/api/index";
 
 import axios from "axios";
 
@@ -12,7 +12,10 @@ class AuthService {
   }
 
   async loginUser(loginData: LoginData) {
-    const data = await axios.postForm(this.baseUrl + "login", loginData);
+    const data = await axios.postForm<TokenData>(
+      this.baseUrl + "login",
+      loginData
+    );
     console.log(data);
     return data;
   }

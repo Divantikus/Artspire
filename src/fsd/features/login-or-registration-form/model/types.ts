@@ -4,3 +4,7 @@ export interface IFormData {
   username: string;
   checkPassword?: string;
 }
+
+export interface LoginFormProps {
+  isSignIn: boolean;
+}

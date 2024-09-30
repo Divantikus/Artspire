@@ -10,9 +10,16 @@ export const useUserLoginMutation = (setError: UseFormSetError<IFormData>) => {
   return useMutation({
     mutationKey: ["UserLoginData"],
     mutationFn: async (data: LoginData) => {
-      return await authService.loginUser(data);
+      const { password, username } = data;
+
+      return await authService.loginUser({
+        username: username.trim(),
+        password: password.trim(),
+      });
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      localStorage.setItem("access_token", data.data.access_token);
+      localStorage.setItem("refresh_token", data.data.refresh_token);
       setModalWindowIsVisible(false);
     },
   });
