@@ -1,3 +1,4 @@
+import { createAuthHeader } from "@shared/utils/index";
 import { PublicationData } from "@shared/api/arts-service/artsTypes";
 import axios from "axios";
 
@@ -14,7 +15,10 @@ class ArtsApi {
 
   async getSavedPublications(offset: number, limit: number) {
     const data = await axios.get<PublicationData[]>(
-      this.baseURL + "save/" + `?offset=${offset}&` + `limit=${limit}`
+      this.baseURL + "save/" + `?offset=${offset}&` + `limit=${limit}`,
+      {
+        headers: createAuthHeader(),
+      }
     );
     console.log(data.data);
 
