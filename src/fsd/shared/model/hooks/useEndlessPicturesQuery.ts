@@ -21,6 +21,7 @@ export const useEndlessPicturesQuery = (
       setAllPictures((data) => data.concat(newData));
     },
     retry: 0,
+    cacheTime: 0,
   });
 
   return { queryClient, allPictures, query };

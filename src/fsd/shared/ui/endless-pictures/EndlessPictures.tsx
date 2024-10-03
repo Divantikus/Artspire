@@ -39,7 +39,7 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
         {!isFetching && !isError && (
           <div ref={trackedElement} style={{ height: 1 }}></div>
         )}
-        {isFetching && <LoadingAnimation />}
+        {!isError && <LoadingAnimation />}
       </article>
     </>
   );

@@ -19,7 +19,7 @@ export const useInputSettings = (isSignIn: boolean) => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<IFormData>({
-    mode: "onBlur",
+    mode: "all",
   });
 
   const emailInputProps: IDefaultInput = {
@@ -27,8 +27,8 @@ export const useInputSettings = (isSignIn: boolean) => {
     inputContainerClassName: styles.formInput,
     register: register("email", emailInputConfig),
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,
-    optionalFunction: { customFunction: reset, params: { email: "" } },
     inputArbitraryClassName: errors.email ? styles.inputError : "",
+    optionalFunction: { customFunction: reset, params: { email: "" } },
   };
   const passwordInputProps: IDefaultInput = {
     type: "password",
@@ -49,15 +49,12 @@ export const useInputSettings = (isSignIn: boolean) => {
   };
 
   const usernameInputProps: IDefaultInput = {
-    register: register(
-      "username",
-      !isSignIn ? passwordAndUsernameInputConfig : undefined
-    ),
     placeholder: "Введите имя пользователя",
     inputContainerClassName: styles.formInput,
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,
-    optionalFunction: { customFunction: reset, params: { username: "" } },
+    register: register("username", passwordAndUsernameInputConfig),
     inputArbitraryClassName: errors.username ? styles.inputError : "",
+    optionalFunction: { customFunction: reset, params: { username: "" } },
   };
 
   return {
