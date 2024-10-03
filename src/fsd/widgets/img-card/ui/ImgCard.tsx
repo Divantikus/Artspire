@@ -5,7 +5,7 @@ import loadingImg from "@assets/card-img/loading.png";
 import styles from "./ImgCard.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-//! Заглушка
+
 export const ImgCard: FC<ImgCardProps> = ({ slug, id, img, alt }) => {
   return (
     <div className={styles.imgContainer}>

@@ -1,6 +1,6 @@
+import { ReactNode, useEffect } from "react";
 import { useHideModalWindow } from "@shared/model/index";
 import { PortalInBody } from "../Portal-in-body/PortalInBody";
-import { ReactNode } from "react";
 import styles from "./ModalWindow.module.scss";
 
 interface ModalWindowProps {
@@ -9,6 +9,13 @@ interface ModalWindowProps {
 
 export default function ModalWindow({ children }: ModalWindowProps) {
   const hideModalWindow = useHideModalWindow();
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   return (
     <>

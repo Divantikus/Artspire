@@ -1,10 +1,6 @@
 "use client";
-import {
-  useLikeButton,
-  changeColorOnRed,
-  changeColorOnTransparent,
-} from "@features/like-button/index";
 import { LikebuttonProps } from "./types";
+import { useLikeButton } from "@features/like-button/index";
 import { FC, useRef } from "react";
 import { LikeIcon } from "@/fsd/shared/assets";
 import styles from "./Likebutton.module.scss";
@@ -15,17 +11,22 @@ export const Likebutton: FC<LikebuttonProps> = ({
   customClassName,
 }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
-  const addOrRemoveFavorites = useLikeButton(isFavorite, id);
+  const { addOrRemoveFavorites, isLoading, isFavoriteNow } = useLikeButton(
+    isFavorite,
+    id
+  );
 
   return (
     <>
       <button
+        onClick={() => addOrRemoveFavorites()}
         className={`${styles.likeBtn} ${customClassName}`}
-        onClick={() => addOrRemoveFavorites(svgRef.current)}
-        onMouseEnter={() => changeColorOnRed(svgRef.current)}
-        onMouseLeave={() => changeColorOnTransparent(svgRef.current)}
       >
-        <LikeIcon svgRef={svgRef} />
+        <LikeIcon
+          svgRef={svgRef}
+          isLoading={isLoading}
+          isFavorite={isFavoriteNow}
+        />
       </button>
     </>
   );

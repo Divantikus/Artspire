@@ -1,24 +1,28 @@
 "use client";
+import { useContext, useState } from "react";
 import { userActionsService } from "@shared/api/user-action-service/user-action-service";
-import { useState } from "react";
+import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 
-export const useLikeButton = (isFavorite: boolean | undefined, id: number) => {
+export const useLikeButton = (isFavorite = false, id: number) => {
   const [isFavoriteNow, setIsFavoriteNow] = useState(isFavorite);
+  const [isLoading, setIsLoading] = useState(false);
+  const { setModalWindowIsVisible } = useContext(ModalWindowState);
 
-  const addOrRemoveFavorites = (svg: SVGSVGElement | null) => {
-    if (!svg) return;
-
-    const svgStyle = svg.style;
+  const addOrRemoveFavorites = async () => {
+    setIsLoading(true);
 
     if (isFavoriteNow) {
-      userActionsService.removeFromFavorites(id);
-      svgStyle.fill = "none";
+      const isSuccessful = await userActionsService.removeFromFavorites(id);
+      setIsLoading(false);
+      if (!isSuccessful) return setModalWindowIsVisible(true);
       return setIsFavoriteNow(false);
     }
 
-    userActionsService.addToFavorites(id);
-    svgStyle.fill = "red";
+    const isSuccessful = await userActionsService.addToFavorites(id);
+    setIsLoading(false);
+
+    if (!isSuccessful) return setModalWindowIsVisible(true);
     setIsFavoriteNow(true);
   };
-  return addOrRemoveFavorites;
+  return { addOrRemoveFavorites, isLoading, isFavoriteNow };
 };

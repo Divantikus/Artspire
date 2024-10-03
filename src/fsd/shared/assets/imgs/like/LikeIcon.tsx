@@ -1,8 +1,11 @@
 import { FC, LegacyRef } from "react";
+import styles from "./LikeIcon.module.scss";
+import clsx from "clsx";
 
 interface LikesCounterProps {
   width?: number;
   height?: number;
+  isLoading?: boolean;
   isFavorite?: boolean;
   svgRef?: LegacyRef<SVGSVGElement>;
 }
@@ -11,6 +14,7 @@ export const LikeIcon: FC<LikesCounterProps> = ({
   width,
   height,
   svgRef,
+  isLoading,
   isFavorite,
 }) => {
   return (
@@ -18,8 +22,12 @@ export const LikeIcon: FC<LikesCounterProps> = ({
       ref={svgRef}
       width={width || 18}
       height={height || 16}
+      className={clsx({
+        [styles.defSvg]: !isFavorite && !isLoading,
+        [styles.likedSvg]: isFavorite && !isLoading,
+        [styles.svgLoading]: isLoading,
+      })}
       viewBox="0 0 19 16.9606"
-      fill={isFavorite ? "red" : "none"}
       xmlns={"http://www.w3.org/2000/svg"}
       xmlnsXlink={"http://www.w3.org/1999/xlink"}
     >

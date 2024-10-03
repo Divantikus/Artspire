@@ -1,0 +1,30 @@
+@keyframes loading {
+  0% {
+    fill: rgba(255, 166, 181, 0);
+  }
+  100% {
+    fill: rgba(255, 166, 181, 1);
+  }
+}
+
+.defSvg {
+  fill: transparent;
+  @media (hover: hover) {
+    &:hover {
+      fill: rgba(255, 166, 181, 1);
+    }
+  }
+}
+
+.likedSvg {
+  fill: red;
+  @media (hover: hover) {
+    &:hover {
+      fill: rgba(255, 0, 0, 0.525);
+    }
+  }
+}
+
+.svgLoading {
+  animation: loading 1s infinite alternate;
+}
