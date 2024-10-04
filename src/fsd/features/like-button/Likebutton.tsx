@@ -19,7 +19,7 @@ export const Likebutton: FC<LikebuttonProps> = ({
   return (
     <>
       <button
-        onClick={() => addOrRemoveFavorites()}
+        onClick={addOrRemoveFavorites}
         className={`${styles.likeBtn} ${customClassName}`}
       >
         <LikeIcon

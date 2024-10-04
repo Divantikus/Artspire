@@ -9,6 +9,8 @@ export const useLikeButton = (isFavorite = false, id: number) => {
   const { setModalWindowIsVisible } = useContext(ModalWindowState);
 
   const addOrRemoveFavorites = async () => {
+    if (isLoading) return;
+
     setIsLoading(true);
 
     if (isFavoriteNow) {
