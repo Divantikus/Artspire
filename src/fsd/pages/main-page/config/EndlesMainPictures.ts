@@ -1,6 +1,6 @@
 import { EndlessPicturesSettings } from "@/fsd/shared/model";
 
-export const endlessPicturesProps: EndlessPicturesSettings = {
-  title: "Похожие изображения",
+export const endlesMainPictures: EndlessPicturesSettings = {
+  title: "Лучшее за неделю",
   messageMissingImgs: "Картинки закончились :(",
 };

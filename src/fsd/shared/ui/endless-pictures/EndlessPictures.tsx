@@ -5,6 +5,7 @@ import {
 } from "@shared/model/index";
 import { ListOfImages, LoadingAnimation } from "@shared/ui/index";
 import { useElementTracking } from "@shared/utils/index";
+import { nunitoSans400 } from "@assets/fonts/fonts";
 import { FC, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styles from "./EndlessPictures.module.scss";
@@ -12,14 +13,14 @@ import styles from "./EndlessPictures.module.scss";
 const Title = dynamic(() => import("./title/Title"));
 
 export const EndlessPictures: FC<EndlessPicturesProps> = ({
-  props = {},
-  requestField,
+  props,
+  requestField = "getArts",
 }) => {
-  const { queryKeys, title } = props;
+  const { queryKeys, title, messageMissingImgs } = props;
 
   const {
     allPictures,
-    query: { isFetching, isError },
+    query: { data, isFetching, isError },
   } = useEndlessPicturesQuery(requestField, 20, queryKeys);
 
   const { scrollWrap, trackedElement } = useElementTracking();
@@ -30,6 +31,13 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
       window.removeEventListener("scroll", scrollWrap);
     };
   }, []);
+
+  if (data?.length === 0)
+    return (
+      <p className={`${styles.message} ${nunitoSans400.className}`}>
+        {messageMissingImgs}
+      </p>
+    );
 
   return (
     <>

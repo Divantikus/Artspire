@@ -1,5 +1,6 @@
+import { endlesMainPictures } from "@pages/main-page/index";
 import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
-import { EndlessPictures } from "@/fsd/shared/ui";
+import { EndlessPictures } from "@shared/ui";
 import { SignUpOrSignIn } from "@widgets/sign-up-or-sign-in/index";
 import { useContext } from "react";
 import dynamic from "next/dynamic";
@@ -19,10 +20,7 @@ export function MainPage() {
       >
         toggle modal Window
       </button>
-      <EndlessPictures
-        requestField="getArts"
-        props={{ title: "Лучшее за неделю" }}
-      />
+      <EndlessPictures props={endlesMainPictures} />
       {modalWindowIsVisible && (
         <ModalWindow>
           <SignUpOrSignIn />

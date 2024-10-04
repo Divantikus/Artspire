@@ -5,6 +5,7 @@ export {
 export {
   type TArtsServiceFields,
   type EndlessPicturesProps,
+  type EndlessPicturesSettings,
 } from "./types/EndlessPicturesTypes";
 export { useLaunchingAnyFunction } from "./hooks/useLaunchingAnyFunction";
 export { useEndlessPicturesQuery } from "./hooks/useEndlessPicturesQuery";

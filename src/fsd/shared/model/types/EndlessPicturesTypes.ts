@@ -2,11 +2,14 @@ import { artsService } from "@shared/api/index";
 
 export type TArtsServiceFields = keyof typeof artsService;
 
+export interface EndlessPicturesSettings {
+  title?: string;
+  tags?: string[];
+  queryKeys?: any[];
+  messageMissingImgs: string;
+}
+
 export interface EndlessPicturesProps {
-  requestField: TArtsServiceFields;
-  props?: {
-    title?: string;
-    tags?: string[];
-    queryKeys?: any[];
-  };
+  props: EndlessPicturesSettings;
+  requestField?: TArtsServiceFields;
 }
