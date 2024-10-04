@@ -30,6 +30,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "prettier": "3.3.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-plugin-css-modules": "^5.1.0"
   }
 }
