@@ -1,17 +1,11 @@
+import { createDate, PublicStatProps } from "@shared/model/index";
 import { nunitoSans300 } from "@/fsd/shared/assets";
-import { createDate } from "@/fsd/shared/model";
 import { Counter } from "@shared/ui/index";
 import { Likes } from "../like/Likes";
 import { FC } from "react";
 import watchIcon from "@shared/assets/eye/open-eye.svg";
 import styles from "./PublicationStatistics.module.scss";
 import Image from "next/image";
-
-interface PublicStatProps {
-  watched: number;
-  likes_count: number;
-  created_at: string | null;
-}
 
 export const PublicationStatistics: FC<PublicStatProps> = ({
   watched,

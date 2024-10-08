@@ -1,12 +1,17 @@
 export {
-  type FunctionT,
-  type OptionalFunctionT,
-} from "./types/launchingAnyFunctionTypes";
+  type TagsProps,
+  type ChildrenProps,
+  type PublicStatProps,
+} from "./types/PublicationTypes";
 export {
   type TArtsServiceFields,
   type EndlessPicturesProps,
   type EndlessPicturesSettings,
 } from "./types/EndlessPicturesTypes";
+export {
+  type FunctionT,
+  type OptionalFunctionT,
+} from "./types/launchingAnyFunctionTypes";
 export { useLaunchingAnyFunction } from "./hooks/useLaunchingAnyFunction";
 export { useEndlessPicturesQuery } from "./hooks/useEndlessPicturesQuery";
 export { useQueryPicturePage } from "./hooks/useQueryPicturePage";

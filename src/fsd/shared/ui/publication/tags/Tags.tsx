@@ -1,12 +1,8 @@
 "use client";
 import { TagButton } from "@shared/ui/index";
 import { ReactNode } from "react";
-import { Tag } from "@/fsd/shared/api";
+import { TagsProps } from "@/fsd/shared/model";
 import styles from "./Tags.module.scss";
-
-interface TagsProps {
-  tags: Tag[];
-}
 
 export default function Tags({ tags }: TagsProps) {
   const buttons: ReactNode[] = [];
