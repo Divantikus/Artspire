@@ -1,43 +1,33 @@
-import {
-  nunitoSans300,
-  nunitoSans400,
-  nunitoSans700,
-} from "@assets/fonts/fonts";
-import { GradientButton } from "@shared/ui/gradient-button/GradientButton";
-import { Likebutton } from "@/fsd/features/like-button";
-import { TagButton } from "@shared/ui/tag-button/TagButton";
-import { Counter } from "../counter/Counter";
-import { Likes } from "./like/Likes";
-import imgForAll from "@shared/assets/for-all/image.png";
-import watchIcon from "@shared/assets/eye/open-eye.svg";
+"use client";
+import { PublicationStatistics } from "./publication-statistics/PublicationStatistics";
+import { PublicationData } from "@shared/api/index";
+import { GradientButton } from "@shared/ui/index";
+import { useQueryClient } from "react-query";
+import { nunitoSans400 } from "@assets/fonts/fonts";
+import { Likebutton } from "@features/like-button/index";
+import dynamic from "next/dynamic";
 import styles from "./Publication.module.scss";
-import Image from "next/image";
 
-//! Заглушка
+const Tags = dynamic(() => import("./tags/Tags"));
+const Title = dynamic(() => import("./publication-title/PublicationTitle"));
 
-export const Publication = ({ id }: { id: number }) => {
+export const Publication = () => {
+  const queryClient = useQueryClient();
+  const { id, likes_count, url, title, created_at, tags } =
+    queryClient.getQueryData(["getImgData"]) as PublicationData;
+
   return (
     <>
       <div className={`${styles.imgContainer} ${nunitoSans400.className}`}>
-        <Image src={imgForAll} alt="img" className={styles.img} />
+        <img src={url} alt={title || "Картинка"} />
         <Likebutton id={id} customClassName={styles.likeBtn} />
       </div>
-      <div className={styles.statistics}>
-        <Likes quantity={10000} id={2} />
-        <Counter quantity={10000000}>
-          <Image src={watchIcon} alt={"Иконка глаза"} />
-        </Counter>
-        <time
-          dateTime="2001-01-01"
-          className={`${styles.date} ${nunitoSans300.className}`}
-        >
-          01.01.2001
-        </time>
-      </div>
-      <h3 className={`${styles.title} ${nunitoSans700.className}`}>
-        Если звёзды зажигают
-      </h3>
-      <i className={styles.signature}>Значит это кому-нибудь нужно</i>
+      <PublicationStatistics
+        watched={1000}
+        created_at={created_at}
+        likes_count={likes_count}
+      />
+      {title && <Title>{title}</Title>}
       <div className={styles.profileContainer}>
         <img src="" alt="img" className={styles.profileIcon} />
         <div className={styles.profileName}>Васисуалий Поликарпов</div>
@@ -45,12 +35,7 @@ export const Publication = ({ id }: { id: number }) => {
           Подписаться
         </GradientButton>
       </div>
-      <div className={styles.buttonContainer}>
-        <TagButton>Photoshop</TagButton>
-        <TagButton>Photoshop</TagButton>
-        <TagButton>Photoshop</TagButton>
-        <TagButton>Photoshop</TagButton>
-      </div>
+      {!!tags?.length && <Tags tags={tags} />}
     </>
   );
 };

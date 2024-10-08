@@ -13,8 +13,8 @@ export const ListOfImages: FC<ListOfImagesProps> = ({ allPictures }) => {
         id={item.id}
         key={item.id}
         img={item.url}
-        alt={item.title}
-        slug={item.blob_name}
+        slug={item.id}
+        alt={item.title || ""}
       />
     );
   });

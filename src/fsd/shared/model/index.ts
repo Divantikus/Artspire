@@ -9,8 +9,9 @@ export {
 } from "./types/EndlessPicturesTypes";
 export { useLaunchingAnyFunction } from "./hooks/useLaunchingAnyFunction";
 export { useEndlessPicturesQuery } from "./hooks/useEndlessPicturesQuery";
+export { useQueryPicturePage } from "./hooks/useQueryPicturePage";
 export { useHideModalWindow } from "./hooks/useHideModalWindow";
 export { isElementVisible } from "./functions/isElementVisible";
 export { useCheckForText } from "./hooks/useCheckForText";
 export { useDebounce } from "./hooks/useDebounce";
-export { type Tag } from "./types/tagsTypes";
+export { createDate } from "./functions/createDate";

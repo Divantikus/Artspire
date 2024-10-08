@@ -1,11 +1,16 @@
+export interface Tag {
+  id: number;
+  name: string;
+}
+
 export interface PublicationData {
   id: number;
+  url: string;
   user_id: number;
   blob_name: string;
-  url: string;
-  url_generated_at: string;
-  title: string;
+  tags: Tag[] | null;
   likes_count: number;
-  tags: string[] | null;
-  created_at: string;
+  title: string | null;
+  url_generated_at: string;
+  created_at: string | null;
 }

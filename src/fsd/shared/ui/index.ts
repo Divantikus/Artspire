@@ -24,6 +24,7 @@ export { ReturnButton } from "@shared/ui/return-button/ReturnButton";
 export { LikesCounter } from "./likes-counter/LikesCounter";
 export { Publication } from "./publication/Publication";
 export { Likebutton } from "@features/like-button/Likebutton";
+export { TagButton } from "./tag-button/TagButton";
 export { Comments } from "./comments/Comments";
 export { Checkbox } from "./checkbox/Checkbox";
 export { Comment } from "./comment/Comment";

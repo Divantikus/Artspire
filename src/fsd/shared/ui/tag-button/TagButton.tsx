@@ -1,5 +1,5 @@
 "use client";
-import { FC, PropsWithChildren, ReactNode } from "react";
+import { FC, PropsWithChildren } from "react";
 import styles from "./TagButton.module.scss";
 
 interface TagButtonProps {
