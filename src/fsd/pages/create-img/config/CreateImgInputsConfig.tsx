@@ -1,6 +1,6 @@
 "use client";
 import { useFormContext } from "react-hook-form";
-import { IDefaultInput } from "@/fsd/shared/ui/index";
+import { IDefaultInput } from "@shared/ui/index";
 import { CreateImgData } from "../model/types";
 import Image from "next/image";
 import xImg from "@assets/for-all/x.svg";
@@ -13,7 +13,7 @@ export const useInputImgSettings = () => {
     id: "imgName",
     isDisabled,
     placeholder: "Введите название работы",
-    register: register("imgName", { required: true }),
+    register: register("imgName"),
     buttonImg: <Image src={xImg} alt="Иконка крестика" />,
     optionalFunction: { customFunction: reset, params: { imgName: "" } },
   };
@@ -25,14 +25,6 @@ export const useInputImgSettings = () => {
     buttonImg: <Image src={xImg} alt="Иконка крестика" />,
     optionalFunction: { customFunction: reset, params: { imgDesc: "" } },
   };
-  const InputImgToolsConf: IDefaultInput = {
-    isDisabled,
-    id: "imgTools",
-    register: register("imgTools"),
-    placeholder: "Какие инструменты использовали?",
-    buttonImg: <Image src={xImg} alt="Иконка крестика" />,
-    optionalFunction: { customFunction: reset, params: { imgTools: "" } },
-  };
 
-  return { InputImgNameConf, InputImgDescrConf, InputImgToolsConf, isDisabled };
+  return { InputImgNameConf, InputImgDescrConf, isDisabled };
 };

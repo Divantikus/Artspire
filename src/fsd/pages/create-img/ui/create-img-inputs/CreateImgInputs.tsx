@@ -1,14 +1,9 @@
 import {
   Input,
-  SelectFroNext,
   GradientButton,
   CustomMultiSelect,
 } from "@/fsd/shared/ui/index";
-import {
-  useSelectTags,
-  useInputImgSettings,
-  useSelectAccessRightsOptions,
-} from "@pages/create-img/index";
+import { useSelectTags, useInputImgSettings } from "@pages/create-img/index";
 import { Checkbox } from "@/fsd/shared/ui/index";
 import magnifierIcon from "@assets/imgs/magnifier/magnifier.svg";
 import styles from "./CreateImgInputs.module.scss";
@@ -16,8 +11,7 @@ import Image from "next/image";
 
 export const CreateImgInputs = () => {
   const selectTagsProps = useSelectTags();
-  const createImgSelectProps = useSelectAccessRightsOptions();
-  const { InputImgNameConf, InputImgDescrConf, InputImgToolsConf, isDisabled } =
+  const { InputImgNameConf, InputImgDescrConf, isDisabled } =
     useInputImgSettings();
 
   return (
@@ -30,12 +24,6 @@ export const CreateImgInputs = () => {
         Описание
       </label>
       <Input inputProps={InputImgDescrConf} />
-      <label className={styles.label} htmlFor="imgTools">
-        Инструменты
-      </label>
-      <Input inputProps={InputImgToolsConf} />
-      <label className={styles.label}>Доступность</label>
-      <SelectFroNext customSelectProps={createImgSelectProps} />
       <label className={styles.label}>Выберите категории</label>
       <div className={styles.selectListWrap}>
         <Image src={magnifierIcon} alt="Лупа" className={styles.img} />
