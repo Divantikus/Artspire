@@ -2,8 +2,11 @@
 import { CreateImgData } from "@pages/create-img/index";
 import { artsService } from "@shared/api";
 import { useMutation } from "react-query";
+import { useRouter } from "next/navigation";
 
 export const useMutationPostArt = () => {
+  const router = useRouter();
+
   return useMutation({
     mutationKey: ["CreatePost"],
     mutationFn: async (data: CreateImgData) => {
@@ -17,6 +20,10 @@ export const useMutationPostArt = () => {
         imgName || "",
         tagsString.slice(1)
       );
+    },
+    onSuccess: (data) => {
+      const status = data.status;
+      if (status === 201) router.push(`/post/${data.data}`);
     },
   });
 };

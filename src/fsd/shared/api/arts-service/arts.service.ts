@@ -37,7 +37,7 @@ class ArtsApi {
       { headers: createAuthHeader() }
     );
 
-    return;
+    return data;
   }
 }
 
