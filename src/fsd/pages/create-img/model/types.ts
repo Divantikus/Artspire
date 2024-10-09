@@ -1,10 +1,9 @@
-import { SelectOptions } from "@/fsd/shared/ui/index";
+import { SelectOptions } from "@shared/ui/index";
 
 export interface CreateImgData {
   img: FileList;
-  imgName: string;
-  imgDesc: string;
-  imgTools: string;
+  imgName?: string;
+  imgDesc?: string;
   commentsIsOff: boolean;
-  selectAvailability: SelectOptions;
+  selectTags: SelectOptions[];
 }

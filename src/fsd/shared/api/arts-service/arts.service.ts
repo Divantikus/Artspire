@@ -1,5 +1,5 @@
 import { createAuthHeader } from "@shared/utils/index";
-import { PublicationData } from "@shared/api/arts-service/artsTypes";
+import { PublicationData } from "@shared/api/index";
 import axios from "axios";
 
 class ArtsApi {
@@ -24,12 +24,21 @@ class ArtsApi {
   async getSavedPublications(offset: number, limit: number) {
     const data = await axios.get<PublicationData[]>(
       this.baseURL + "save/" + `?offset=${offset}&` + `limit=${limit}`,
-      {
-        headers: createAuthHeader(),
-      }
+      { headers: createAuthHeader() }
     );
 
     return data.data;
   }
+
+  async createArt(img: File, title: string, tags: string) {
+    const data = await axios.postForm(
+      this.baseURL + "?" + `art_tags=${tags}` + `&art_title${title}`,
+      { art_file: img },
+      { headers: createAuthHeader() }
+    );
+
+    return;
+  }
 }
+
 export const artsService = new ArtsApi();

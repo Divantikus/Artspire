@@ -1,7 +1,7 @@
 import { CreateImgData, selectTagsStyles } from "@pages/create-img/index";
-import { CustomMultiSelectOptions } from "@/fsd/shared/ui/index";
+import { CustomMultiSelectOptions } from "@shared/ui/index";
 import { useFormContext } from "react-hook-form";
-import { tagsService } from "@/fsd/shared/api";
+import { tagsService } from "@shared/api";
 
 export const useSelectTags = () => {
   const { watch } = useFormContext<CreateImgData>();
@@ -10,7 +10,7 @@ export const useSelectTags = () => {
   return {
     isDisabled,
     placeholder: "",
-    name: "pickCategory",
+    name: "selectTags",
     styles: selectTagsStyles,
     getDataFunc: tagsService.getTags,
     options: [{ label: "subaruuu", value: "forester" }],

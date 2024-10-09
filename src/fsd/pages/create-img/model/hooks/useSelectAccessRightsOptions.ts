@@ -3,7 +3,7 @@ import {
   CreateImgData,
   createImgSelectOptions,
 } from "@pages/create-img/index";
-import { customSelectProps } from "@/fsd/shared/ui/index";
+import { customSelectProps } from "@shared/ui/index";
 import { useFormContext } from "react-hook-form";
 
 export const useSelectAccessRightsOptions = () => {

@@ -11,7 +11,7 @@ class TagsService {
       );
 
       const dataForSelectList = data.data.map<SelectOptions>((item) => {
-        return { label: item.name, value: String(item.id) };
+        return { label: item.name, value: item.name };
       });
 
       return dataForSelectList;

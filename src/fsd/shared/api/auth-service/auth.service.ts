@@ -7,7 +7,6 @@ class AuthService {
 
   async registerUser(registerData: RegisterData) {
     const data = await axios.postForm(this.baseUrl + "register", registerData);
-    console.log(data);
     return data;
   }
 
@@ -16,7 +15,6 @@ class AuthService {
       this.baseUrl + "login",
       loginData
     );
-    console.log(data);
     return data;
   }
 
