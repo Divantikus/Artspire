@@ -1,5 +1,5 @@
 import { LoginOrRegistrationForm } from "@/fsd/features/login-or-registration-form/index";
-import { Agreement } from "@widgets/sign-up-or-sign-in/index";
+import { Agreement } from "./agreement/Agreement";
 import { FormLinks } from "./links/FormLinks";
 import { useState } from "react";
 import styles from "./SignUpOrSignIn.module.scss";
@@ -19,7 +19,7 @@ export const SignUpOrSignIn = () => {
         <span className={styles.line}></span>
       </div>
       <FormLinks />
-      <p className={styles.switchingFormContainer}>
+      <p>
         {isSignIn ? "Ещё нет аккаунта? " : "Уже есть аккаунт? "}
         <button
           onClick={() => setIsSignIn((bool) => !bool)}
