@@ -11,8 +11,7 @@ import Image from "next/image";
 
 export const CreateImgInputs = () => {
   const selectTagsProps = useSelectTags();
-  const { InputImgNameConf, InputImgDescrConf, isDisabled } =
-    useInputImgSettings();
+  const { InputImgNameConf, isDisabled } = useInputImgSettings();
 
   return (
     <>
@@ -20,10 +19,6 @@ export const CreateImgInputs = () => {
         Название
       </label>
       <Input inputProps={InputImgNameConf} />
-      <label className={styles.label} htmlFor="imgDesc">
-        Описание
-      </label>
-      <Input inputProps={InputImgDescrConf} />
       <label className={styles.label}>Выберите категории</label>
       <div className={styles.selectListWrap}>
         <Image src={magnifierIcon} alt="Лупа" className={styles.img} />

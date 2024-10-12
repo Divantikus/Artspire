@@ -12,19 +12,11 @@ export const useInputImgSettings = () => {
   const InputImgNameConf: IDefaultInput = {
     id: "imgName",
     isDisabled,
-    placeholder: "Введите название работы",
     register: register("imgName"),
+    placeholder: "Введите название работы",
     buttonImg: <Image src={xImg} alt="Иконка крестика" />,
     optionalFunction: { customFunction: reset, params: { imgName: "" } },
   };
-  const InputImgDescrConf: IDefaultInput = {
-    isDisabled,
-    id: "imgDesc",
-    register: register("imgDesc"),
-    placeholder: "Коротко опишите свою работу",
-    buttonImg: <Image src={xImg} alt="Иконка крестика" />,
-    optionalFunction: { customFunction: reset, params: { imgDesc: "" } },
-  };
 
-  return { InputImgNameConf, InputImgDescrConf, isDisabled };
+  return { InputImgNameConf, isDisabled };
 };
