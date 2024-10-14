@@ -2,7 +2,7 @@
 import { LikebuttonProps } from "./types";
 import { useLikeButton } from "@features/like-button/index";
 import { FC, useRef } from "react";
-import { LikeIcon } from "@/fsd/shared/assets";
+import { LikeIcon } from "@shared/assets";
 import styles from "./Likebutton.module.scss";
 
 export const Likebutton: FC<LikebuttonProps> = ({

@@ -20,3 +20,8 @@ export const emailInputError: ErrorOption = {
   type: "emailAlreadyExists",
   message: "Эта почта уже привязана к другому аккаунту",
 };
+
+export const checkPasswordError: ErrorOption = {
+  type: "passwords-dont-match",
+  message: "Пароли не совпадают",
+};

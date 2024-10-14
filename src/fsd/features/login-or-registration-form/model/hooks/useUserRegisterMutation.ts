@@ -2,7 +2,7 @@ import {
   emailInputError,
   usernameInputError,
 } from "@features/login-or-registration-form/index";
-import { authService, RegisterData } from "@/fsd/shared/api";
+import { authService, RegisterData } from "@shared/api";
 import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 import { UseFormSetError } from "react-hook-form";
 import { useMutation } from "react-query";
@@ -26,14 +26,26 @@ export const useUserRegisterMutation = (
         password: password.trim(),
       });
     },
-    onSuccess: (data) => {
+
+    onSuccess: () => {
       setModalWindowIsVisible(false);
     },
+
     onError: (data: AxiosError) => {
-      const statusCode = data.response?.status || 400;
-      if (statusCode >= 400 && statusCode < 500) {
-        setError("username", usernameInputError);
-        setError("email", emailInputError);
+      const status = data.status || 500;
+      const emptyMessage = { message: "", type: "" };
+      switch (status) {
+        case 452:
+          setError("username", usernameInputError);
+          break;
+        case 453:
+          setError("email", emailInputError);
+          break;
+        default:
+          setError("username", emptyMessage);
+          setError("email", emptyMessage);
+          setError("password", emptyMessage);
+          setError("checkPassword", { message: "Неизвестная ошибка" });
       }
     },
   });

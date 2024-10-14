@@ -1,12 +1,12 @@
 import {
   IFormData,
   LoginFormProps,
+  useInputSettings,
+  checkPasswordError,
+  useUserLoginMutation,
+  useUserRegisterMutation,
 } from "@features/login-or-registration-form/index";
-import { useUserRegisterMutation } from "../model/hooks/useUserRegisterMutation";
-import { GradientButton, InputErrorMessage } from "@/fsd/shared/ui";
-import { useUserLoginMutation } from "../model/hooks/useUserLoginMutation";
-import { useInputSettings } from "../model/hooks/useInputSettings";
-import { Input } from "@/fsd/shared/ui/index";
+import { GradientButton, InputErrorMessage, Input } from "@shared/ui";
 import styles from "./LoginOrRegistrationForm.module.scss";
 
 export const LoginOrRegistrationForm = ({ isSignIn }: LoginFormProps) => {
@@ -27,7 +27,8 @@ export const LoginOrRegistrationForm = ({ isSignIn }: LoginFormProps) => {
   const submitForm = (formData: IFormData) => {
     const { email, password, username, checkPassword } = formData;
     if (isSignIn) return loginMutate({ username, password });
-    if (password !== checkPassword) return;
+    if (password !== checkPassword)
+      return setError("checkPassword", checkPasswordError);
     registerMutate({ email, password, username });
   };
 
