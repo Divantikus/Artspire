@@ -1,5 +1,5 @@
+import { PublicationData, ShortArtInfo } from "@shared/api/index";
 import { createAuthHeader } from "@shared/utils/index";
-import { PublicationData } from "@shared/api/index";
 import axios from "axios";
 
 class ArtsApi {
@@ -14,7 +14,7 @@ class ArtsApi {
   }
 
   async getArts(offset: number, limit: number) {
-    const data = await axios.get<PublicationData[]>(
+    const data = await axios.get<ShortArtInfo[]>(
       this.baseURL + `?offset=${offset}&` + `limit=${limit}`
     );
 

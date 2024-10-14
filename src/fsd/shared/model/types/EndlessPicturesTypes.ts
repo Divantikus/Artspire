@@ -1,5 +1,3 @@
-import { artsService } from "@shared/api/index";
-
 export type TArtsServiceFields = "getArts" | "getSavedPublications";
 
 export interface EndlessPicturesSettings {

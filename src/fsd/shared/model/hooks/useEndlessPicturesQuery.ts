@@ -1,5 +1,5 @@
 "use client";
-import { PublicationData, artsService } from "@shared/api/index";
+import { ShortArtInfo, artsService } from "@shared/api/index";
 import { useQueryClient, useQuery } from "react-query";
 import { TArtsServiceFields } from "@shared/model/index";
 import { useRef, useState } from "react";
@@ -11,7 +11,7 @@ export const useEndlessPicturesQuery = (
 ) => {
   const page = useRef(0);
   const queryClient = useQueryClient();
-  const [allPictures, setAllPictures] = useState<PublicationData[]>([]);
+  const [allPictures, setAllPictures] = useState<ShortArtInfo[]>([]);
 
   const query = useQuery({
     queryKey: queryKeys,

@@ -2,10 +2,14 @@ export interface Tag {
   id: number;
   name: string;
 }
-
-export interface PublicationData {
+export interface ShortArtInfo {
   id: number;
   url: string;
+  is_liked: boolean;
+}
+
+export interface PublicationData extends ShortArtInfo {
+  id: number;
   user_id: number;
   blob_name: string;
   tags: Tag[] | null;

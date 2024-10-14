@@ -1,6 +1,9 @@
 export interface ImgCardProps {
-  id: number;
-  alt: string;
-  img: string;
-  slug: number;
+  props: {
+    id: number;
+    alt: string;
+    img: string;
+    slug: number;
+    isFavorite?: boolean;
+  };
 }
