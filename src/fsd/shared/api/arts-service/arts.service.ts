@@ -31,7 +31,7 @@ class ArtsApi {
   }
 
   async createArt(img: File, title: string, tags: string) {
-    const data = await axios.postForm(
+    const data = await axios.postForm<PublicationData>(
       this.baseURL + "?" + `art_tags=${tags}` + `&art_title${title}`,
       { art_file: img },
       { headers: createAuthHeader() }
