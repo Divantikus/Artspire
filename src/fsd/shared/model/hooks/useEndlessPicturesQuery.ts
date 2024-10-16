@@ -16,18 +16,20 @@ export const useEndlessPicturesQuery = (
 
   const query = useQuery({
     queryKey: queryKeys,
-    queryFn: () => {
+    queryFn: async () => {
       try {
-        return artsService[name](page.current, limit);
-      } catch (e) {
-        const axiosErr = e as AxiosError;
+        const data = await artsService[name](page.current, limit);
+        return data;
+      } catch (errorObj) {
+        const axiosErr = errorObj as AxiosError;
         const status = axiosErr.status;
         if (!status) return [];
         switch (status) {
           case 404:
             throw new Error("Картинки закончились. Иди Работай");
+          default:
+            return [];
         }
-        return [];
       }
     },
     onSuccess: (newData) => {

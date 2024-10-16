@@ -5,7 +5,7 @@ import {
 } from "@shared/model/index";
 import { ListOfImages, LoadingAnimation } from "@shared/ui/index";
 import { useElementTracking } from "@shared/utils/index";
-import { nunitoSans400 } from "@assets/fonts/fonts";
+import { NotificationText } from "./notification-text/NotificationText";
 import { FC, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styles from "./EndlessPictures.module.scss";
@@ -33,11 +33,7 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
   }, []);
 
   if (allPictures.length === 0 && !isLoading)
-    return (
-      <p className={`${styles.message} ${nunitoSans400.className}`}>
-        {messageMissingImgs}
-      </p>
-    );
+    return <NotificationText>{messageMissingImgs}</NotificationText>;
 
   return (
     <>
@@ -49,6 +45,9 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
         )}
         {!isError && <LoadingAnimation />}
       </article>
+      {isError && (
+        <NotificationText>Картинки закончились. Иди работай</NotificationText>
+      )}
     </>
   );
 };
