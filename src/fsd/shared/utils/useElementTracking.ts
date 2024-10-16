@@ -3,7 +3,7 @@ import { useDebounce, isElementVisible } from "../model";
 import { useQueryClient } from "react-query";
 import { useRef } from "react";
 
-export const useElementTracking = () => {
+export const useElementTracking = (queryKeys: any[]) => {
   const debounce = useDebounce();
   const queryClient = useQueryClient();
   const trackedElement = useRef<HTMLDivElement>(null);
@@ -13,7 +13,7 @@ export const useElementTracking = () => {
       if (!trackedElement.current) return;
 
       if (isElementVisible(trackedElement.current).topIsVisible)
-        queryClient.refetchQueries({ queryKey: ["getPictures"] });
+        queryClient.refetchQueries({ queryKey: queryKeys });
     }, 300);
   };
 

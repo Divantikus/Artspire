@@ -8,7 +8,7 @@ import { AxiosError } from "axios";
 export const useEndlessPicturesQuery = (
   name: TArtsServiceFields,
   limit = 10,
-  queryKeys: any[] = ["getPictures"]
+  queryKeys: any[]
 ) => {
   const page = useRef(0);
   const queryClient = useQueryClient();

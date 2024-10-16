@@ -16,14 +16,14 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
   props,
   requestField = "getArts",
 }) => {
-  const { queryKeys, title, messageMissingImgs } = props;
+  const { queryKeys = ["getPictures"], title, messageMissingImgs } = props;
 
   const {
     allPictures,
-    query: { data, isFetching, isError, isLoading },
+    query: { isFetching, isError, isLoading },
   } = useEndlessPicturesQuery(requestField, 20, queryKeys);
 
-  const { scrollWrap, trackedElement } = useElementTracking();
+  const { scrollWrap, trackedElement } = useElementTracking(queryKeys);
 
   useEffect(() => {
     window.addEventListener("scroll", scrollWrap);
