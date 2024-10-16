@@ -22,9 +22,6 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
     allPictures,
     query: { data, isFetching, isError },
   } = useEndlessPicturesQuery(requestField, 20, queryKeys);
-  //!--------------------------
-  console.log(data);
-  //!--------------------------
 
   const { scrollWrap, trackedElement } = useElementTracking();
 

@@ -1,20 +1,18 @@
 "use client";
-import { LikebuttonProps } from "./types";
-import { useLikeButton } from "@features/like-button/index";
+import { AddToFavoriteButtonProps } from "./types";
+import { useAddToFavoriteButton } from "@features/like-button/index";
 import { FC, useRef } from "react";
 import { LikeIcon } from "@shared/assets";
-import styles from "./Likebutton.module.scss";
+import styles from "./AddToFavoriteButton.module.scss";
 
-export const Likebutton: FC<LikebuttonProps> = ({
+export const AddToFavoriteButton: FC<AddToFavoriteButtonProps> = ({
   id,
   isFavorite,
   customClassName,
 }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
-  const { addOrRemoveFavorites, isLoading, isFavoriteNow } = useLikeButton(
-    isFavorite,
-    id
-  );
+  const { addOrRemoveFavorites, isLoading, isFavoriteNow } =
+    useAddToFavoriteButton(isFavorite, id);
 
   return (
     <>

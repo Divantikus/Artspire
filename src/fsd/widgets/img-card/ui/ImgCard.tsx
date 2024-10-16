@@ -1,5 +1,5 @@
+import { AddToFavoriteButton } from "@features/like-button";
 import { ImgCardProps } from "@widgets/img-card/index";
-import { Likebutton } from "@features/like-button";
 import { FC } from "react";
 import loadingImg from "@assets/card-img/loading.png";
 import styles from "./ImgCard.module.scss";
@@ -8,11 +8,10 @@ import Link from "next/link";
 
 export const ImgCard: FC<ImgCardProps> = ({ props }) => {
   const { id, slug, img, alt, isFavorite } = props;
-  console.log(isFavorite);
 
   return (
     <div className={styles.imgContainer}>
-      <Likebutton
+      <AddToFavoriteButton
         id={id}
         isFavorite={isFavorite}
         customClassName={styles.likeBtn}
