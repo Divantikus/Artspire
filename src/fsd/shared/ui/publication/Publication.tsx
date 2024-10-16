@@ -1,10 +1,10 @@
 "use client";
 import { PublicationStatistics } from "./publication-statistics/PublicationStatistics";
+import { AddToFavoriteButton } from "@features/like-button/index";
 import { PublicationData } from "@shared/api/index";
 import { GradientButton } from "@shared/ui/index";
 import { useQueryClient } from "react-query";
 import { nunitoSans400 } from "@assets/fonts/fonts";
-import { Likebutton } from "@features/like-button/index";
 import dynamic from "next/dynamic";
 import styles from "./Publication.module.scss";
 
@@ -20,7 +20,7 @@ export const Publication = () => {
     <>
       <div className={`${styles.imgContainer} ${nunitoSans400.className}`}>
         <img src={url} alt={title || "Картинка"} />
-        <Likebutton id={id} customClassName={styles.likeBtn} />
+        <AddToFavoriteButton id={id} customClassName={styles.likeBtn} />
       </div>
       <PublicationStatistics
         watched={1000}

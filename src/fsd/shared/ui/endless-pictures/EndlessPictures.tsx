@@ -20,7 +20,7 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
 
   const {
     allPictures,
-    query: { data, isFetching, isError },
+    query: { data, isFetching, isError, isLoading },
   } = useEndlessPicturesQuery(requestField, 20, queryKeys);
 
   const { scrollWrap, trackedElement } = useElementTracking();
@@ -32,7 +32,7 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
     };
   }, []);
 
-  if (data?.length === 0)
+  if (allPictures.length === 0 && !isLoading)
     return (
       <p className={`${styles.message} ${nunitoSans400.className}`}>
         {messageMissingImgs}
