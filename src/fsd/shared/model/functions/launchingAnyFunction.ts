@@ -1,6 +1,6 @@
 import { FunctionT } from "@shared/model/index";
 
-export const useLaunchingAnyFunction: FunctionT = (functionOrObj) => {
+export const launchingAnyFunction: FunctionT = (functionOrObj) => {
   if (!functionOrObj) return;
 
   if (typeof functionOrObj === "function") return functionOrObj();

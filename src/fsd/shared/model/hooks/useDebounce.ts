@@ -1,4 +1,4 @@
-import { useLaunchingAnyFunction } from "@shared/model/index";
+import { launchingAnyFunction } from "@shared/model/index";
 import { OptionalFunctionT } from "@shared/model/index";
 
 export const useDebounce = () => {
@@ -13,7 +13,7 @@ export const useDebounce = () => {
     clearTimeout(timer);
     let data = await new Promise((res) => {
       timer = setTimeout(async () => {
-        const promiseData = await useLaunchingAnyFunction(functionOrObj);
+        const promiseData = await launchingAnyFunction(functionOrObj);
         res(promiseData);
       }, time);
     });

@@ -12,8 +12,8 @@ export {
   type FunctionT,
   type OptionalFunctionT,
 } from "./types/launchingAnyFunctionTypes";
-export { useLaunchingAnyFunction } from "./hooks/useLaunchingAnyFunction";
 export { useEndlessPicturesQuery } from "./hooks/useEndlessPicturesQuery";
+export { launchingAnyFunction } from "./functions/launchingAnyFunction";
 export { useQueryPicturePage } from "./hooks/useQueryPicturePage";
 export { useHideModalWindow } from "./hooks/useHideModalWindow";
 export { isElementVisible } from "./functions/isElementVisible";
