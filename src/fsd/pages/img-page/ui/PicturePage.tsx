@@ -20,9 +20,9 @@ export const PicturePage = () => {
   const { modalWindowIsVisible } = useContext(ModalWindowState);
   const id = +useParams().artId;
 
-  if (isNaN(id)) return <div>error (</div>;
+  const { isError, isLoading } = useQueryPicturePage(id);
 
-  const { isLoading } = useQueryPicturePage(id);
+  if (isError) return <div>error (</div>;
 
   if (isLoading) return <p>loading...</p>;
 

@@ -6,6 +6,7 @@ export const useQueryPicturePage = (id: number) => {
   return useQuery({
     queryKey: ["getImgData"],
     queryFn: async () => {
+      if (isNaN(id)) throw new Error("Incorrect slug");
       const data = await artsService.getOneArt(id);
       return data[0];
     },
