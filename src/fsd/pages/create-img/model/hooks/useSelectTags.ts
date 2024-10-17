@@ -12,7 +12,7 @@ export const useSelectTags = () => {
     placeholder: "",
     name: "selectTags",
     styles: selectTagsStyles,
-    getDataFunc: tagsService.getTags,
+    getDataFunc: tagsService.getTags.bind(tagsService),
     options: [{ label: "subaruuu", value: "forester" }],
   } satisfies CustomMultiSelectOptions;
 };
