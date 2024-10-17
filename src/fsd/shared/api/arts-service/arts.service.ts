@@ -39,6 +39,14 @@ class ArtsApi {
 
     return data;
   }
+
+  async deleteArt(id: number) {
+    const data = await axios.delete(this.baseURL, {
+      data: { art_id: id },
+      headers: createAuthHeader(),
+    });
+    console.log(data);
+  }
 }
 
 export const artsService = new ArtsApi();

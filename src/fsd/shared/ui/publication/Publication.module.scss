@@ -46,3 +46,13 @@
   margin-left: auto;
   display: inline-block;
 }
+
+.deleteBtn {
+  color: red;
+  width: 100%;
+  display: block;
+  padding: 5px 0;
+  margin-bottom: 16px;
+  border-radius: 20px;
+  border: 1px solid red;
+}
