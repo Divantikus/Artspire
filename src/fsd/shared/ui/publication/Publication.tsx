@@ -1,7 +1,7 @@
 "use client";
 import { PublicationStatistics } from "./publication-statistics/PublicationStatistics";
-import { AddToFavoriteButton } from "@features/like-button/index";
 import { artsService, PublicationData } from "@shared/api/index";
+import { AddToFavoriteButton } from "@features/like-button/index";
 import { GradientButton } from "@shared/ui/index";
 import { useQueryClient } from "react-query";
 import { nunitoSans400 } from "@assets/fonts/fonts";
