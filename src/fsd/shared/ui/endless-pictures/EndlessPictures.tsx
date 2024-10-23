@@ -4,6 +4,7 @@ import {
   useEndlessPicturesQuery,
 } from "@shared/model/index";
 import { ListOfImages, LoadingAnimation } from "@shared/ui/index";
+import { EndlessPicturesNewBike } from "./EndlessPicturesNewBike";
 import { useElementTracking } from "@shared/utils/index";
 import { NotificationText } from "./notification-text/NotificationText";
 import { FC, useEffect } from "react";
@@ -21,7 +22,7 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
   const {
     allPictures,
     query: { isFetching, isError, isLoading },
-  } = useEndlessPicturesQuery(requestField, 20, queryKeys);
+  } = useEndlessPicturesQuery(requestField, 40, queryKeys);
 
   const { scrollWrap, trackedElement } = useElementTracking(queryKeys);
 
@@ -32,10 +33,10 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
     };
   }, []);
 
-  if (allPictures.length === 0 && !isLoading)
+  if (!allPictures.length && !isLoading)
     return <NotificationText>{messageMissingImgs}</NotificationText>;
 
-  return (
+  /*return (
     <>
       {title && <Title title={title} />}
       <article className={styles.article}>
@@ -49,5 +50,14 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
         <NotificationText>Картинки закончились. Иди работай</NotificationText>
       )}
     </>
+  );
+  */
+  return (
+    <EndlessPicturesNewBike
+      height={500}
+      elementCount={12}
+      data={allPictures}
+      elementHeight={228}
+    />
   );
 };
