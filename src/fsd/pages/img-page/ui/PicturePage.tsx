@@ -1,13 +1,9 @@
 "use client";
-import {
-  Comments,
-  Publication,
-  ReturnButton,
-  EndlessPictures,
-} from "@shared/ui/index";
+import { Comments, Publication, ReturnButton } from "@shared/ui/index";
 import { endlessPicturesProps } from "@pages/img-page/index";
 import { useQueryPicturePage } from "@shared/model";
 import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
+import { EndlessPictures } from "@widgets/endless-pictures";
 import { SignUpOrSignIn } from "@widgets/sign-up-or-sign-in";
 import { useContext } from "react";
 import { useParams } from "next/navigation";

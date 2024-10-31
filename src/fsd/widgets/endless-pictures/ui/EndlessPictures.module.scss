@@ -4,3 +4,11 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.wrapper {
+  overflow-y: scroll;
+}
+
+.tracker {
+  flex: 1 1 100%;
+}

@@ -4,15 +4,9 @@ export {
   type PublicStatProps,
 } from "./types/PublicationTypes";
 export {
-  type TArtsServiceFields,
-  type EndlessPicturesProps,
-  type EndlessPicturesSettings,
-} from "./types/EndlessPicturesTypes";
-export {
   type FunctionT,
   type OptionalFunctionT,
 } from "./types/launchingAnyFunctionTypes";
-export { useEndlessPicturesQuery } from "./hooks/useEndlessPicturesQuery";
 export { launchingAnyFunction } from "./functions/launchingAnyFunction";
 export { useQueryPicturePage } from "./hooks/useQueryPicturePage";
 export { useHideModalWindow } from "./hooks/useHideModalWindow";

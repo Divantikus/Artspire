@@ -1,5 +1,5 @@
 import { endlessPictProps } from "@pages/profile-page/index";
-import { EndlessPictures } from "@/fsd/shared/ui";
+import { EndlessPictures } from "@widgets/endless-pictures";
 
 export const SavedPictures = () => {
   return (

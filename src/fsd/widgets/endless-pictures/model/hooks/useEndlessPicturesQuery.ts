@@ -1,7 +1,7 @@
 "use client";
 import { ShortArtInfo, artsService } from "@shared/api/index";
 import { useQueryClient, useQuery } from "react-query";
-import { TArtsServiceFields } from "@shared/model/index";
+import { TArtsServiceFields } from "@widgets/endless-pictures";
 import { useRef, useState } from "react";
 import { AxiosError } from "axios";
 
