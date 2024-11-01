@@ -20,7 +20,6 @@ class AuthService {
 
   async logoutUser() {
     const data = await axios.post(this.baseUrl + "logout", {});
-    console.log(data);
     return data;
   }
 }

@@ -1,3 +1,4 @@
+"use client";
 import { endlesMainPictures } from "@pages/main-page/index";
 import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 import { EndlessPictures } from "@widgets/endless-pictures";

@@ -2,9 +2,7 @@ import { TagButton } from "@/fsd/shared/ui/tag-button/index";
 import styles from "./TagButtonsList.module.scss";
 
 export const TagButtonsList = () => {
-  const some = () => {
-    console.log("1");
-  };
+  const some = () => {};
 
   const data = [
     { id: 1, imgUrl: "go", text: "gogo" },

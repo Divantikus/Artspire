@@ -1,3 +1,4 @@
+"use client";
 import { EndlessPicturesSettings } from "@widgets/endless-pictures";
 
 export const endlesMainPictures: EndlessPicturesSettings = {

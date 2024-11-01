@@ -45,7 +45,6 @@ class ArtsApi {
       data: { art_id: id },
       headers: createAuthHeader(),
     });
-    console.log(data);
   }
 }
 

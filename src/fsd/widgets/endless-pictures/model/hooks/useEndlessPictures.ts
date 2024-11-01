@@ -1,8 +1,8 @@
 "use client";
+import { useEffect, useState } from "react";
 import { useElementTracking } from "@shared/utils";
 import { ShortArtInfo } from "@shared/api";
 import { useDebounce } from "@shared/model";
-import { useState } from "react";
 
 export const useEndlessPictures = (
   queryKeys: any[],
@@ -11,43 +11,39 @@ export const useEndlessPictures = (
   cardInRowCount: number,
   rowCount: number
 ) => {
+  const debounce = useDebounce();
   const [start, setStart] = useState(0);
+  const visibleImagesCount = cardInRowCount * rowCount;
+  const limitImages = start + visibleImagesCount + cardInRowCount * 4;
   const { trackedElement, scrollWrap } = useElementTracking(queryKeys);
-  const deb = useDebounce();
-  console.log(start);
 
-  const getTopHeight = () => {
-    return Math.floor(start / cardInRowCount) * elementHeight;
-  };
+  const getTopHeight = () => Math.floor(start / cardInRowCount) * elementHeight;
 
   const getBottomHeight = () => {
-    return Math.floor(
-      (data.length / cardInRowCount) * elementHeight -
-        getTopHeight() -
-        rowCount * elementHeight +
-        80
-    );
+    const bottomHeight =
+      Math.floor((data.length - limitImages) / cardInRowCount) * elementHeight;
+
+    return bottomHeight >= 0 ? bottomHeight : 1;
   };
+
+  useEffect(() => {
+    if (data.length - start <= visibleImagesCount) scrollWrap();
+  }, [start]);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const currentScrollHeight = e.currentTarget.scrollTop;
-    const num = Math.floor(currentScrollHeight / elementHeight);
-    console.log("data.length - start", data.length - start);
-    console.log("cardInRowCount * rowCount", cardInRowCount * rowCount);
-
-    if (data.length - start <= cardInRowCount * rowCount) scrollWrap();
-
-    deb(() => {
+    debounce(() => {
+      const num = Math.floor(currentScrollHeight / elementHeight);
       setStart(num * cardInRowCount);
     }, 300);
   };
 
   return {
     start,
+    limitImages,
     handleScroll,
     getTopHeight,
     trackedElement,
-    cardInRowCount,
     getBottomHeight,
   };
 };

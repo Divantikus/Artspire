@@ -6,7 +6,6 @@ import {
   useEndlessPicturesQuery,
 } from "@widgets/endless-pictures";
 import { NotificationText } from "./notification-text/NotificationText";
-import { LoadingAnimation } from "@shared/ui/index";
 import { FC } from "react";
 import styles from "./EndlessPictures.module.scss";
 
@@ -24,36 +23,37 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
   const { top, right, bottom, left } = padding;
 
   const rowCount = Math.ceil(height / elementHeight);
-  const cardInRowCount = Math.floor(
-    (window.innerWidth - left - right) / elementWidth
-  );
-  // console.log(rowCount);
-  // console.log(cardInRowCount);
+  const cardInRowCount =
+    typeof window !== "undefined"
+      ? Math.floor((window.innerWidth - left - right) / elementWidth)
+      : 0;
 
   const {
     allPictures,
-    query: { isLoading, isRefetching },
+    query: { isLoading },
   } = useEndlessPicturesQuery(
     requestField,
     rowCount * cardInRowCount + cardInRowCount * 2,
     queryKeys
   );
 
-  const { start, getTopHeight, handleScroll, trackedElement, getBottomHeight } =
-    useEndlessPictures(
-      queryKeys,
-      allPictures,
-      elementHeight,
-      cardInRowCount,
-      rowCount
-    );
-
-  const limitImages = start + cardInRowCount * rowCount + cardInRowCount * 4;
+  const {
+    start,
+    limitImages,
+    handleScroll,
+    getTopHeight,
+    trackedElement,
+    getBottomHeight,
+  } = useEndlessPictures(
+    queryKeys,
+    allPictures,
+    elementHeight,
+    cardInRowCount,
+    rowCount
+  );
 
   if (!allPictures.length && !isLoading)
     return <NotificationText>{messageMissingImgs}</NotificationText>;
-
-  // console.log("rer");
 
   return (
     <div
@@ -71,9 +71,7 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
           ref={trackedElement}
           className={styles.tracker}
           style={{ height: getBottomHeight() }}
-        >
-          {(isLoading || isRefetching) && <LoadingAnimation />}
-        </div>
+        ></div>
       </div>
     </div>
   );

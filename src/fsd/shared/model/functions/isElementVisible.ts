@@ -1,3 +1,4 @@
+"use client";
 export const isElementVisible = (element: HTMLDivElement) => {
   const { top, bottom, left, right } = element.getBoundingClientRect();
 
