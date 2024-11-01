@@ -1,5 +1,6 @@
 import { FieldError } from "react-hook-form";
 import styles from "./InputErrorMessage.module.scss";
+
 export const InputErrorMessage = ({ errorObj }: { errorObj: FieldError }) => {
   const { message, type } = errorObj;
 
@@ -21,9 +22,7 @@ export const InputErrorMessage = ({ errorObj }: { errorObj: FieldError }) => {
     );
 
   if (type === "pattern")
-    return (
-      <p className={styles.errorMes}>Некорректный адрес электронной почты</p>
-    );
+    return <p className={styles.errorMes}>Введены некорректные данные</p>;
 
   return <p className={styles.errorMes}>{message}</p>;
 };

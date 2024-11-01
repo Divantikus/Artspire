@@ -52,7 +52,6 @@ export const LoginOrRegistrationForm = ({ isSignIn }: LoginFormProps) => {
           )}
         </>
       )}
-
       <GradientButton
         options={{ customStyle: styles.button, isDisabled: !isValid }}
       >

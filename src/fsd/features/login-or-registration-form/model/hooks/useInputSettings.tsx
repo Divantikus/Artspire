@@ -1,9 +1,12 @@
+"use client";
 import {
   emailInputConfig,
-  passwordAndUsernameInputConfig,
-} from "@features/login-or-registration-form/config/InputConfig";
+  passwordInputConfig,
+  usernameInputConfig,
+} from "@features/login-or-registration-form/index";
 import { IDefaultInput } from "@shared/ui/index";
 import { IFormData } from "../types";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import closeEye from "@assets/eye/close-eye.svg";
 import openEye from "@assets/eye/open-eye.svg";
@@ -16,26 +19,33 @@ export const useInputSettings = (isSignIn: boolean) => {
     reset,
     register,
     setError,
+    clearErrors,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, validatingFields },
   } = useForm<IFormData>({
-    mode: "all",
+    mode: "onBlur",
   });
+
+  useEffect(() => {
+    console.log("clear", validatingFields);
+
+    clearErrors();
+  }, [isSignIn]);
 
   const emailInputProps: IDefaultInput = {
     placeholder: "Введите email",
     inputContainerClassName: styles.formInput,
-    register: register("email", emailInputConfig),
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,
     inputArbitraryClassName: errors.email ? styles.inputError : "",
     optionalFunction: { customFunction: reset, params: { email: "" } },
+    register: register("email", !isSignIn ? emailInputConfig : undefined),
   };
   const passwordInputProps: IDefaultInput = {
     type: "password",
     placeholder: "Введите пароль",
     inputContainerClassName: styles.formInput,
+    register: register("password", passwordInputConfig),
     buttonImg: <Image src={openEye} alt={"Открытый глаз"} />,
-    register: register("password", passwordAndUsernameInputConfig),
     secondButtonImg: <Image src={closeEye} alt={"Закрытый глаз"} />,
     inputArbitraryClassName: errors.password ? styles.inputError : "",
   };
@@ -43,7 +53,7 @@ export const useInputSettings = (isSignIn: boolean) => {
     ...passwordInputProps,
     register: register(
       "checkPassword",
-      !isSignIn ? passwordAndUsernameInputConfig : undefined
+      !isSignIn ? passwordInputConfig : undefined
     ),
     inputArbitraryClassName: errors.checkPassword ? styles.inputError : "",
   };
@@ -51,8 +61,8 @@ export const useInputSettings = (isSignIn: boolean) => {
   const usernameInputProps: IDefaultInput = {
     placeholder: "Введите имя пользователя",
     inputContainerClassName: styles.formInput,
+    register: register("username", usernameInputConfig),
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,
-    register: register("username", passwordAndUsernameInputConfig),
     inputArbitraryClassName: errors.username ? styles.inputError : "",
     optionalFunction: { customFunction: reset, params: { username: "" } },
   };

@@ -1,7 +1,10 @@
 export {
   emailInputError,
+  emailInputConfig,
   usernameInputError,
   checkPasswordError,
+  passwordInputConfig,
+  usernameInputConfig,
 } from "./config/InputConfig";
 export { type LoginFormProps, type IFormData } from "./model/types";
 export { useUserRegisterMutation } from "./model/hooks/useUserRegisterMutation";
