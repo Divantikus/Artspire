@@ -19,7 +19,13 @@ class AuthService {
   }
 
   async refreshToken() {
-    return await axios.post<TokenData>(this.baseUrl + "refresh");
+    console.log(this.baseUrl + "refresh");
+
+    return await axios.post<TokenData>(
+      this.baseUrl + "refresh",
+      {},
+      { withCredentials: true }
+    );
   }
 
   async logoutUser() {
