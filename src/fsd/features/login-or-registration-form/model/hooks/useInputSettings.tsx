@@ -19,6 +19,7 @@ export const useInputSettings = (isSignIn: boolean) => {
     reset,
     register,
     setError,
+    unregister,
     clearErrors,
     handleSubmit,
     formState: { errors, isValid, validatingFields },
@@ -27,8 +28,7 @@ export const useInputSettings = (isSignIn: boolean) => {
   });
 
   useEffect(() => {
-    console.log("clear", validatingFields);
-
+    unregister(["checkPassword", "email"]);
     clearErrors();
   }, [isSignIn]);
 
