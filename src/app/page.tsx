@@ -1,5 +1,5 @@
 "use client";
-import { MainPage } from "@/fsd/pages/main-page/index";
+import { MainPage } from "@pages/main-page";
 
 export default function Main() {
   return <MainPage />;

@@ -4,6 +4,7 @@ export {
   type RegisterData,
 } from "./auth-service/authTypes";
 export { type PublicationData, type Tag } from "./arts-service/artsTypes";
+export { axiosWithInterceptors } from "./http/http";
 export { userActionsService } from "./user-action-service/user-action-service";
 export { authService } from "./auth-service/auth.service";
 export { artsService } from "./arts-service/arts.service";

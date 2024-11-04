@@ -1,4 +1,4 @@
-import { LoginData, RegisterData, TokenData } from "@shared/api/index";
+import { LoginData, RegisterData, TokenData } from "@shared/api";
 
 import axios from "axios";
 
@@ -6,21 +6,17 @@ class AuthService {
   private baseUrl = `http://${process.env.NEXT_PUBLIC_DOMAIN_NAME}:${process.env.NEXT_PUBLIC_AUTH_PORT}/users/`;
 
   async registerUser(registerData: RegisterData) {
-    const data = await axios.postForm(this.baseUrl + "register", registerData);
-    return data;
+    return await axios.postForm(this.baseUrl + "register", registerData);
   }
 
   async loginUser(loginData: LoginData) {
-    const data = await axios.postForm<TokenData>(
-      this.baseUrl + "login",
-      loginData
+    return await axios.postForm<TokenData>(
+        this.baseUrl + "login",
+        loginData
     );
-    return data;
   }
 
   async refreshToken() {
-    console.log(this.baseUrl + "refresh");
-
     return await axios.post<TokenData>(
       this.baseUrl + "refresh",
       {},
@@ -29,9 +25,7 @@ class AuthService {
   }
 
   async logoutUser() {
-    const data = await axios.post(this.baseUrl + "logout", {});
-    console.log(data);
-    return data;
+    return await axios.post(this.baseUrl + "logout", {});
   }
 }
 export const authService = new AuthService();

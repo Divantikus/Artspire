@@ -1,36 +1,13 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { createAuthHeader } from "@shared/utils/index";
-import { authService } from "../auth-service/auth.service";
-
-const myAx = axios.create();
-
-myAx.interceptors.response.use(
-  function (resp) {
-    return resp;
-  },
-  async function (e: AxiosError) {
-    const req = e.request;
-    const status = e.response?.status || 500;
-
-    console.log("интер");
-    if (status != 401) throw new Error("");
-
-    const data = await authService.refreshToken();
-
-    if (data.status != 201) throw new Error("");
-    console.log("сработало?");
-
-    localStorage.setItem("access_token", data.data.access_token);
-    myAx.request(req);
-  }
-);
+import { axiosWithInterceptors } from "@shared/api/index";
 
 class UserActions {
   private baseURL = `http://${process.env.NEXT_PUBLIC_DOMAIN_NAME}:${process.env.NEXT_PUBLIC_ARTS_AND_TAGS_PORT}/`;
 
   async addToFavorites(id: number) {
     try {
-      await myAx.post(
+      await axiosWithInterceptors.post(
         this.baseURL + "arts/save/",
         { art_id: id },
         { headers: createAuthHeader() }
