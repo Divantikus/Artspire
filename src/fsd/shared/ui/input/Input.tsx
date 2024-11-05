@@ -1,11 +1,18 @@
 "use client";
+import {
+  input,
+  inputBtn,
+  activeInput,
+  inputContainer,
+  fieldWithButton,
+} from "./Input.module.scss";
 import { DefaultInputProps } from "./types";
 import { useCheckForText } from "@shared/model";
-import { useDefaltInput } from "@shared/utils";
 import { useFormContext } from "react-hook-form";
+import { useDefaltInput } from "@shared/utils";
 import { nunitoSans400 } from "@assets/fonts/fonts";
 import { FC, useEffect } from "react";
-import styles from "./Input.module.scss";
+import { clsx } from "clsx/lite";
 
 export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
   const {
@@ -27,12 +34,8 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
   const { register, unregister } = useFormContext();
 
   const { isHaveText, checkForText } = useCheckForText();
-  const { isFirstImg, runFunction, isPasswordVisible } = useDefaltInput(type);
   const isHaveButnManagement = type === "password" || optionalFunction;
-  const activeInput = isHaveText ? styles.activeInput : "";
-  const inputSecondClassName = isHaveButnManagement
-    ? styles.fieldWithButton
-    : "";
+  const { isFirstImg, runFunction, isPasswordVisible } = useDefaltInput(type);
 
   useEffect(() => {
     return () => {
@@ -41,7 +44,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
   }, []);
 
   return (
-    <div className={`${styles.inputContainer} ${inputContainerClassName}`}>
+    <div className={clsx(inputContainer, inputContainerClassName)}>
       {secondImg && <div>{secondImg}</div>}
       <input
         id={id}
@@ -50,12 +53,18 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
         onChange={checkForText}
         placeholder={placeholder}
         type={(isPasswordVisible && "text") || type}
-        className={`${styles.input} ${activeInput} ${inputSecondClassName} ${inputArbitraryClassName} ${nunitoSans400.className}`}
+        className={clsx(
+          input,
+          nunitoSans400.className,
+          inputArbitraryClassName,
+          isHaveText && activeInput,
+          isHaveButnManagement && fieldWithButton
+        )}
       />
       {isHaveButnManagement && (
         <button
           onClick={() => runFunction(optionalFunction)}
-          className={styles.inputBtn}
+          className={inputBtn}
           type="button"
         >
           {isFirstImg ? buttonImg : secondButtonImg}
