@@ -1,10 +1,8 @@
 import { HTMLInputTypeAttribute, ReactNode } from "react";
-import { FieldValues, RegisterOptions } from "react-hook-form";
 import { OptionalFunctionT } from "@shared/model/index";
+import { RegisterOptions } from "react-hook-form";
 
-type TRegOption<T extends FieldValues> = RegisterOptions<T> | undefined;
-
-export interface IDefaultInput<T extends FieldValues> {
+export interface IDefaultInput {
   id?: string;
   isDisabled?: boolean;
   placeholder?: string;
@@ -15,9 +13,12 @@ export interface IDefaultInput<T extends FieldValues> {
   inputContainerClassName?: string;
   inputArbitraryClassName?: string;
   optionalFunction?: OptionalFunctionT;
-  registerOptions: { name: T; options: TRegOption<T> };
+  registerOptions: {
+    name: string;
+    options?: RegisterOptions<any>;
+  };
 }
 
-export interface DefaultInputProps<T extends FieldValues> {
-  inputProps: IDefaultInput<T>;
+export interface DefaultInputProps {
+  inputProps: IDefaultInput;
 }

@@ -8,15 +8,15 @@ export const emailInputConfig: RegisterOptions<IFormData> = {
 };
 
 export const usernameInputConfig: RegisterOptions<IFormData> = {
-  minLength: 8,
-  maxLength: 79,
+  minLength: 1,
+  maxLength: 50,
   required: true,
   pattern: /^[a-zA-Z_]+$/,
 };
 
 export const passwordInputConfig: RegisterOptions<IFormData> = {
-  minLength: 8,
-  maxLength: 79,
+  minLength: 6,
+  maxLength: 50,
   required: true,
 };
 

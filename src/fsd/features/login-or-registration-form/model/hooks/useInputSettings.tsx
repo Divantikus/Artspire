@@ -6,7 +6,6 @@ import {
 } from "@features/login-or-registration-form";
 import { IDefaultInput } from "@shared/ui";
 import { IFormData } from "../types";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import closeEye from "@assets/eye/close-eye.svg";
 import openEye from "@assets/eye/open-eye.svg";
@@ -20,15 +19,13 @@ export const useInputSettings = (isSignIn: boolean) => {
   });
   const {
     reset,
+    setError,
+    getValues,
     clearErrors,
     formState: { errors },
   } = methods;
 
-  useEffect(() => {
-    clearErrors();
-  }, [isSignIn]);
-
-  const emailInputProps: IDefaultInput<IFormData> = {
+  const emailInputProps: IDefaultInput = {
     placeholder: "Введите email",
     inputContainerClassName: styles.formInput,
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,
@@ -39,25 +36,42 @@ export const useInputSettings = (isSignIn: boolean) => {
       options: !isSignIn ? emailInputConfig : undefined,
     },
   };
-  const passwordInputProps: IDefaultInput<IFormData> = {
+  const passwordInputProps: IDefaultInput = {
     type: "password",
     placeholder: "Введите пароль",
     inputContainerClassName: styles.formInput,
     buttonImg: <Image src={openEye} alt={"Открытый глаз"} />,
     secondButtonImg: <Image src={closeEye} alt={"Закрытый глаз"} />,
     inputArbitraryClassName: errors.password ? styles.inputError : "",
-    registerOptions: { name: "password", options: passwordInputConfig },
+    registerOptions: {
+      name: "password",
+      options: {
+        ...passwordInputConfig,
+        validate: (inputText) => {
+          const sV = getValues("checkPassword");
+          inputText === sV || !sV
+            ? clearErrors("checkPassword")
+            : setError("checkPassword", { type: "validate" });
+          return true;
+        },
+      },
+    },
   };
-  const passwordVerifProps: IDefaultInput<IFormData> = {
+  const passwordVerifProps: IDefaultInput = {
     ...passwordInputProps,
     inputArbitraryClassName: errors.checkPassword ? styles.inputError : "",
     registerOptions: {
-      name: "",
-      options: !isSignIn ? passwordInputConfig : undefined,
+      name: "checkPassword",
+      options: !isSignIn
+        ? {
+            ...passwordInputConfig,
+            validate: (inputText) => getValues("password") === inputText,
+          }
+        : undefined,
     },
   };
 
-  const usernameInputProps: IDefaultInput<IFormData> = {
+  const usernameInputProps: IDefaultInput = {
     placeholder: "Введите имя пользователя",
     inputContainerClassName: styles.formInput,
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,

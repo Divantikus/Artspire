@@ -2,8 +2,8 @@
 import { DefaultInputProps } from "./types";
 import { useCheckForText } from "@shared/model";
 import { useDefaltInput } from "@shared/utils";
-import { nunitoSans400 } from "@assets/fonts/fonts";
 import { useFormContext } from "react-hook-form";
+import { nunitoSans400 } from "@assets/fonts/fonts";
 import { FC, useEffect } from "react";
 import styles from "./Input.module.scss";
 
@@ -21,12 +21,13 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
     inputArbitraryClassName,
     inputContainerClassName,
   } = inputProps;
+
   const { name, options } = registerOptions;
+
   const { register, unregister } = useFormContext();
 
   const { isHaveText, checkForText } = useCheckForText();
   const { isFirstImg, runFunction, isPasswordVisible } = useDefaltInput(type);
-  const inputClassname = secondImg ? styles.inputSecondImg : styles.input;
   const isHaveButnManagement = type === "password" || optionalFunction;
   const activeInput = isHaveText ? styles.activeInput : "";
   const inputSecondClassName = isHaveButnManagement
@@ -41,9 +42,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
 
   return (
     <div className={`${styles.inputContainer} ${inputContainerClassName}`}>
-      {secondImg && (
-        <div className={styles.secondImgContainer}>{secondImg}</div>
-      )}
+      {secondImg && <div>{secondImg}</div>}
       <input
         id={id}
         disabled={isDisabled}
@@ -51,7 +50,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
         onChange={checkForText}
         placeholder={placeholder}
         type={(isPasswordVisible && "text") || type}
-        className={`${inputClassname} ${activeInput} ${inputSecondClassName} ${inputArbitraryClassName} ${nunitoSans400.className}`}
+        className={`${styles.input} ${activeInput} ${inputSecondClassName} ${inputArbitraryClassName} ${nunitoSans400.className}`}
       />
       {isHaveButnManagement && (
         <button
