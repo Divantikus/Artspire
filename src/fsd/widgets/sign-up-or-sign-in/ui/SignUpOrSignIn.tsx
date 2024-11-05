@@ -1,4 +1,4 @@
-import { LoginOrRegistrationForm } from "@/fsd/features/login-or-registration-form/index";
+import { LoginOrRegistrationForm } from "@features/login-or-registration-form";
 import { Agreement } from "./agreement/Agreement";
 import { FormLinks } from "./links/FormLinks";
 import { useState } from "react";
