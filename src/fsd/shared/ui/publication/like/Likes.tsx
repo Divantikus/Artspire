@@ -1,5 +1,5 @@
 "use client";
-import { useLikesQuery } from "@/fsd/shared/utils/index";
+import { useLikesQuery } from "@/fsd/shared/model";
 import { LikeIcon } from "@/fsd/shared/assets";
 import { Counter } from "@shared/ui/counter/Counter";
 import { FC } from "react";

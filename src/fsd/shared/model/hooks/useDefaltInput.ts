@@ -1,5 +1,5 @@
 "use client";
-import { useLaunchingAnyFunction } from "@shared/model/index";
+import { useLaunchingAnyFunction } from "@shared/utils";
 import { OptionalFunctionT } from "@shared/model/index";
 import { useState } from "react";
 
