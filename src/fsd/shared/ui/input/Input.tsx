@@ -1,53 +1,70 @@
+"use client";
+import {
+  input,
+  inputBtn,
+  activeInput,
+  inputContainer,
+  fieldWithButton,
+} from "./Input.module.scss";
 import { DefaultInputProps } from "./types";
-import { useCheckForText } from "@shared/utils/index";
-import { useDefaltInput } from "@shared/model/index";
+import { useCheckForText } from "@shared/utils";
+import { useFormContext } from "react-hook-form";
+import { useDefaltInput } from "@shared/model";
 import { nunitoSans400 } from "@assets/fonts/fonts";
-import { FC } from "react";
-import styles from "./Input.module.scss";
+import { FC, useEffect } from "react";
+import { clsx } from "clsx/lite";
 
 export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
   const {
     id,
     type,
-    register,
     secondImg,
     buttonImg,
     isDisabled,
     placeholder,
+    registerOptions,
     secondButtonImg,
     optionalFunction,
     inputArbitraryClassName,
     inputContainerClassName,
   } = inputProps;
 
+  const { name, options } = registerOptions;
+
+  const { register, unregister } = useFormContext();
+
   const { isHaveText, checkForText } = useCheckForText();
+  const isHaveButnManagement = type === "password" || optionalFunction;
   const { isFirstImg, runFunction, isPasswordVisible } = useDefaltInput(type);
 
-  const inputClassname = secondImg ? styles.inputSecondImg : styles.input;
-  const isHaveButnManagement = type === "password" || optionalFunction;
-  const activeInput = isHaveText ? styles.activeInput : "";
-  const inputSecondClassName = isHaveButnManagement
-    ? styles.fieldWithButton
-    : "";
+  useEffect(() => {
+    return () => {
+      unregister(name);
+    };
+  }, []);
 
   return (
-    <div className={`${styles.inputContainer} ${inputContainerClassName}`}>
-      {secondImg && (
-        <div className={styles.secondImgContainer}>{secondImg}</div>
-      )}
+    <div className={clsx(inputContainer, inputContainerClassName)}>
+      {secondImg && <div>{secondImg}</div>}
       <input
         id={id}
-        {...register}
         disabled={isDisabled}
+        {...register(name, options)}
         onChange={checkForText}
         placeholder={placeholder}
         type={(isPasswordVisible && "text") || type}
-        className={`${inputClassname} ${activeInput} ${inputSecondClassName} ${inputArbitraryClassName} ${nunitoSans400.className}`}
+        className={clsx(
+          input,
+          nunitoSans400.className,
+          inputArbitraryClassName,
+          isHaveText && activeInput,
+          isHaveButnManagement && fieldWithButton
+        )}
       />
       {isHaveButnManagement && (
         <button
           onClick={() => runFunction(optionalFunction)}
-          className={styles.inputBtn}
+          className={inputBtn}
           type="button"
         >
           {isFirstImg ? buttonImg : secondButtonImg}

@@ -1,8 +1,10 @@
+"use client";
 import {
   emailInputConfig,
-  passwordAndUsernameInputConfig,
-} from "@features/login-or-registration-form/config/InputConfig";
-import { IDefaultInput } from "@shared/ui/index";
+  passwordInputConfig,
+  usernameInputConfig,
+} from "@features/login-or-registration-form";
+import { IDefaultInput } from "@shared/ui";
 import { IFormData } from "../types";
 import { useForm } from "react-hook-form";
 import closeEye from "@assets/eye/close-eye.svg";
@@ -12,56 +14,74 @@ import xIcon from "@assets/for-all/x.svg";
 import Image from "next/image";
 
 export const useInputSettings = (isSignIn: boolean) => {
+  const methods = useForm<IFormData>({
+    mode: "onBlur",
+  });
   const {
     reset,
-    register,
     setError,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm<IFormData>({
-    mode: "all",
-  });
+    getValues,
+    clearErrors,
+    formState: { errors },
+  } = methods;
 
   const emailInputProps: IDefaultInput = {
     placeholder: "Введите email",
     inputContainerClassName: styles.formInput,
-    register: register("email", emailInputConfig),
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,
     inputArbitraryClassName: errors.email ? styles.inputError : "",
     optionalFunction: { customFunction: reset, params: { email: "" } },
+    registerOptions: {
+      name: "email",
+      options: !isSignIn ? emailInputConfig : undefined,
+    },
   };
   const passwordInputProps: IDefaultInput = {
     type: "password",
     placeholder: "Введите пароль",
     inputContainerClassName: styles.formInput,
     buttonImg: <Image src={openEye} alt={"Открытый глаз"} />,
-    register: register("password", passwordAndUsernameInputConfig),
     secondButtonImg: <Image src={closeEye} alt={"Закрытый глаз"} />,
     inputArbitraryClassName: errors.password ? styles.inputError : "",
+    registerOptions: {
+      name: "password",
+      options: {
+        ...passwordInputConfig,
+        validate: (inputText) => {
+          const sV = getValues("checkPassword");
+          inputText === sV || !sV
+            ? clearErrors("checkPassword")
+            : setError("checkPassword", { type: "validate" });
+          return true;
+        },
+      },
+    },
   };
   const passwordVerifProps: IDefaultInput = {
     ...passwordInputProps,
-    register: register(
-      "checkPassword",
-      !isSignIn ? passwordAndUsernameInputConfig : undefined
-    ),
     inputArbitraryClassName: errors.checkPassword ? styles.inputError : "",
+    registerOptions: {
+      name: "checkPassword",
+      options: !isSignIn
+        ? {
+            ...passwordInputConfig,
+            validate: (inputText) => getValues("password") === inputText,
+          }
+        : undefined,
+    },
   };
 
   const usernameInputProps: IDefaultInput = {
     placeholder: "Введите имя пользователя",
     inputContainerClassName: styles.formInput,
     buttonImg: <Image src={xIcon} alt={"Иконка крестика"} />,
-    register: register("username", passwordAndUsernameInputConfig),
     inputArbitraryClassName: errors.username ? styles.inputError : "",
+    registerOptions: { name: "username", options: usernameInputConfig },
     optionalFunction: { customFunction: reset, params: { username: "" } },
   };
 
   return {
-    errors,
-    isValid,
-    setError,
-    handleSubmit,
+    methods,
     emailInputProps,
     passwordInputProps,
     passwordVerifProps,

@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute, ReactNode } from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
 import { OptionalFunctionT } from "@shared/model/index";
+import { RegisterOptions } from "react-hook-form";
 
 export interface IDefaultInput {
   id?: string;
@@ -13,7 +13,10 @@ export interface IDefaultInput {
   inputContainerClassName?: string;
   inputArbitraryClassName?: string;
   optionalFunction?: OptionalFunctionT;
-  register?: UseFormRegisterReturn<string>;
+  registerOptions: {
+    name: string;
+    options?: RegisterOptions<any>;
+  };
 }
 
 export interface DefaultInputProps {
