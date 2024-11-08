@@ -1,4 +1,4 @@
-import { useCheckboxLogic } from "@shared/utils/index";
+import { useCheckboxLogic } from "@shared/model/index";
 import { CheckboxProps } from "./types";
 import { FC } from "react";
 import styles from "./Checkbox.module.scss";

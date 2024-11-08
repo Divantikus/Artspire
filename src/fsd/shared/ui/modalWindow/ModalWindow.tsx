@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react";
-import { useHideModalWindow } from "@shared/model/index";
+import { useHideModalWindow } from "@shared/utils";
 import { PortalInBody } from "../Portal-in-body/PortalInBody";
 import styles from "./ModalWindow.module.scss";
 

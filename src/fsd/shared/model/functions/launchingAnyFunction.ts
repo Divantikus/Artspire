@@ -1,4 +1,4 @@
-import { FunctionT } from "@shared/model/index";
+import { FunctionT } from "@shared/model";
 
 export const launchingAnyFunction: FunctionT = (functionOrObj) => {
   if (!functionOrObj) return;

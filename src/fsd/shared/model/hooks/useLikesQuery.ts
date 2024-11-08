@@ -1,5 +1,5 @@
 "use client";
-import { userActionsService } from "../api";
+import { userActionsService } from "@shared/api";
 import { useMutation } from "react-query";
 import { useState } from "react";
 

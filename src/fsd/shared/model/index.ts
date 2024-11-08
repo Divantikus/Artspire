@@ -12,11 +12,11 @@ export {
   type FunctionT,
   type OptionalFunctionT,
 } from "./types/launchingAnyFunctionTypes";
-export { useEndlessPicturesQuery } from "./hooks/useEndlessPicturesQuery";
 export { launchingAnyFunction } from "./functions/launchingAnyFunction";
 export { useQueryPicturePage } from "./hooks/useQueryPicturePage";
-export { useHideModalWindow } from "./hooks/useHideModalWindow";
+export { useElementTracking } from "./hooks/useElementTracking";
 export { isElementVisible } from "./functions/isElementVisible";
-export { useCheckForText } from "./hooks/useCheckForText";
-export { useDebounce } from "./hooks/useDebounce";
+export { useCheckboxLogic } from "./hooks/useCheckboxLogic";
+export { useDefaltInput } from "./hooks/useDefaltInput";
+export { useLikesQuery } from "./hooks/useLikesQuery";
 export { createDate } from "./functions/createDate";
