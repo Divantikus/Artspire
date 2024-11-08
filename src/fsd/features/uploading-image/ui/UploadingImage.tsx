@@ -1,5 +1,5 @@
-import { useFileUploadLogic } from "@features/uploading-image/index";
-import { FolderIcon } from "@/fsd/shared/assets/index";
+import { useFileUploadLogic } from "@features/uploading-image";
+import { FolderIcon } from "@shared/assets";
 import styles from "./UploadingImage.module.scss";
 
 export const UploadingImage = () => {

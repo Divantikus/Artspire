@@ -1,10 +1,6 @@
-import {
-  Input,
-  GradientButton,
-  CustomMultiSelect,
-} from "@/fsd/shared/ui/index";
-import { useSelectTags, useInputImgSettings } from "@pages/create-img/index";
-import { Checkbox } from "@/fsd/shared/ui/index";
+import { Input, GradientButton, CustomMultiSelect } from "@shared/ui";
+import { useSelectTags, useInputImgSettings } from "@pages/create-img";
+import { Checkbox } from "@shared/ui";
 import magnifierIcon from "@assets/imgs/magnifier/magnifier.svg";
 import styles from "./CreateImgInputs.module.scss";
 import Image from "next/image";
