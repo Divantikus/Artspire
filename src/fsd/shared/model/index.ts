@@ -13,6 +13,7 @@ export {
   type OptionalFunctionT,
 } from "./types/launchingAnyFunctionTypes";
 export { launchingAnyFunction } from "./functions/launchingAnyFunction";
+export { checkIsValidImgType } from "./functions/checkIsValidImgType";
 export { useQueryPicturePage } from "./hooks/useQueryPicturePage";
 export { useElementTracking } from "./hooks/useElementTracking";
 export { isElementVisible } from "./functions/isElementVisible";

@@ -1,6 +1,6 @@
-import { checkIsValidImgType } from "@/fsd/shared/model";
+import { checkIsValidImgType } from "@shared/model";
 import { useFormContext } from "react-hook-form";
-import { CreateImgData } from "@/fsd/pages/create-img";
+import { CreateImgData } from "@pages/create-img";
 import React from "react";
 
 export const useFileUploadLogic = () => {

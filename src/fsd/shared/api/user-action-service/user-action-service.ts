@@ -1,4 +1,4 @@
-import { createAuthHeader } from "@shared/utils/index";
+import { createAuthHeader } from "@shared/utils";
 import axios from "axios";
 
 class UserActions {
