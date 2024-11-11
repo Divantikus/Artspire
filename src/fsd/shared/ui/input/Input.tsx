@@ -6,12 +6,12 @@ import {
   inputContainer,
   fieldWithButton,
 } from "./Input.module.scss";
+import { FC, useEffect, useState } from "react";
 import { DefaultInputProps } from "./types";
 import { useCheckForText } from "@shared/utils";
 import { useFormContext } from "react-hook-form";
 import { useDefaltInput } from "@shared/model";
 import { nunitoSans400 } from "@assets/fonts/fonts";
-import { FC, useEffect } from "react";
 import { clsx } from "clsx/lite";
 
 export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
@@ -34,11 +34,13 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
   const { register, unregister } = useFormContext();
 
   const { isHaveText, checkForText } = useCheckForText();
+  const [isFirstRender, setIsFirstRender] = useState(true);
   const isHaveButnManagement = type === "password" || optionalFunction;
   const { isFirstImg, runFunction, isPasswordVisible } = useDefaltInput(type);
 
   useEffect(() => {
     return () => {
+      if (isFirstRender) return setIsFirstRender(false);
       unregister(name);
     };
   }, []);
