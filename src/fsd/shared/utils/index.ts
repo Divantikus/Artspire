@@ -4,3 +4,4 @@ export { createAuthHeader } from "./createAuthHeader";
 export { useCheckboxLogic } from "./useCheckboxLogic";
 export { useDefaltInput } from "./useDefaltInput";
 export { useLikesQuery } from "./useLikesQuery";
+export { useThrottle } from "./useThrottle";
