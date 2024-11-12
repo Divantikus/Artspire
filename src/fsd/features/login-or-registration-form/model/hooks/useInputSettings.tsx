@@ -15,7 +15,7 @@ import Image from "next/image";
 
 export const useInputSettings = (isSignIn: boolean) => {
   const methods = useForm<IFormData>({
-    mode: "onBlur",
+    mode: "onTouched",
   });
   const {
     reset,

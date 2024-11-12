@@ -2,13 +2,11 @@
 import {
   input,
   inputBtn,
-  activeInput,
   inputContainer,
   fieldWithButton,
 } from "./Input.module.scss";
 import { FC, useEffect, useState } from "react";
 import { DefaultInputProps } from "./types";
-import { useCheckForText } from "@shared/utils";
 import { useFormContext } from "react-hook-form";
 import { useDefaltInput } from "@shared/model";
 import { nunitoSans400 } from "@assets/fonts/fonts";
@@ -33,7 +31,6 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
 
   const { register, unregister } = useFormContext();
 
-  const { isHaveText, checkForText } = useCheckForText();
   const [isFirstRender, setIsFirstRender] = useState(true);
   const isHaveButnManagement = type === "password" || optionalFunction;
   const { isFirstImg, runFunction, isPasswordVisible } = useDefaltInput(type);
@@ -52,14 +49,12 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
         id={id}
         disabled={isDisabled}
         {...register(name, options)}
-        onChange={checkForText}
         placeholder={placeholder}
         type={(isPasswordVisible && "text") || type}
         className={clsx(
           input,
           nunitoSans400.className,
           inputArbitraryClassName,
-          isHaveText && activeInput,
           isHaveButnManagement && fieldWithButton
         )}
       />
