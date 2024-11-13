@@ -1,11 +1,14 @@
 "use client";
+import { useContext, useState } from "react";
 import { userActionsService } from "@shared/api";
+import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 import { useMutation } from "react-query";
-import { useState } from "react";
+import { AxiosError } from "axios";
 
 export const useLikesQuery = (quantity: number, isLiked?: boolean) => {
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
   const [isLikedNow, setIsLikedNow] = useState(isLiked);
+  const { setModalWindowIsVisible } = useContext(ModalWindowState);
 
   const mutation = useMutation({
     mutationKey: ["addOrRemoveLike"],
@@ -21,6 +24,14 @@ export const useLikesQuery = (quantity: number, isLiked?: boolean) => {
       }
       setCurrentQuantity((number) => number + 1);
       setIsLikedNow(true);
+    },
+    onError: (axiosErr: AxiosError) => {
+      const status = axiosErr.status;
+      switch (status) {
+        case 401:
+          setModalWindowIsVisible(true);
+          return;
+      }
     },
   });
 
