@@ -2,12 +2,12 @@ import { createAuthHeader } from "@shared/utils";
 import axios from "axios";
 
 class UserActions {
-  private baseURL = `http://${process.env.NEXT_PUBLIC_DOMAIN_NAME}:${process.env.NEXT_PUBLIC_ARTS_AND_TAGS_PORT}/`;
+  private baseURL = `http://${process.env.NEXT_PUBLIC_DOMAIN_NAME}:${process.env.NEXT_PUBLIC_ARTS_AND_TAGS_PORT}/arts/`;
 
   async addToFavorites(id: number) {
     try {
       await axios.post(
-        this.baseURL + "arts/save/",
+        this.baseURL + "save",
         { art_id: id },
         { headers: createAuthHeader() }
       );
@@ -19,7 +19,7 @@ class UserActions {
 
   async removeFromFavorites(id: number) {
     try {
-      await axios.delete(this.baseURL + "arts/save", {
+      await axios.delete(this.baseURL + "save", {
         headers: createAuthHeader(),
         data: { art_id: id },
       });
@@ -30,11 +30,23 @@ class UserActions {
   }
 
   async likeIt(id: number) {
-    return await axios.post(this.baseURL + "globus", { id });
+    const data = await axios.post(
+      this.baseURL + "like",
+      { art_id: id },
+      { headers: createAuthHeader() }
+    );
+
+    return data;
   }
 
   async removeLike(id: number) {
-    return await axios.post(this.baseURL + "abobaus", { id });
+    const data = await axios.post(
+      this.baseURL + "like",
+      { art_id: id },
+      { headers: createAuthHeader() }
+    );
+
+    return data;
   }
 }
 

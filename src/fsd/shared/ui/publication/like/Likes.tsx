@@ -1,7 +1,7 @@
 "use client";
-import { useLikesQuery } from "@/fsd/shared/model";
-import { LikeIcon } from "@/fsd/shared/assets";
-import { Counter } from "@shared/ui/counter/Counter";
+import { useLikesQuery } from "@shared/model";
+import { LikeIcon } from "@shared/assets";
+import { Counter } from "@shared/ui";
 import { FC } from "react";
 import styles from "./Likes.module.scss";
 
@@ -27,7 +27,7 @@ export const Likes: FC<LikeProps> = ({ quantity, isLiked, id }) => {
   return (
     <div onClick={handleClick} className={styles.container}>
       <Counter quantity={currentQuantity}>
-        <LikeIcon isFavorite={isLikedNow} />
+        <LikeIcon isFavorite={isLikedNow} isLoading={isLoading} />
       </Counter>
     </div>
   );

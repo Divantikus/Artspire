@@ -1,8 +1,8 @@
 "use client";
 import { PublicationStatistics } from "./publication-statistics/PublicationStatistics";
-import { artsService, PublicationData } from "@shared/api/index";
-import { AddToFavoriteButton } from "@features/like-button/index";
-import { GradientButton } from "@shared/ui/index";
+import { artsService, PublicationData } from "@shared/api";
+import { AddToFavoriteButton } from "@features/like-button";
+import { GradientButton } from "@shared/ui";
 import { useQueryClient } from "react-query";
 import { nunitoSans400 } from "@assets/fonts/fonts";
 import { useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ const Title = dynamic(() => import("./publication-title/PublicationTitle"));
 export const Publication = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { id, likes_count, url, title, created_at, tags } =
+  const { id, likes_count, url, title, created_at, tags, is_liked } =
     queryClient.getQueryData(["getImgData"]) as PublicationData;
 
   return (
@@ -25,7 +25,9 @@ export const Publication = () => {
         <AddToFavoriteButton id={id} customClassName={styles.likeBtn} />
       </div>
       <PublicationStatistics
+        id={id}
         watched={1000}
+        isLiked={is_liked}
         created_at={created_at}
         likes_count={likes_count}
       />

@@ -17,11 +17,10 @@ export const useLikesQuery = (quantity: number, isLiked?: boolean) => {
     onSuccess: () => {
       if (isLikedNow) {
         setCurrentQuantity((number) => number - 1);
-        setIsLikedNow(false);
-      } else {
-        setCurrentQuantity((number) => number + 1);
-        setIsLikedNow(true);
+        return setIsLikedNow(false);
       }
+      setCurrentQuantity((number) => number + 1);
+      setIsLikedNow(true);
     },
   });
 

@@ -8,13 +8,15 @@ import styles from "./PublicationStatistics.module.scss";
 import Image from "next/image";
 
 export const PublicationStatistics: FC<PublicStatProps> = ({
+  id,
+  isLiked,
   watched,
   created_at,
   likes_count,
 }) => {
   return (
     <div className={styles.statistics}>
-      <Likes quantity={likes_count} id={2} />
+      <Likes quantity={likes_count} id={id} isLiked={isLiked} />
       <Counter quantity={watched}>
         <Image src={watchIcon} alt={"Иконка глаза"} />
       </Counter>
