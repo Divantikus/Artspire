@@ -11,8 +11,10 @@ export interface ShortArtInfo {
 export interface PublicationData extends ShortArtInfo {
   id: number;
   user_id: number;
+  username: string;
   blob_name: string;
   tags: Tag[] | null;
+  views_count: number;
   likes_count: number;
   title: string | null;
   url_generated_at: string;

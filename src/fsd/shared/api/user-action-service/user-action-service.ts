@@ -40,11 +40,10 @@ class UserActions {
   }
 
   async removeLike(id: number) {
-    const data = await axios.post(
-      this.baseURL + "like",
-      { art_id: id },
-      { headers: createAuthHeader() }
-    );
+    const data = await axios.delete(this.baseURL + "like", {
+      headers: createAuthHeader(),
+      data: { art_id: id },
+    });
 
     return data;
   }

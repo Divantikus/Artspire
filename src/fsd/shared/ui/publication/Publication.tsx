@@ -15,8 +15,17 @@ const Title = dynamic(() => import("./publication-title/PublicationTitle"));
 export const Publication = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { id, likes_count, url, title, created_at, tags, is_liked } =
-    queryClient.getQueryData(["getImgData"]) as PublicationData;
+  const {
+    id,
+    url,
+    tags,
+    title,
+    is_liked,
+    username,
+    created_at,
+    views_count,
+    likes_count,
+  } = queryClient.getQueryData(["getImgData"]) as PublicationData;
 
   return (
     <>
@@ -26,15 +35,15 @@ export const Publication = () => {
       </div>
       <PublicationStatistics
         id={id}
-        watched={1000}
         isLiked={is_liked}
+        watched={views_count}
         created_at={created_at}
         likes_count={likes_count}
       />
       {title && <Title>{title}</Title>}
       <div className={styles.profileContainer}>
         <img src="" alt="img" className={styles.profileIcon} />
-        <div className={styles.profileName}>Васисуалий Поликарпов</div>
+        <div className={styles.profileName}>{username}</div>
         <GradientButton options={{ customStyle: styles.button }}>
           Подписаться
         </GradientButton>
