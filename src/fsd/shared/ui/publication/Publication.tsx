@@ -4,6 +4,7 @@ import { artsService, PublicationData } from "@shared/api";
 import { GradientButton } from "@shared/ui";
 import { useQueryClient } from "react-query";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { Picture } from "./picture/Picture";
 import dynamic from "next/dynamic";
 import styles from "./Publication.module.scss";
@@ -16,6 +17,12 @@ export const Publication = () => {
   const queryClient = useQueryClient();
   const { id, likes_count, url, title, created_at, tags } =
     queryClient.getQueryData(["getImgData"]) as PublicationData;
+
+  useEffect(() => {
+    return () => {
+      queryClient.removeQueries({ queryKey: "getImgData", exact: true });
+    };
+  }, []);
 
   return (
     <>

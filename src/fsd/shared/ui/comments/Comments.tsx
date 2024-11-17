@@ -1,6 +1,6 @@
 "use client";
 import { nunitoSans400 } from "@shared/assets/fonts/fonts";
-import { Comment } from "@shared/ui/comment/Comment";
+import { Comment } from "@shared/ui";
 import styles from "./Comments.module.scss";
 
 export const Comments = () => {
