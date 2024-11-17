@@ -12,8 +12,10 @@ export default function ModalWindow({ children }: ModalWindowProps) {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = "17px";
     return () => {
       document.body.style.overflow = "auto";
+      document.body.style.paddingRight = "0";
     };
   }, []);
 

@@ -1,11 +1,11 @@
 "use client";
 import { PublicationStatistics } from "./publication-statistics/PublicationStatistics";
 import { artsService, PublicationData } from "@shared/api";
-import { AddToFavoriteButton } from "@features/like-button";
-import { GradientButton } from "@shared/ui";
+import { AuthorsProfile } from "./authors-profile/AuthorsProfile";
 import { useQueryClient } from "react-query";
-import { nunitoSans400 } from "@assets/fonts/fonts";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { Picture } from "./picture/Picture";
 import dynamic from "next/dynamic";
 import styles from "./Publication.module.scss";
 
@@ -15,24 +15,19 @@ const Title = dynamic(() => import("./publication-title/PublicationTitle"));
 export const Publication = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const {
-    id,
-    url,
-    tags,
-    title,
-    is_liked,
-    username,
-    created_at,
-    views_count,
-    likes_count,
-  } = queryClient.getQueryData(["getImgData"]) as PublicationData;
+  const data = queryClient.getQueryData(["getImgData"]) as PublicationData;
+  const { id, url, tags, title, is_liked } = data;
+  const { username, created_at, views_count, likes_count } = data;
+
+  useEffect(() => {
+    return () => {
+      queryClient.removeQueries({ queryKey: "getImgData", exact: true });
+    };
+  }, []);
 
   return (
     <>
-      <div className={`${styles.imgContainer} ${nunitoSans400.className}`}>
-        <img src={url} alt={title || "Картинка"} />
-        <AddToFavoriteButton id={id} customClassName={styles.likeBtn} />
-      </div>
+      <Picture id={id} title={title} url={url} />
       <PublicationStatistics
         id={id}
         isLiked={is_liked}
@@ -41,20 +36,13 @@ export const Publication = () => {
         likes_count={likes_count}
       />
       {title && <Title>{title}</Title>}
-      <div className={styles.profileContainer}>
-        <img src="" alt="img" className={styles.profileIcon} />
-        <div className={styles.profileName}>{username}</div>
-        <GradientButton options={{ customStyle: styles.button }}>
-          Подписаться
-        </GradientButton>
-      </div>
+      <AuthorsProfile id={id} username={username} imgUrl={""} />
       <button
         className={styles.deleteBtn}
         onClick={() => artsService.deleteArt(id).then(() => router.push("/"))}
       >
         Удалить картинку
       </button>
-
       {!!tags?.length && <Tags tags={tags} />}
     </>
   );

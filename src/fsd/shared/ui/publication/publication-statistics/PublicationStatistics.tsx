@@ -1,6 +1,6 @@
-import { createDate, PublicStatProps } from "@shared/model/index";
-import { nunitoSans300 } from "@/fsd/shared/assets";
-import { Counter } from "@shared/ui/index";
+import { createDate, PublicStatProps } from "@shared/model";
+import { nunitoSans300 } from "@shared/assets";
+import { Counter } from "@shared/ui";
 import { Likes } from "../like/Likes";
 import { FC } from "react";
 import watchIcon from "@shared/assets/eye/open-eye.svg";

@@ -1,0 +1,53 @@
+@keyframes skeleton {
+  0% {
+    background: rgba(206, 206, 206, 0.347);
+  }
+  100% {
+    background: rgba(169, 169, 169, 0.347);
+  }
+}
+
+@keyframes skeletonLine {
+  0% {
+    bottom: 100%;
+  }
+  100% {
+    bottom: -1700px;
+  }
+}
+
+.imgContainer {
+  overflow: hidden;
+  min-height: 250px;
+  max-height: 438px;
+  position: relative;
+  border-radius: 4px;
+  margin: 16px 0 8px 0;
+}
+
+.likeBtn {
+  top: 8px;
+  right: 8px;
+  position: absolute;
+}
+
+.skelet {
+  height: 438px;
+  overflow: hidden;
+  position: relative;
+  background: rgba(183, 183, 183, 0.347);
+  animation: skeleton 0.8s infinite alternate;
+}
+
+.line {
+  height: 10px;
+  width: 3700px;
+  rotate: -45deg;
+  background: white;
+  position: absolute;
+  transform-origin: left top;
+  animation: skeletonLine 1.3s infinite;
+  @media (max-width: 900px) {
+    animation: skeletonLine 1.7s infinite;
+  }
+}

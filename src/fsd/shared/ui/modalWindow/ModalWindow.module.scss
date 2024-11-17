@@ -22,16 +22,26 @@
   transition-property: opacity;
   animation: showModalWindow 0.5s;
   background: rgba(0, 0, 0, 0.4);
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .modalWindow {
+  opacity: 1;
   display: block;
   font-size: 14px;
   background: #fff;
   padding: 24px 16px;
   border-radius: 24px;
   font-family: "Nunito Sans" sans-serif;
-  opacity: 1;
+  @media (hover: hover) {
+    &:hover {
+      cursor: default;
+    }
+  }
   @media (min-width: 330px) {
     max-width: 330px;
   }

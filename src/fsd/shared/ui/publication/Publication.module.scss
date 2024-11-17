@@ -1,49 +1,7 @@
-.imgContainer {
-  overflow: hidden;
-  max-height: 438px;
-  position: relative;
-  border-radius: 4px;
-  margin: 16px 0 8px 0;
-}
-
-.likeBtn {
-  top: 8px;
-  right: 8px;
-  position: absolute;
-}
-
 .signature {
   font-size: 12px;
   line-height: 130%;
   margin-bottom: 5px;
-  display: inline-block;
-}
-
-.profileContainer {
-  gap: 0 8px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.profileIcon {
-  width: 32px;
-  height: 32px;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-.profileName {
-  color: #888888;
-  font-size: 12px;
-  min-width: 190px;
-}
-
-.button {
-  width: auto;
-  font-size: 12px;
-  padding: 8px 3px;
-  margin-left: auto;
   display: inline-block;
 }
 
