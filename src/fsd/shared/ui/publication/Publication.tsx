@@ -1,7 +1,7 @@
 "use client";
 import { PublicationStatistics } from "./publication-statistics/PublicationStatistics";
 import { artsService, PublicationData } from "@shared/api";
-import { GradientButton } from "@shared/ui";
+import { AuthorsProfile } from "./authors-profile/AuthorsProfile";
 import { useQueryClient } from "react-query";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -15,7 +15,7 @@ const Title = dynamic(() => import("./publication-title/PublicationTitle"));
 export const Publication = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { id, likes_count, url, title, created_at, tags } =
+  const { id, likes_count, url, title, created_at, tags, username } =
     queryClient.getQueryData(["getImgData"]) as PublicationData;
 
   useEffect(() => {
@@ -33,20 +33,13 @@ export const Publication = () => {
         likes_count={likes_count}
       />
       {title && <Title>{title}</Title>}
-      <div className={styles.profileContainer}>
-        <img src="" alt="img" className={styles.profileIcon} />
-        <div className={styles.profileName}>Васисуалий Поликарпов</div>
-        <GradientButton options={{ customStyle: styles.button }}>
-          Подписаться
-        </GradientButton>
-      </div>
+      <AuthorsProfile id={id} username={username} imgUrl={""} />
       <button
         className={styles.deleteBtn}
         onClick={() => artsService.deleteArt(id).then(() => router.push("/"))}
       >
         Удалить картинку
       </button>
-
       {!!tags?.length && <Tags tags={tags} />}
     </>
   );
