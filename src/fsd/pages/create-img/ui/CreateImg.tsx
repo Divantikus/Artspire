@@ -14,7 +14,8 @@ import styles from "./CreateImg.module.scss";
 const ModalWindow = dynamic(() => import("@shared/ui/modalWindow/ModalWindow"));
 
 export const CreateImg = () => {
-  const { modalWindowIsVisible } = useContext(ModalWindowState);
+  const { modalWindowState: modalWindowIsVisible } =
+    useContext(ModalWindowState);
 
   const methods = useForm<CreateImgData>();
   const { mutate } = useMutationPostArt();

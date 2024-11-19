@@ -7,21 +7,23 @@ import {
   SetStateAction,
 } from "react";
 
+type StateT = "hidden" | "visible" | "unmount";
+
 interface IModalWindowContext {
-  modalWindowIsVisible: boolean;
-  setModalWindowIsVisible: Dispatch<SetStateAction<boolean>>;
+  modalWindowState: StateT;
+  setModalWindowState: Dispatch<SetStateAction<StateT>>;
 }
 
 export const ModalWindowState = createContext<IModalWindowContext>({
-  modalWindowIsVisible: false,
-  setModalWindowIsVisible: () => {},
+  modalWindowState: "hidden",
+  setModalWindowState: () => {},
 });
 
 export const ModalWindowContext = ({ children }: { children: ReactNode }) => {
-  const [modalWindowIsVisible, setModalWindowIsVisible] = useState(false);
+  const [modalWindowState, setModalWindowState] = useState<StateT>("hidden");
   return (
     <ModalWindowState.Provider
-      value={{ modalWindowIsVisible, setModalWindowIsVisible }}
+      value={{ modalWindowState, setModalWindowState }}
     >
       {children}
     </ModalWindowState.Provider>

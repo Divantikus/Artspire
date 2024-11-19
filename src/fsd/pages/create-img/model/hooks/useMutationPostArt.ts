@@ -9,7 +9,8 @@ import { useRouter } from "next/navigation";
 
 export const useMutationPostArt = () => {
   const router = useRouter();
-  const { setModalWindowIsVisible } = useContext(ModalWindowState);
+  const { setModalWindowState: setModalWindowIsVisible } =
+    useContext(ModalWindowState);
 
   return useMutation({
     mutationKey: ["CreatePost"],

@@ -1,6 +1,6 @@
-import { ReactNode, useEffect } from "react";
-import { useHideModalWindow } from "@shared/utils";
-import { PortalInBody } from "../Portal-in-body/PortalInBody";
+"use client";
+import { ReactNode, useContext, useEffect, useRef } from "react";
+import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 import styles from "./ModalWindow.module.scss";
 
 interface ModalWindowProps {
@@ -8,32 +8,53 @@ interface ModalWindowProps {
 }
 
 export default function ModalWindow({ children }: ModalWindowProps) {
-  const hideModalWindow = useHideModalWindow();
+  const { modalWindowState, setModalWindowState } =
+    useContext(ModalWindowState);
+  const divRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    document.body.style.paddingRight = "17px";
-    return () => {
+  const hideModalWindow = () => {
+    const divElem = divRef.current;
+
+    if (!divElem) return;
+
+    divElem.animate([{ opacity: 1 }, { opacity: 0 }], 500).finished.then(() => {
+      divElem.style.opacity = "0";
       document.body.style.overflow = "auto";
       document.body.style.paddingRight = "0";
-    };
-  }, []);
+      setModalWindowState("hidden");
+    });
+  };
+
+  const showModalWindow = () => {
+    document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = "17px";
+  };
+
+  useEffect(() => {
+    switch (modalWindowState) {
+      case "visible":
+        showModalWindow();
+        break;
+      case "unmount":
+        hideModalWindow();
+        break;
+    }
+  }, [modalWindowState]);
 
   return (
     <>
-      <PortalInBody>
+      <div
+        ref={divRef}
+        className={styles.modalWindowContainer}
+        onClick={() => setModalWindowState("unmount")}
+      >
         <div
-          className={styles.modalWindowContainer}
-          onClick={(e) => hideModalWindow(e.currentTarget)}
+          className={styles.modalWindow}
+          onClick={(e) => e.stopPropagation()}
         >
-          <div
-            className={styles.modalWindow}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {children}
-          </div>
+          {children}
         </div>
-      </PortalInBody>
+      </div>
     </>
   );
 }

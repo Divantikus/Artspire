@@ -6,7 +6,7 @@ import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
 export const useAddToFavoriteButton = (isFavorite = false, id: number) => {
   const [isFavoriteNow, setIsFavoriteNow] = useState(isFavorite);
   const [isLoading, setIsLoading] = useState(false);
-  const { setModalWindowIsVisible } = useContext(ModalWindowState);
+  const { setModalWindowState } = useContext(ModalWindowState);
 
   const addOrRemoveFavorites = async () => {
     if (isLoading) return;
@@ -16,14 +16,14 @@ export const useAddToFavoriteButton = (isFavorite = false, id: number) => {
     if (isFavoriteNow) {
       const isSuccessful = await userActionsService.removeFromFavorites(id);
       setIsLoading(false);
-      if (!isSuccessful) return setModalWindowIsVisible(true);
+      if (!isSuccessful) return setModalWindowState("visible");
       return setIsFavoriteNow(false);
     }
 
     const isSuccessful = await userActionsService.addToFavorites(id);
     setIsLoading(false);
 
-    if (!isSuccessful) return setModalWindowIsVisible(true);
+    if (!isSuccessful) return setModalWindowState("visible");
     setIsFavoriteNow(true);
   };
   return { addOrRemoveFavorites, isLoading, isFavoriteNow };

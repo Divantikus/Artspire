@@ -13,7 +13,8 @@ import { IFormData } from "../types";
 export const useUserRegisterMutation = (
   setError: UseFormSetError<IFormData>
 ) => {
-  const { setModalWindowIsVisible } = useContext(ModalWindowState);
+  const { modalWindowState, setModalWindowState } =
+    useContext(ModalWindowState);
 
   return useMutation({
     mutationKey: ["UserRegisterData"],
@@ -28,7 +29,7 @@ export const useUserRegisterMutation = (
     },
 
     onSuccess: () => {
-      setModalWindowIsVisible(false);
+      modalWindowState === "visible" ? setModalWindowState("unmount") : null;
     },
 
     onError: (data: AxiosError) => {
