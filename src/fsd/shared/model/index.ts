@@ -18,6 +18,7 @@ export { useQueryPicturePage } from "./hooks/useQueryPicturePage";
 export { useElementTracking } from "./hooks/useElementTracking";
 export { isElementVisible } from "./functions/isElementVisible";
 export { useCheckboxLogic } from "./hooks/useCheckboxLogic";
+export { useModalWindowFn } from "./hooks/useModalWindowFn";
 export { useDefaltInput } from "./hooks/useDefaltInput";
 export { useLikesQuery } from "./hooks/useLikesQuery";
 export { createDate } from "./functions/createDate";

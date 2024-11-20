@@ -9,8 +9,7 @@ import { useRouter } from "next/navigation";
 
 export const useMutationPostArt = () => {
   const router = useRouter();
-  const { setModalWindowState: setModalWindowIsVisible } =
-    useContext(ModalWindowState);
+  const { setModalWindowState } = useContext(ModalWindowState);
 
   return useMutation({
     mutationKey: ["CreatePost"],
@@ -34,7 +33,7 @@ export const useMutationPostArt = () => {
       const status = data.status || 500;
       switch (status) {
         case 401:
-          setModalWindowIsVisible(true);
+          setModalWindowState({ type: "visible" });
           break;
       }
     },

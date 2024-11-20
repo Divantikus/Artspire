@@ -17,12 +17,12 @@ export function MainPage() {
     <section className={styles.section}>
       <button
         style={{ color: "#000" }}
-        onClick={() => setModalWindowState("visible")}
+        onClick={() => setModalWindowState({ type: "visible" })}
       >
         toggle modal Window
       </button>
       <EndlessPictures props={endlesMainPictures} />
-      {modalWindowState !== "hidden" && (
+      {modalWindowState.state !== "hidden" && (
         <PortalInBody>
           <ModalWindow>
             <SignUpOrSignIn />

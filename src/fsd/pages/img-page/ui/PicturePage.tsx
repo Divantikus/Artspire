@@ -33,7 +33,7 @@ export const PicturePage = () => {
       <Publication />
       <Comments />
       <EndlessPictures props={endlessPicturesProps} />
-      {modalWindowState !== "hidden" && (
+      {modalWindowState.state !== "hidden" && (
         <PortalInBody>
           <ModalWindow>
             <SignUpOrSignIn />

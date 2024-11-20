@@ -16,14 +16,14 @@ export const useAddToFavoriteButton = (isFavorite = false, id: number) => {
     if (isFavoriteNow) {
       const isSuccessful = await userActionsService.removeFromFavorites(id);
       setIsLoading(false);
-      if (!isSuccessful) return setModalWindowState("visible");
+      if (!isSuccessful) return setModalWindowState({ type: "visible" });
       return setIsFavoriteNow(false);
     }
 
     const isSuccessful = await userActionsService.addToFavorites(id);
     setIsLoading(false);
 
-    if (!isSuccessful) return setModalWindowState("visible");
+    if (!isSuccessful) return setModalWindowState({ type: "visible" });
     setIsFavoriteNow(true);
   };
   return { addOrRemoveFavorites, isLoading, isFavoriteNow };

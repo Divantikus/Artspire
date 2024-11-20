@@ -1,6 +1,7 @@
 "use client";
 import { ReactNode, useContext, useEffect, useRef } from "react";
 import { ModalWindowState } from "@/fsd/app/providers/ModalWindowContext";
+import { useModalWindowFn } from "@shared/model";
 import styles from "./ModalWindow.module.scss";
 
 interface ModalWindowProps {
@@ -11,32 +12,15 @@ export default function ModalWindow({ children }: ModalWindowProps) {
   const { modalWindowState, setModalWindowState } =
     useContext(ModalWindowState);
   const divRef = useRef<HTMLDivElement>(null);
-
-  const hideModalWindow = () => {
-    const divElem = divRef.current;
-
-    if (!divElem) return;
-
-    divElem.animate([{ opacity: 1 }, { opacity: 0 }], 500).finished.then(() => {
-      divElem.style.opacity = "0";
-      document.body.style.overflow = "auto";
-      document.body.style.paddingRight = "0";
-      setModalWindowState("hidden");
-    });
-  };
-
-  const showModalWindow = () => {
-    document.body.style.overflow = "hidden";
-    document.body.style.paddingRight = "17px";
-  };
+  const { showModalWindow, hideModalWindow } = useModalWindowFn();
 
   useEffect(() => {
-    switch (modalWindowState) {
+    switch (modalWindowState.state) {
       case "visible":
         showModalWindow();
         break;
       case "unmount":
-        hideModalWindow();
+        hideModalWindow(divRef.current);
         break;
     }
   }, [modalWindowState]);
@@ -46,7 +30,7 @@ export default function ModalWindow({ children }: ModalWindowProps) {
       <div
         ref={divRef}
         className={styles.modalWindowContainer}
-        onClick={() => setModalWindowState("unmount")}
+        onClick={() => setModalWindowState({ type: "unmount" })}
       >
         <div
           className={styles.modalWindow}
