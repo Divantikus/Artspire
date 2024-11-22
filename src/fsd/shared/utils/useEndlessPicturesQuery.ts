@@ -1,9 +1,9 @@
 "use client";
-import { ShortArtInfo, artsService } from "@shared/api/index";
-import { useQueryClient, useQuery } from "react-query";
-import { TArtsServiceFields } from "@shared/model/index";
+import { ShortArtInfo, artsService } from "@shared/api";
+import { TArtsServiceFields } from "@shared/model";
 import { useRef, useState } from "react";
 import { AxiosError } from "axios";
+import { useQuery } from "react-query";
 
 export const useEndlessPicturesQuery = (
   name: TArtsServiceFields,
@@ -11,7 +11,6 @@ export const useEndlessPicturesQuery = (
   queryKeys: any[]
 ) => {
   const page = useRef(0);
-  const queryClient = useQueryClient();
   const [allPictures, setAllPictures] = useState<ShortArtInfo[]>([]);
 
   const query = useQuery({
@@ -38,9 +37,9 @@ export const useEndlessPicturesQuery = (
       setAllPictures((data) => data.concat(newData));
     },
     retry: 0,
-    cacheTime: 0,
+    cacheTime: 1,
     refetchOnReconnect: true,
   });
 
-  return { queryClient, allPictures, query };
+  return { allPictures, query };
 };

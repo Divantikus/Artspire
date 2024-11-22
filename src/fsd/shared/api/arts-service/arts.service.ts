@@ -5,10 +5,10 @@ import { createAuthHeader } from "@shared/utils/index";
 class ArtsApi {
   private baseURL = `http://${process.env.NEXT_PUBLIC_DOMAIN_NAME}:${process.env.NEXT_PUBLIC_ARTS_AND_TAGS_PORT}/arts/`;
 
-  private async getOneArtRequest(id: number, withHeaders?: boolean) {
+  private async getOneArtRequest(id: number, withHeaders?: true) {
     const data = await axios.get<[PublicationData]>(
       this.baseURL + `?art_id=` + id + "&include_tags=true",
-      { headers: withHeaders ? createAuthHeader() : undefined }
+      { headers: withHeaders && createAuthHeader() }
     );
     return data.data;
   }
@@ -18,17 +18,31 @@ class ArtsApi {
       return await this.getOneArtRequest(id, true);
     } catch (e) {
       const error = e as AxiosError<[PublicationData]>;
-      if (error.status !== 401) throw new Error("my");
+      if (error.status !== 401)
+        throw new Error(`Request error with status: ${error.status}`);
+
       return await this.getOneArtRequest(id);
     }
   }
 
-  async getArts(offset: number, limit: number) {
+  async getArtsRequest(offset: number, limit: number, withHeaders?: true) {
     const data = await axios.get<ShortArtInfo[]>(
-      this.baseURL + `?offset=${offset}&` + `limit=${limit}`
+      this.baseURL + `?offset=${offset}&` + `limit=${limit}`,
+      { headers: withHeaders && createAuthHeader() }
     );
 
     return data.data;
+  }
+
+  async getArts(offset: number, limit: number) {
+    try {
+      return await this.getArtsRequest(offset, limit, true);
+    } catch (e) {
+      const error = e as AxiosError<[PublicationData]>;
+      if (error.status !== 401)
+        throw new Error(`Request error with status: ${error.status}`);
+      return await this.getArtsRequest(offset, limit);
+    }
   }
 
   async getSavedPublications(offset: number, limit: number) {

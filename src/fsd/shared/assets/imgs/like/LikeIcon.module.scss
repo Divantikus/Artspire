@@ -9,8 +9,11 @@
 
 .defSvg {
   fill: transparent;
+  transition: 0.3s;
   @media (hover: hover) {
     &:hover {
+      scale: 1.2;
+      cursor: pointer;
       fill: rgba(255, 166, 181, 1);
     }
   }
