@@ -4,7 +4,6 @@ import { artsService, PublicationData } from "@shared/api";
 import { AuthorsProfile } from "./authors-profile/AuthorsProfile";
 import { useQueryClient } from "react-query";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { Picture } from "./picture/Picture";
 import dynamic from "next/dynamic";
 import styles from "./Publication.module.scss";
@@ -18,12 +17,6 @@ export const Publication = () => {
   const data = queryClient.getQueryData(["getImgData"]) as PublicationData;
   const { id, url, tags, title, is_liked } = data;
   const { username, created_at, views_count, likes_count } = data;
-
-  useEffect(() => {
-    return () => {
-      queryClient.removeQueries({ queryKey: "getImgData", exact: true });
-    };
-  }, []);
 
   return (
     <>

@@ -3,7 +3,7 @@ import { nunitoSans400 } from "@shared/assets/fonts/fonts";
 import { Comment } from "@shared/ui";
 import styles from "./Comments.module.scss";
 
-export const Comments = () => {
+export const Comments = ({ postId }: { postId: number }) => {
   return (
     <article className={`${styles.article} ${nunitoSans400.className}`}>
       <h4 className={styles.title}>Комментарии</h4>

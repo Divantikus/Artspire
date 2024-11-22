@@ -10,5 +10,6 @@ export const useQueryPicturePage = (id: number) => {
       const data = await artsService.getOneArt(id);
       return data[0];
     },
+    retry: 0,
   });
 };
