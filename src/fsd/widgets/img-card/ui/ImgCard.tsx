@@ -11,7 +11,7 @@ export const ImgCard: FC<ImgCardProps> = ({ props }) => {
   const { id, slug, img, alt, isFavorite } = props;
   const {
     isLikedNow,
-    mutation: { mutate, isLoading, status },
+    mutation: { mutate, isLoading },
   } = useLikesQuery(20, isFavorite);
 
   const handleClick = () => {

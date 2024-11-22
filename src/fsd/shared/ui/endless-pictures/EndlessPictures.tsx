@@ -18,7 +18,7 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
 
   const {
     allPictures,
-    query: { isFetching, isError, isLoading },
+    query: { isFetching, isError, isLoading, isFetched, status },
   } = useEndlessPicturesQuery(requestField, 20, queryKeys);
 
   const { scrollWrap, trackedElement } = useElementTracking(queryKeys);
@@ -30,7 +30,7 @@ export const EndlessPictures: FC<EndlessPicturesProps> = ({
     };
   }, []);
 
-  if (allPictures.length === 0 && !isLoading)
+  if (allPictures.length === 0 && !isFetched && !isLoading)
     return <NotificationText>{messageMissingImgs}</NotificationText>;
 
   return (
