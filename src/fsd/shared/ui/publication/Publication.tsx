@@ -1,6 +1,7 @@
 "use client";
 import { PublicationStatistics } from "./publication-statistics/PublicationStatistics";
 import { artsService, PublicationData } from "@shared/api";
+import { useEffect, useRef } from "react";
 import { AuthorsProfile } from "./authors-profile/AuthorsProfile";
 import { useQueryClient } from "react-query";
 import { useRouter } from "next/navigation";
@@ -13,10 +14,21 @@ const Title = dynamic(() => import("./publication-title/PublicationTitle"));
 
 export const Publication = () => {
   const router = useRouter();
+  const renderCounter = useRef(0);
   const queryClient = useQueryClient();
   const data = queryClient.getQueryData(["getImgData"]) as PublicationData;
   const { id, url, tags, title, is_liked } = data;
   const { username, created_at, views_count, likes_count } = data;
+
+  useEffect(() => {
+    return () => {
+      if (renderCounter.current === 0) {
+        renderCounter.current++;
+        return;
+      }
+      queryClient.removeQueries({ queryKey: "getImgData", exact: true });
+    };
+  }, []);
 
   return (
     <>
