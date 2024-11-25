@@ -1,10 +1,5 @@
 "use client";
-import {
-  input,
-  inputBtn,
-  inputContainer,
-  fieldWithButton,
-} from "./Input.module.scss";
+import styles from "./Input.module.scss";
 import { FC, useEffect, useState } from "react";
 import { DefaultInputProps } from "./types";
 import { useFormContext } from "react-hook-form";
@@ -43,7 +38,7 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
   }, []);
 
   return (
-    <div className={clsx(inputContainer, inputContainerClassName)}>
+    <div className={clsx(styles.inputContainer, inputContainerClassName)}>
       {secondImg && <div>{secondImg}</div>}
       <input
         id={id}
@@ -52,16 +47,16 @@ export const Input: FC<DefaultInputProps> = ({ inputProps }) => {
         placeholder={placeholder}
         type={(isPasswordVisible && "text") || type}
         className={clsx(
-          input,
+          styles.input,
           nunitoSans400.className,
           inputArbitraryClassName,
-          isHaveButnManagement && fieldWithButton
+          isHaveButnManagement && styles.fieldWithButton
         )}
       />
       {isHaveButnManagement && (
         <button
           onClick={() => runFunction(optionalFunction)}
-          className={inputBtn}
+          className={styles.inputBtn}
           type="button"
         >
           {isFirstImg ? buttonImg : secondButtonImg}

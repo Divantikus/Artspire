@@ -8,7 +8,7 @@ import { AxiosError } from "axios";
 import { IFormData } from "../types";
 
 export const useUserLoginMutation = (setError: UseFormSetError<IFormData>) => {
-  const { setModalWindowIsVisible } = useContext(ModalWindowState);
+  const { setModalWindowState } = useContext(ModalWindowState);
 
   return useMutation({
     mutationKey: ["UserLoginData"],
@@ -24,7 +24,8 @@ export const useUserLoginMutation = (setError: UseFormSetError<IFormData>) => {
     onSuccess: (data) => {
       localStorage.setItem("access_token", data.data.access_token);
       localStorage.setItem("refresh_token", data.data.refresh_token);
-      setModalWindowIsVisible(false);
+
+      setModalWindowState({ type: "unmount" });
     },
 
     onError: (data: AxiosError) => {

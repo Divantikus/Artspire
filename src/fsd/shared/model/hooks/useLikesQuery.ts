@@ -8,7 +8,7 @@ import { AxiosError } from "axios";
 export const useLikesQuery = (quantity: number, isLiked?: boolean) => {
   const [currentQuantity, setCurrentQuantity] = useState(quantity);
   const [isLikedNow, setIsLikedNow] = useState(isLiked);
-  const { setModalWindowIsVisible } = useContext(ModalWindowState);
+  const { setModalWindowState } = useContext(ModalWindowState);
 
   const mutation = useMutation({
     mutationKey: ["addOrRemoveLike"],
@@ -29,7 +29,7 @@ export const useLikesQuery = (quantity: number, isLiked?: boolean) => {
       const status = axiosErr.status;
       switch (status) {
         case 401:
-          setModalWindowIsVisible(true);
+          setModalWindowState({ type: "visible" });
           return;
       }
     },
